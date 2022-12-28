@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Search from './components/Search';
 import './App.css';
 
 function App() {
+  const [text, setText] = useState('');
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setText(event.target.value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Test react app
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App ">
+      <header className="App-header">Vegan Products calculator</header>
+      <Search value={text} onChange={handleChange} />
+      <p>You typed: {text ? text : '...'}</p>
     </div>
   );
 }
