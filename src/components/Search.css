@@ -1,0 +1,24 @@
+.search-wrapper {
+  margin: 28px auto;
+  padding-right: 2px;
+  width: 240px;
+  height: 30px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+input {
+  border: none;
+  height: 100%;
+  padding: 0;
+}
+
+input:hover, input:focus, input:focus-visible {
+  outline: none;
+}
+
+svg {
+  float: right;
+  margin: 8px 2px;
+}
