@@ -1,6 +1,54 @@
 [
   {
-    "name": "Tofu",
-    "protein": "50"
+    "name": "almonds",
+    "protein": "1"
+  },
+  {
+    "name": "black beans",
+    "protein": "20"
+  },
+  {
+    "name": "black lentils",
+    "protein": "9"
+  },
+  {
+    "name": "brazil nuts",
+    "protein": "1"
+  },
+  {
+    "name": "cashew nuts",
+    "protein": "1"
+  },
+  {
+    "name": "hemp seeds",
+    "protein": "1"
+  },
+  {
+    "name": "quinoa",
+    "protein": "1"
+  },
+  {
+    "name": "red beans",
+    "protein": "20"
+  },
+  {
+    "name": "seitan",
+    "protein": "20"
+  },
+  {
+    "name": "tofu",
+    "protein": "17"
+  },
+  {
+    "name": "white lentils",
+    "protein": "9"
+  },
+  {
+    "name": "white beans",
+    "protein": "22"
+  },
+  {
+    "name": "yellow lentils",
+    "protein": "9"
   }
 ]

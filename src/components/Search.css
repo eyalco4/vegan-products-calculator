@@ -1,16 +1,23 @@
 .search-wrapper {
   margin: 28px auto;
+  width: 280px;
+  height: 240px;
+}
+
+.search-box {
   padding-right: 2px;
-  width: 240px;
-  height: 30px;
-  text-align: center;
+  height: 42px;
+  text-align: left;
   background-color: #ffffff;
+  border: 1px solid #d4d7dc;
   border-radius: 4px;
 }
 
 input {
   border: none;
   height: 100%;
+  width: 200px;
+  margin-left: 12px;
   padding: 0;
 }
 
@@ -20,5 +27,25 @@ input:hover, input:focus, input:focus-visible {
 
 svg {
   float: right;
-  margin: 8px 2px;
+  margin: 14px 4px;
+}
+
+ul {
+  max-height: 160px;
+  overflow-y: auto;
+  list-style: none;
+  background-color: #ffffff;
+  padding: 12px 0;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid #d4d7dc;
+  border-radius: 4px;
+}
+
+li {
+  padding: 8px;
+}
+
+li:hover {
+  background-color: #e5e5e5;
 }

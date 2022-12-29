@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
-import Leaf from 'src/components/icons/Leaf';
+import Header from 'src/components/Header';
 
 function App() {
-  const [text, setText] = useState('');
-  const [allProducts, setAllProducts] = React.useState<Array<any>>([]);
-  const [selectedProducts, setSelectedProducts] = React.useState<Array<any>>([]);
+  const [allProducts, setAllProducts] = useState<Array<any>>([]);
+  const [selectedProducts, setSelectedProducts] = useState<Array<any>>([]);
 
   useEffect(() => {
-    import('./products.json').then((productsModule) => {
+    import('src/products.json').then((productsModule) => {
       const products = productsModule.default;
       setAllProducts(products);
     });
   });
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setText(event.target.value);
+
+  function onProductSelection(product: any) {
+    !selectedProducts.includes(product) && setSelectedProducts([...selectedProducts, product]);
   }
+
   return (
     <div className="app ">
-      <header className="header">
-        <Leaf />
-        Vegan Products Calculator
-      </header>
-      <Search value={text} onChange={handleChange} />
-      <p>You typed: {text ? text : '...'}</p>
-      <p>Options are: {allProducts.length ? allProducts[0].name : 'Loading..'}</p>
-      <p>
-        Selected Products:{' '}
+      <Header />
+      <Search products={allProducts} onProductSelection={onProductSelection} />
+      <div>
         {selectedProducts.map((product: any, index: number) => {
-          return <span key={index}>{product.name}</span>;
+          return (
+            <div className="selected-product" key={index}>
+              {product.name}
+            </div>
+          );
         })}
-      </p>
+      </div>
     </div>
   );
 }
