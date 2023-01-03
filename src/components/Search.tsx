@@ -21,7 +21,6 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     setIsDrawerOpen(true);
   }
   const handleClickOutside = (event: any) => {
-    console.info(ref.current, event.target);
     if (ref.current && !ref.current.contains(event.target)) {
       setIsDrawerOpen(false);
       setFilter('');

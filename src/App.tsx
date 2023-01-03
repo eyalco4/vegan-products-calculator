@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
 import Header from 'src/components/Header';
+import SelectedProducts from 'src/components/SelectedProducts';
 
 function App() {
   const [allProducts, setAllProducts] = useState<Array<any>>([]);
@@ -22,15 +23,7 @@ function App() {
     <div className="app ">
       <Header />
       <Search products={allProducts} onProductSelection={onProductSelection} />
-      <div>
-        {selectedProducts.map((product: any, index: number) => {
-          return (
-            <div className="selected-product" key={index}>
-              {product.name}
-            </div>
-          );
-        })}
-      </div>
+      <SelectedProducts selectedProducts={selectedProducts} />
     </div>
   );
 }

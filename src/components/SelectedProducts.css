@@ -1,0 +1,23 @@
+.selected-product {
+  margin: 8px;
+}
+
+table {
+  margin: auto;
+  width: 576px;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8c9097;
+  width: 115px;
+}
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+    width: 360px;
+  }
+}

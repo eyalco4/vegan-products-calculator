@@ -1,0 +1,21 @@
+tr {
+  text-transform: capitalize;
+  height: 32px;
+  width: 96px;
+}
+
+td {
+  width: 115px;
+}
+
+#quantity-input {
+ width: 64px;
+}
+
+select {
+  cursor: pointer;
+  padding: 8px 10px;
+  border: 1px solid #D4D7DCFF;
+  border-radius: 4px;
+}
+
