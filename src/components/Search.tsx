@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useRef, Ref } from 'react';
+import React, { useState, useEffect, useRef, Ref, MouseEvent, ChangeEvent } from 'react';
 import './Search.css';
 import SearchIcon from './icons/Search';
+import { ISelectedProduct } from 'src/common/types';
 interface SearchProps {
   children?: React.ReactNode;
-  products: Array<any>;
+  products: Array<ISelectedProduct>;
   onProductSelection: any;
 }
 
 function Search({ children, products, onProductSelection }: SearchProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>('');
-  const ref: Ref<any> = useRef(null);
+  const ref: Ref<HTMLDivElement> = useRef(null);
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(event: ChangeEvent<HTMLInputElement>) {
     setFilter(event.target.value);
     filter && setIsDrawerOpen(true);
   }
@@ -27,10 +28,10 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     }
   };
 
-  const onProductClick = (e: any, product: any) => {
+  const onProductClick = (e: MouseEvent<HTMLElement>, index: number) => {
     e.preventDefault();
     setIsDrawerOpen(false);
-    onProductSelection(product);
+    onProductSelection(index);
   };
 
   useEffect(() => {
@@ -40,10 +41,9 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     };
   }, []);
   function filteredOptions() {
-    return products.filter(({ name }) => {
-      const filterLowerCase = filter.toLowerCase();
-      return name.includes(filterLowerCase);
-    });
+    const filterLowerCase = filter.toLowerCase();
+    const names = products.map(({ product: { name } }) => name);
+    return names.filter((name) => name.includes(filterLowerCase));
   }
 
   return (
@@ -62,9 +62,9 @@ function Search({ children, products, onProductSelection }: SearchProps) {
       </div>
       {isDrawerOpen && (
         <ul className="product-list">
-          {filteredOptions().map((product, index) => (
-            <li key={index} className="product-option" onClick={(e) => onProductClick(e, product)}>
-              <span className="product-name">{product.name}</span>
+          {filteredOptions().map((name, index) => (
+            <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
+              <span className="product-name">{name}</span>
             </li>
           ))}
         </ul>

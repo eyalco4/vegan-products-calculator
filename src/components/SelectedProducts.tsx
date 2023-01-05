@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 import 'src/components/SelectedProducts.css';
 import SelectedProduct from 'src/components/SelectedProduct';
-
-export interface Product {
-  name: string;
-  protein: number;
-}
+import { ISelectedProduct } from 'src/common/types';
 interface Props {
-  selectedProducts: Array<Product>;
+  selectedProducts: Array<ISelectedProduct>;
+  onTotalsUpdate: (productNameToUpdate: string, totalProtein: number, totalCarbs: number) => void;
 }
 
-export interface totalsItem {
-  name: string;
-  value: number;
-}
-
-function SelectedProducts({ selectedProducts }: Props) {
-  const [proteinList, setProteinList] = useState<Array<totalsItem>>([]);
-  const [carbsList, setCarbsList] = useState<Array<totalsItem>>([]);
+function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
   const getTotalProtein = (): number => {
-    return proteinList.reduce((counter, product: totalsItem) => counter + product.value, 0);
+    return selectedProducts.reduce(
+      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct.totalProtein,
+      0
+    );
   };
   const getTotalCarbs = (): number => {
-    return carbsList.reduce((counter, product: totalsItem) => counter + product.value, 0);
+    return selectedProducts.reduce(
+      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct.totalCarbs,
+      0
+    );
   };
 
+  if (selectedProducts.length === 0) {
+    return <Fragment />;
+  }
   return (
     <table>
       <thead>
@@ -37,26 +36,25 @@ function SelectedProducts({ selectedProducts }: Props) {
         </tr>
       </thead>
       <tbody>
-        {selectedProducts.map((product: Product, index: number) => {
+        {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
           // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
           return (
             <SelectedProduct
-              product={product}
+              selectedProduct={selectedProduct}
               key={index}
-              setproteinList={setProteinList}
-              setCarbsList={setCarbsList}
+              onTotalsUpdate={onTotalsUpdate}
             />
           );
         })}
-        {selectedProducts && (
-          <tr>
+        {
+          <tr className="totals">
             <td>Total</td>
             <td></td>
             <td></td>
             <td>{getTotalProtein()}</td>
             <td>{getTotalCarbs()}</td>
           </tr>
-        )}
+        }
       </tbody>
     </table>
   );

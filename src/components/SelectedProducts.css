@@ -15,9 +15,18 @@ th {
   color: #8c9097;
   width: 115px;
 }
+
+.totals {
+  height: 80px;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
   table {
     font-size: 12px;
     width: 360px;
+  }
+  .totals {
+    height: 40px;
   }
 }

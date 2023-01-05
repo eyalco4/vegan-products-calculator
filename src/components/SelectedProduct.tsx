@@ -1,20 +1,35 @@
-import React, { Suspense, useState, Dispatch, SetStateAction, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import './SelectedProduct.css';
-import { Product, totalsItem } from 'src/components/SelectedProducts';
+import { ISelectedProduct, units } from 'src/common/types';
 interface Props {
-  product: Product;
-  key: number;
-  setproteinList: Dispatch<SetStateAction<totalsItem[]>>;
-  setCarbsList: Dispatch<SetStateAction<totalsItem[]>>;
+  selectedProduct: ISelectedProduct;
+  onTotalsUpdate: (productNameToUpdate: string, totalProtein: number, totalCarbs: number) => void;
 }
 
-function SelectedProducts({ product }: Props) {
-  const { name, protein } = product;
+function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
+  const { product, totalProtein, totalCarbs } = selectedProduct;
+  const { name, gr, tsp, tbsp, cup } = product;
   const [quantity, setQuantity] = useState<string>('1');
+  const [units, setUnits] = useState<units>('gr');
   const [editMode, setEditMode] = useState<boolean>(false);
 
+  useEffect(() => {
+    const protein = product[units]?.protein || 0;
+    const carbs = product[units]?.carbs || 0;
+    const newTotalProtein = Number((getFormattedQuantity() * protein).toFixed(2));
+    const newTotalCarbs = Number((getFormattedQuantity() * carbs).toFixed(2));
+    onTotalsUpdate(name, newTotalProtein, newTotalCarbs);
+    // setTotalProtein(newTotalProtein); // 👈️ this causes infinite loop
+    // setTotalCarbs(newTotalCarbs); // 👈️ this causes infinite loop
+  }, [quantity, units]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
     setQuantity(e.target.value);
+    // setSelectedProducts.map(p => p.product !== bb ? p: {product: bb.product, totalProtein:10, totalCarbs: 9})
+  };
+
+  const onSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    //@ts-ignore
+    setUnits(e.target.value);
   };
   const onfocus = () => {
     setEditMode(true);
@@ -28,9 +43,6 @@ function SelectedProducts({ product }: Props) {
     return formattedQuantity.toFixed(2);
   };
 
-  const getTotalProtein = () => {
-    return (getFormattedQuantity() * protein).toFixed(2);
-  };
   return (
     <tr className="selected-product">
       <td>
@@ -40,11 +52,11 @@ function SelectedProducts({ product }: Props) {
         {name}
       </td>
       <td id="units">
-        <select name="units-select">
-          <option value="gr">gr</option>
-          <option value="tsp">tsp</option>
-          <option value="tbsp">tbsp</option>
-          <option value="cup">cup</option>
+        <select name="units-select" onChange={onSelect} value={units}>
+          {gr && <option value="gr">gr</option>}
+          {tsp && <option value="tsp">tsp</option>}
+          {tbsp && <option value="tbsp">tbsp</option>}
+          {cup && <option value="cup">cup</option>}
         </select>
       </td>
       <td id="quantity">
@@ -67,8 +79,8 @@ function SelectedProducts({ product }: Props) {
           </div>
         )}
       </td>
-      <td className="calculated-protein">{getTotalProtein()}</td>
-      <td className="calculated-carbs">{getTotalProtein()}</td>
+      <td className="calculated-protein">{totalProtein}</td>
+      <td className="calculated-carbs">{totalCarbs}</td>
     </tr>
   );
 }

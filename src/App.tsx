@@ -3,27 +3,48 @@ import Search from 'src/components/Search';
 import 'src/App.css';
 import Header from 'src/components/Header';
 import SelectedProducts from 'src/components/SelectedProducts';
+import { ISelectedProduct, IProduct } from 'src/common/types';
 
 function App() {
-  const [allProducts, setAllProducts] = useState<Array<any>>([]);
-  const [selectedProducts, setSelectedProducts] = useState<Array<any>>([]);
+  const [products, setProducts] = useState<ISelectedProduct[]>([]);
+  const selectedProducts = products.filter((product: ISelectedProduct) => product.selected);
 
   useEffect(() => {
     import('src/products.json').then((productsModule) => {
-      const products = productsModule.default;
-      setAllProducts(products);
+      //@ts-ignore
+      const fetchedProducts: Array<IProduct> = productsModule.default;
+      const selectedProducts = fetchedProducts.map((product: IProduct) => {
+        return { product, selected: false, totalProtein: 0, totalCarbs: 0 };
+        //@ts-ignore
+      });
+      setProducts(selectedProducts);
+      // console.info('selectedProducts = ', selectedProducts);
+      // console.info('products = ', products);
     });
-  });
+  }, []);
 
-  function onProductSelection(product: any) {
-    !selectedProducts.includes(product) && setSelectedProducts([...selectedProducts, product]);
+  function onProductSelection(index: number) {
+    const product = products[index];
+    setProducts([...products, { ...product, selected: true }]);
+  }
+
+  function onTotalsUpdate(productNameToUpdate: string, totalProtein: number, totalCarbs: number) {
+    const updatedProducts: ISelectedProduct[] = products.map((selectedProduct) => {
+      const {
+        product: { name },
+      } = selectedProduct;
+      return name === productNameToUpdate
+        ? { ...selectedProduct, totalProtein, totalCarbs }
+        : selectedProduct;
+    });
+    setProducts(updatedProducts);
   }
 
   return (
     <div className="app ">
       <Header />
-      <Search products={allProducts} onProductSelection={onProductSelection} />
-      <SelectedProducts selectedProducts={selectedProducts} />
+      <Search products={products} onProductSelection={onProductSelection} />
+      <SelectedProducts selectedProducts={selectedProducts} onTotalsUpdate={onTotalsUpdate} />
     </div>
   );
 }
