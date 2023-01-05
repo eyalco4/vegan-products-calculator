@@ -1,5 +1,12 @@
+.top {
+  position: absolute;
+  top: 16vh;
+  width: 100%;
+  z-index: 2;
+}
+
 .search-wrapper {
-  margin: 28px auto;
+  margin: auto;
   width: 280px;
   height: 240px;
 }

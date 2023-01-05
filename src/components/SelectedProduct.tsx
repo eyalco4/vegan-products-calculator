@@ -79,8 +79,8 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           </div>
         )}
       </td>
-      <td className="calculated-protein">{totalProtein}</td>
-      <td className="calculated-carbs">{totalCarbs}</td>
+      <td className="protein">{totalProtein}</td>
+      <td className="carbs">{totalCarbs}</td>
     </tr>
   );
 }

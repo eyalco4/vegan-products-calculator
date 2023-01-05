@@ -25,38 +25,40 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
     return <Fragment />;
   }
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Units</th>
-          <th>Quantity</th>
-          <th>Protein</th>
-          <th>Carbs</th>
-        </tr>
-      </thead>
-      <tbody>
-        {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
-          // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
-          return (
-            <SelectedProduct
-              selectedProduct={selectedProduct}
-              key={index}
-              onTotalsUpdate={onTotalsUpdate}
-            />
-          );
-        })}
-        {
-          <tr className="totals">
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td>{getTotalProtein()}</td>
-            <td>{getTotalCarbs()}</td>
+    <div className="bottom">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Units</th>
+            <th>Quantity</th>
+            <th>Protein</th>
+            <th>Carbs</th>
           </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
+            // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
+            return (
+              <SelectedProduct
+                selectedProduct={selectedProduct}
+                key={index}
+                onTotalsUpdate={onTotalsUpdate}
+              />
+            );
+          })}
+          {
+            <tr className="totals">
+              <td>Total</td>
+              <td></td>
+              <td></td>
+              <td className="protein">{getTotalProtein()}</td>
+              <td className="protein">{getTotalCarbs()}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   );
 }
 

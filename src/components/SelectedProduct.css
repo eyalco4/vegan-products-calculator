@@ -1,11 +1,6 @@
 tr {
   text-transform: capitalize;
   height: 32px;
-  width: 96px;
-}
-
-td {
-  width: 115px;
 }
 
 #quantity-input {

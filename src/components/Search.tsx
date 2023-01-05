@@ -5,7 +5,7 @@ import { ISelectedProduct } from 'src/common/types';
 interface SearchProps {
   children?: React.ReactNode;
   products: Array<ISelectedProduct>;
-  onProductSelection: any;
+  onProductSelection: (index: number) => void;
 }
 
 function Search({ children, products, onProductSelection }: SearchProps) {
@@ -47,28 +47,30 @@ function Search({ children, products, onProductSelection }: SearchProps) {
   }
 
   return (
-    <div className="search-wrapper" ref={ref}>
-      <div className="search-box" onFocus={onFocus}>
-        <label htmlFor="search">{children}</label>
-        <input
-          placeholder="Choose a product"
-          id="search"
-          type="text"
-          value={filter}
-          onChange={onChange}
-          autoComplete="off"
-        />
-        <SearchIcon />
+    <div className="top">
+      <div className="search-wrapper" ref={ref}>
+        <div className="search-box" onFocus={onFocus}>
+          <label htmlFor="search">{children}</label>
+          <input
+            placeholder="Choose a product"
+            id="search"
+            type="text"
+            value={filter}
+            onChange={onChange}
+            autoComplete="off"
+          />
+          <SearchIcon />
+        </div>
+        {isDrawerOpen && (
+          <ul className="product-list">
+            {filteredOptions().map((name, index) => (
+              <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
+                <span className="product-name">{name}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {isDrawerOpen && (
-        <ul className="product-list">
-          {filteredOptions().map((name, index) => (
-            <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
-              <span className="product-name">{name}</span>
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 }

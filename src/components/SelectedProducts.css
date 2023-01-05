@@ -1,3 +1,10 @@
+.bottom {
+  position: absolute;
+  top: 28vh;
+  width: 100%;
+  z-index: 1;
+}
+
 .selected-product {
   margin: 8px;
 }
@@ -13,20 +20,31 @@ th {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #8c9097;
-  width: 115px;
 }
 
 .totals {
-  height: 80px;
+  height: 72px;
   font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
   table {
     font-size: 12px;
-    width: 360px;
+    width: 96vw;
+  }
+
+  th, td {
+    width: 18vw;
+  }
+
+  td:nth-child(1), th:nth-child(1) {
+    width: 24vw;
   }
   .totals {
-    height: 40px;
+    height: 48px;
   }
+}
+
+td:nth-child(n+2), th:nth-child(n+2) {
+  text-align: center;
 }
