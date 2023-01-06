@@ -32,8 +32,8 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
             <th>Name</th>
             <th>Units</th>
             <th>Quantity</th>
-            <th>Protein</th>
-            <th>Carbs</th>
+            {/*<th>Protein</th>*/}
+            {/*<th>Carbs</th>*/}
           </tr>
         </thead>
         <tbody>
@@ -47,15 +47,17 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
               />
             );
           })}
-          {
-            <tr className="totals">
-              <td>Total</td>
-              <td></td>
-              <td></td>
-              <td className="protein">{getTotalProtein()}</td>
-              <td className="protein">{getTotalCarbs()}</td>
-            </tr>
-          }
+
+          <tr className="totals">
+            <td>Total Protein</td>
+            <td />
+            <td className="protein">{getTotalProtein()}</td>
+          </tr>
+          <tr className="totals">
+            <td>Total Carbs</td>
+            <td />
+            <td>{getTotalCarbs()}</td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -60,7 +60,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           {cup && <option value="cup">cup</option>}
         </select>
       </td>
-      <td id="quantity">
+      <td>
         {editMode ? (
           <input
             onFocus={onfocus}
@@ -68,6 +68,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
             type="number"
             inputMode="decimal"
             min={0}
+            max={100}
             value={String(quantity)}
             placeholder="1"
             id="quantity-input"
@@ -80,8 +81,8 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           </div>
         )}
       </td>
-      <td className="protein">{totalProtein}</td>
-      <td className="carbs">{totalCarbs}</td>
+      {/*<td className="protein">{totalProtein}</td>*/}
+      {/*<td className="carbs">{totalCarbs}</td>*/}
     </tr>
   );
 }

@@ -14,3 +14,8 @@ select {
   border-radius: 4px;
 }
 
+#quantity-input {
+  text-align: center;
+  background-color: rgba(0, 102, 255, 0.04);
+  padding: 2px 0;
+}
