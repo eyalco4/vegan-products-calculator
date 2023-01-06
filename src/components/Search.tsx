@@ -1,4 +1,12 @@
-import React, { useState, useEffect, useRef, Ref, MouseEvent, ChangeEvent } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Ref,
+  MouseEvent,
+  ChangeEvent,
+  FocusEvent,
+} from 'react';
 import './Search.css';
 import SearchIcon from './icons/Search';
 import { ISelectedProduct } from 'src/common/types';
@@ -18,8 +26,12 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     filter && setIsDrawerOpen(true);
   }
 
-  function onFocus() {
+  function onFocus(e: FocusEvent) {
+    e.preventDefault();
     setIsDrawerOpen(true);
+  }
+  function closeDrawer() {
+    setIsDrawerOpen(false);
   }
   const handleClickOutside = (event: any) => {
     if (ref.current && !ref.current.contains(event.target)) {
@@ -48,7 +60,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
 
   return (
     <div className="top">
-      <div className="search-wrapper" ref={ref}>
+      <div className="search-wrapper top" ref={ref}>
         <div className="search-box" onFocus={onFocus}>
           <label htmlFor="search">{children}</label>
           <input
@@ -63,6 +75,9 @@ function Search({ children, products, onProductSelection }: SearchProps) {
         </div>
         {isDrawerOpen && (
           <ul className="product-list">
+            <button className="close-list" onClick={closeDrawer}>
+              X
+            </button>
             {filteredOptions().map((name, index) => (
               <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
                 <span className="product-name">{name}</span>

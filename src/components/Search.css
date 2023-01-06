@@ -1,14 +1,13 @@
 .top {
-  position: absolute;
-  top: 16vh;
-  width: 100%;
+  position:relative;
   z-index: 2;
+  margin-top: 4vh;
 }
 
 .search-wrapper {
   margin: auto;
   width: 280px;
-  height: 240px;
+  height: 22vh;
 }
 
 .search-box {
@@ -55,4 +54,15 @@ li {
 
 li:hover {
   background-color: #e5e5e5;
+}
+
+.close-list {
+  display: inline;
+  float: right;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  margin-right: 3vh;
+  width: 2vh;
+  height: 2vh;
 }

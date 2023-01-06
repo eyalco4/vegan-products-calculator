@@ -23,6 +23,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
     // setTotalCarbs(newTotalCarbs); // 👈️ this causes infinite loop
   }, [quantity, units]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setQuantity(e.target.value);
     // setSelectedProducts.map(p => p.product !== bb ? p: {product: bb.product, totalProtein:10, totalCarbs: 9})
   };

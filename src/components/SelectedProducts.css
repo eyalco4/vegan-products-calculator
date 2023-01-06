@@ -1,8 +1,7 @@
 .bottom {
-  position: absolute;
-  top: 28vh;
-  width: 100%;
+  position:relative;
   z-index: 1;
+  margin-top: -4vh;
 }
 
 .selected-product {
@@ -11,7 +10,7 @@
 
 table {
   margin: auto;
-  width: 576px;
+  width: 64vh;
   text-align: left;
   text-transform: capitalize;
 }
@@ -22,6 +21,9 @@ th {
   color: #8c9097;
 }
 
+tbody {
+  margin-top: 6vh;
+}
 .totals {
   height: 72px;
   font-weight: bold;
