@@ -75,12 +75,14 @@ function Search({ children, products, onProductSelection }: SearchProps) {
         </div>
         {isDrawerOpen && (
           <ul className="product-list">
-            <button className="close-list" onClick={closeDrawer}>
-              X
-            </button>
+            <li>
+              <button className="close-list" onClick={closeDrawer}>
+                X
+              </button>
+            </li>
             {filteredOptions().map((name, index) => (
               <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
-                <span className="product-name">{name}</span>
+                {name}
               </li>
             ))}
           </ul>

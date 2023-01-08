@@ -3,10 +3,6 @@ tr {
   height: 32px;
 }
 
-#quantity-input {
- width: 64px;
-}
-
 select {
   cursor: pointer;
   padding: 8px 10px;
@@ -16,8 +12,16 @@ select {
   text-align: center;
 }
 
-#quantity-input {
+.edit {
+  background-color: #0066FF0A;
+}
+
+.quantity > input {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: inherit;
   text-align: center;
-  background-color: rgba(0, 102, 255, 0.04);
-  padding: 2px 0;
+  background-color: transparent;
+  cursor: pointer;
 }

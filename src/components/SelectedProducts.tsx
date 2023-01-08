@@ -55,23 +55,20 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
               />
             );
           })}
-          <tr className="totals">
-            <td>Total Protein</td>
-            <td />
-            <td className="totals-value">{getFormattedValue('totalProtein')}</td>
-          </tr>
-          <tr className="totals">
-            <td>Total Carbs</td>
-            <td />
-            <td className="totals-value">{getFormattedValue('totalCarbs')}</td>
-          </tr>{' '}
-          <tr className="totals">
-            <td>Total Calories</td>
-            <td />
-            <td className="totals-value">{getFormattedValue('totalCalories')}</td>
-          </tr>
         </tbody>
       </table>
+      <div className="totals">
+        <span className="total-key">Total Protein</span>
+        <span className="total-value">{getFormattedValue('totalProtein')}</span>
+      </div>
+      <div className="totals">
+        <span className="total-key">Total Carbs</span>
+        <span className="total-value">{getFormattedValue('totalCarbs')}</span>
+      </div>
+      <div className="totals">
+        <span className="total-key">Total Calories</span>
+        <span className="total-value">{getFormattedValue('totalCalories')}</span>
+      </div>
     </div>
   );
 }

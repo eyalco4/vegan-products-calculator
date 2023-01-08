@@ -34,21 +34,18 @@ input:active {
   outline: none;
 }
 
-input:focus-within {
-  outline: -webkit-focus-ring-color auto 1px;
-}
-
 svg {
   float: right;
   margin: 14px 4px;
 }
 
 ul {
-  max-height: 160px;
+  width: inherit;
+  max-height: 256px;
   overflow-y: auto;
   list-style: none;
   background-color: #ffffff;
-  padding: 12px 0;
+  padding: 8px 0;
   text-align: left;
   cursor: pointer;
   border: 1px solid #d4d7dc;
@@ -57,19 +54,23 @@ ul {
 
 li {
   padding: 8px;
+  display: block;
+  height: 16px;
 }
 
-li:hover {
+li:nth-child(1) {
+  padding: 0;
+  margin-right: 4px;
+}
+
+li:nth-child(n+2):hover {
   background-color: #e5e5e5;
 }
 
 .close-list {
-  display: inline;
   float: right;
-  background-color: inherit;
+  text-align: right;
   border: none;
+  background-color: inherit;
   cursor: pointer;
-  margin-right: 3vh;
-  width: 2vh;
-  height: 2vh;
 }

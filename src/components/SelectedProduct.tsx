@@ -84,12 +84,13 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           {cup && <option value="cup">cup</option>}
         </select>
       </td>
-      <td>
-        {editMode ? (
+      {editMode ? (
+        <td className="quantity edit">
           <input
             onFocus={onfocus}
             onBlur={onBlur}
-            type="number"
+            onMouseLeave={onBlur}
+            type="text"
             min={0}
             max={1000}
             value={String(quantity)}
@@ -98,12 +99,14 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
             autoComplete="off"
             onChange={updateValues}
           />
-        ) : (
+        </td>
+      ) : (
+        <td className="quantity">
           <div onFocus={onfocus} onClick={onfocus} onTouchStart={onfocus}>
             {getFormattedQuantity()}
           </div>
-        )}
-      </td>
+        </td>
+      )}
       {/*<td className="protein">{totalProtein}</td>*/}
       {/*<td className="carbs">{totalCarbs}</td>*/}
     </tr>
