@@ -1,135 +1,92 @@
 [
   {
     "name": "almonds",
+    "type": "nuts",
     "gr": {
-      "protein": "10",
-      "carbs": "2"
-    },
-    "tsp": {
-      "protein": "5",
-      "carbs": "0.5"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.212",
+      "calories": "5.85",
+      "carbs": "0.216"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.303",
+      "calories": "5.79",
+      "carbs": "0.309"
     }
   },
   {
     "name": "black beans",
+    "type": "legumes",
+    "cookedFactor": 2.438,
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.216",
+      "calories": "3.41",
+      "carbs": "0.624"
     },
     "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.0261",
+      "calories": "0.413",
+      "carbs": "0.0755"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.419",
+      "calories": "6.62",
+      "carbs": "1.21"
     }
   },
   {
     "name": "black lentils",
+    "type": "legumes",
+    "cookedFactor": 3.111,
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "26",
+      "calories": "360",
+      "carbs": "60"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.26",
+      "calories": "7.20",
+      "carbs": "1.20"
     }
   },
   {
     "name": "brazil nuts",
+    "type": "nuts",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.1432",
+      "calories": "6.59",
+      "carbs": "0.1174"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.19",
+      "calories": "8.76",
+      "carbs": "0.156"
     }
   },
   {
     "name": "brocoli",
+    "type": "vegetable",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.0282",
+      "calories": "0.34",
+      "carbs": "0.0664"
     }
   },
   {
     "name": "cashew nuts",
+    "type": "nuts",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.182",
+      "calories": "5.53",
+      "carbs": "0.302"
     }
   },
   {
     "name": "hemp seeds",
+    "type": "seeds",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.316",
+      "calories": "5.53",
+      "carbs": "0.0867"
     }
   },
   {

@@ -1,30 +1,48 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import './SelectedProduct.css';
 import { ISelectedProduct, units } from 'src/common/types';
+import Toggler from 'src/components/Toggle';
 interface Props {
   selectedProduct: ISelectedProduct;
-  onTotalsUpdate: (productNameToUpdate: string, totalProtein: number, totalCarbs: number) => void;
+  onTotalsUpdate: (
+    productNameToUpdate: string,
+    totalProtein: number,
+    totalCarbs: number,
+    onTotalsUpdate: number
+  ) => void;
 }
 
 function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
-  const { product, totalProtein, totalCarbs } = selectedProduct;
-  const { name, gr, tsp, tbsp, cup } = product;
-  const [quantity, setQuantity] = useState<string>('1');
+  const { product } = selectedProduct;
+  const { name, cookedFactor = 1, gr, kg, tsp, tbsp, cup } = product;
+  const [quantity, setQuantity] = useState<string>('100');
   const [units, setUnits] = useState<units>('gr');
+  const [isTogglerOn, setIsOn] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
+    const calculateValue = (field: number): number => {
+      const multiplyByQuantity = getFormattedQuantity() * field;
+      if (isTogglerOn) {
+        return Number((multiplyByQuantity / cookedFactor).toFixed(2));
+      }
+      return Number(multiplyByQuantity.toFixed(2));
+    };
+
     const protein = product[units]?.protein || 0;
     const carbs = product[units]?.carbs || 0;
-    const newTotalProtein = Number((getFormattedQuantity() * protein).toFixed(2));
-    const newTotalCarbs = Number((getFormattedQuantity() * carbs).toFixed(2));
-    onTotalsUpdate(name, newTotalProtein, newTotalCarbs);
-    // setTotalProtein(newTotalProtein); // 👈️ this causes infinite loop
-    // setTotalCarbs(newTotalCarbs); // 👈️ this causes infinite loop
-  }, [quantity, units]);
+    const calories = product[units]?.calories || 0;
+    const newTotalProtein = calculateValue(protein);
+    const newTotalCarbs = calculateValue(carbs);
+    const newTotalCalories = calculateValue(calories);
+    onTotalsUpdate(name, newTotalProtein, newTotalCarbs, newTotalCalories);
+  }, [quantity, units, isTogglerOn]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setQuantity(e.target.value);
+    console.info(typeof e.target.value);
+    const enforcedValue: string =
+      Number(e.target.value) > 1000 ? '1000' : Number(e.target.value) < 0 ? '0' : e.target.value;
+    setQuantity(enforcedValue);
     // setSelectedProducts.map(p => p.product !== bb ? p: {product: bb.product, totalProtein:10, totalCarbs: 9})
   };
 
@@ -44,6 +62,8 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
     return formattedQuantity.toFixed(2);
   };
 
+  const isToggerDisabled: boolean = cookedFactor && cookedFactor > 1 ? false : true;
+
   return (
     <tr className="selected-product">
       <td>
@@ -52,9 +72,13 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
         {/*</Suspense>{' '}*/}
         {name}
       </td>
+      <td className="cooked">
+        <Toggler disabled={isToggerDisabled} setIsOn={setIsOn} isOn={isTogglerOn} />
+      </td>
       <td id="units">
         <select name="units-select" onChange={onSelect} value={units}>
           {gr && <option value="gr">gr</option>}
+          {kg && <option value="kg">kg</option>}
           {tsp && <option value="tsp">tsp</option>}
           {tbsp && <option value="tbsp">tbsp</option>}
           {cup && <option value="cup">cup</option>}
@@ -66,9 +90,8 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
             onFocus={onfocus}
             onBlur={onBlur}
             type="number"
-            inputMode="decimal"
             min={0}
-            max={100}
+            max={1000}
             value={String(quantity)}
             placeholder="1"
             id="quantity-input"

@@ -10,7 +10,7 @@
 
 table {
   margin: auto;
-  width: 64vh;
+  width: 576px;
   text-align: left;
   text-transform: capitalize;
 }
@@ -19,13 +19,40 @@ th {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #8c9097;
+  width: 144px;
+}
+
+td {
+  width: 144px;
 }
 
 tbody {
   margin-top: 6vh;
 }
+
+
 .totals {
+  height: 36px;
+  vertical-align: bottom;
   font-weight: bold;
+}
+
+@keyframes opacityChange {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.totals-value {
+/*  transition: all 2s ease;
+  transform: translateY(0);*/
+  transition-property: opacity, left, top, height;
+  transition-duration: 3s, 5s, 3s, 5s;
+  /*animation-name: opacityChange;*/
+  /*animation-duration: 5s;*/
 }
 
 @media screen and (max-width: 768px) {
@@ -35,10 +62,6 @@ tbody {
   }
 
   th, td {
-    width: 18vw;
-  }
-
-  td:nth-child(1), th:nth-child(1) {
     width: 24vw;
   }
 }

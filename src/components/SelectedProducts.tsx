@@ -4,21 +4,28 @@ import SelectedProduct from 'src/components/SelectedProduct';
 import { ISelectedProduct } from 'src/common/types';
 interface Props {
   selectedProducts: Array<ISelectedProduct>;
-  onTotalsUpdate: (productNameToUpdate: string, totalProtein: number, totalCarbs: number) => void;
+  onTotalsUpdate: (
+    productNameToUpdate: string,
+    totalProtein: number,
+    totalCarbs: number,
+    totalCalories: number
+  ) => void;
 }
 
 function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
-  const getTotalProtein = (): number => {
-    return selectedProducts.reduce(
-      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct.totalProtein,
+  const getFormattedValue = (value: 'totalCarbs' | 'totalProtein' | 'totalCalories') => {
+    const formatNumber = (num: number) => {
+      const roundedNum = num.toFixed(2);
+      //@ts-ignore
+      return roundedNum < 1000
+        ? roundedNum.toString()
+        : roundedNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    };
+    const totalValue = selectedProducts.reduce(
+      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct[value],
       0
     );
-  };
-  const getTotalCarbs = (): number => {
-    return selectedProducts.reduce(
-      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct.totalCarbs,
-      0
-    );
+    return formatNumber(totalValue);
   };
 
   if (selectedProducts.length === 0) {
@@ -30,6 +37,7 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Cooked</th>
             <th>Units</th>
             <th>Quantity</th>
             {/*<th>Protein</th>*/}
@@ -47,16 +55,20 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
               />
             );
           })}
-
           <tr className="totals">
             <td>Total Protein</td>
             <td />
-            <td className="protein">{getTotalProtein()}</td>
+            <td className="totals-value">{getFormattedValue('totalProtein')}</td>
           </tr>
           <tr className="totals">
             <td>Total Carbs</td>
             <td />
-            <td>{getTotalCarbs()}</td>
+            <td className="totals-value">{getFormattedValue('totalCarbs')}</td>
+          </tr>{' '}
+          <tr className="totals">
+            <td>Total Calories</td>
+            <td />
+            <td className="totals-value">{getFormattedValue('totalCalories')}</td>
           </tr>
         </tbody>
       </table>

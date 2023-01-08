@@ -27,8 +27,15 @@ input {
   padding: 0;
 }
 
-input:hover, input:focus, input:focus-visible {
+input:hover,
+input:focus,
+input:focus-visible,
+input:active {
   outline: none;
+}
+
+input:focus-within {
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 svg {

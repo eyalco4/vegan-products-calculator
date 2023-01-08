@@ -14,7 +14,7 @@ function App() {
       //@ts-ignore
       const fetchedProducts: Array<IProduct> = productsModule.default;
       const selectedProducts = fetchedProducts.map((product: IProduct) => {
-        return { product, selected: false, totalProtein: 0, totalCarbs: 0 };
+        return { product, selected: false, totalProtein: 0, totalCarbs: 0, totalCalories: 0 };
         //@ts-ignore
       });
       setProducts(selectedProducts);
@@ -28,13 +28,18 @@ function App() {
     setProducts([...products, { ...product, selected: true }]);
   }
 
-  function onTotalsUpdate(productNameToUpdate: string, totalProtein: number, totalCarbs: number) {
+  function onTotalsUpdate(
+    productNameToUpdate: string,
+    totalProtein: number,
+    totalCarbs: number,
+    totalCalories: number
+  ) {
     const updatedProducts: ISelectedProduct[] = products.map((selectedProduct) => {
       const {
         product: { name },
       } = selectedProduct;
       return name === productNameToUpdate
-        ? { ...selectedProduct, totalProtein, totalCarbs }
+        ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
         : selectedProduct;
     });
     setProducts(updatedProducts);
