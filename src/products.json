@@ -1,6 +1,268 @@
 [
   {
-    "name": "Tofu",
-    "protein": "50"
+    "name": "almonds",
+    "gr": {
+      "protein": "10",
+      "carbs": "2"
+    },
+    "tsp": {
+      "protein": "5",
+      "carbs": "0.5"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "black beans",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "black lentils",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "brazil nuts",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "brocoli",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "cashew nuts",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "hemp seeds",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "quinoa",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "red beans",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "seitan",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "tofu",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "white lentils",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "white beans",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
+  },
+  {
+    "name": "yellow lentils",
+    "gr": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "tbsp": {
+      "protein": "1",
+      "carbs": "1"
+    },
+    "cup": {
+      "protein": "1",
+      "carbs": "1"
+    }
   }
 ]

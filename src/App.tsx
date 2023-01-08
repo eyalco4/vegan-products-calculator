@@ -1,37 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
-import Leaf from 'src/components/icons/Leaf';
+import Header from 'src/components/Header';
+import SelectedProducts from 'src/components/SelectedProducts';
+import { ISelectedProduct, IProduct } from 'src/common/types';
 
 function App() {
-  const [text, setText] = useState('');
-  const [allProducts, setAllProducts] = React.useState<Array<any>>([]);
-  const [selectedProducts, setSelectedProducts] = React.useState<Array<any>>([]);
+  const [products, setProducts] = useState<ISelectedProduct[]>([]);
+  const selectedProducts = products.filter((product: ISelectedProduct) => product.selected);
 
   useEffect(() => {
-    import('./products.json').then((productsModule) => {
-      const products = productsModule.default;
-      setAllProducts(products);
+    import('src/products.json').then((productsModule) => {
+      //@ts-ignore
+      const fetchedProducts: Array<IProduct> = productsModule.default;
+      const selectedProducts = fetchedProducts.map((product: IProduct) => {
+        return { product, selected: false, totalProtein: 0, totalCarbs: 0 };
+        //@ts-ignore
+      });
+      setProducts(selectedProducts);
+      // console.info('selectedProducts = ', selectedProducts);
+      // console.info('products = ', products);
     });
-  });
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setText(event.target.value);
+  }, []);
+
+  function onProductSelection(index: number) {
+    const product = products[index];
+    setProducts([...products, { ...product, selected: true }]);
   }
+
+  function onTotalsUpdate(productNameToUpdate: string, totalProtein: number, totalCarbs: number) {
+    const updatedProducts: ISelectedProduct[] = products.map((selectedProduct) => {
+      const {
+        product: { name },
+      } = selectedProduct;
+      return name === productNameToUpdate
+        ? { ...selectedProduct, totalProtein, totalCarbs }
+        : selectedProduct;
+    });
+    setProducts(updatedProducts);
+  }
+
   return (
     <div className="app ">
-      <header className="header">
-        <Leaf />
-        Vegan Products Calculator
-      </header>
-      <Search value={text} onChange={handleChange} />
-      <p>You typed: {text ? text : '...'}</p>
-      <p>Options are: {allProducts.length ? allProducts[0].name : 'Loading..'}</p>
-      <p>
-        Selected Products:{' '}
-        {selectedProducts.map((product: any, index: number) => {
-          return <span key={index}>{product.name}</span>;
-        })}
-      </p>
+      <Header />
+      <Search products={products} onProductSelection={onProductSelection} />
+      <SelectedProducts selectedProducts={selectedProducts} onTotalsUpdate={onTotalsUpdate} />
     </div>
   );
 }

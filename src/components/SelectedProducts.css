@@ -1,0 +1,48 @@
+.bottom {
+  position:relative;
+  z-index: 1;
+  margin-top: -4vh;
+}
+
+.selected-product {
+  margin: 8px;
+}
+
+table {
+  margin: auto;
+  width: 64vh;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8c9097;
+}
+
+tbody {
+  margin-top: 6vh;
+}
+.totals {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+    width: 96vw;
+  }
+
+  th, td {
+    width: 18vw;
+  }
+
+  td:nth-child(1), th:nth-child(1) {
+    width: 24vw;
+  }
+}
+
+td:nth-child(n+2), th:nth-child(n+2) {
+  text-align: center;
+}
