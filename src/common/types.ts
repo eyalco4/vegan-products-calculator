@@ -7,6 +7,7 @@ type measure = {
 export type units = 'gr' | 'kg' | 'tsp' | 'tbsp' | 'cup';
 export interface IProduct {
   name: string;
+  type: string;
   cookedFactor?: number;
   gr?: measure;
   kg?: measure;

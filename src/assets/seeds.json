@@ -1,0 +1,58 @@
+[
+  {
+    "name": "chia",
+    "gr": {
+      "protein": "0.165",
+      "calories": "4.86",
+      "carbs": "0.421"
+    }
+  },
+  {
+    "name": "flax",
+    "gr": {
+      "protein": "0.183",
+      "calories": "5.34",
+      "carbs": "0.289"
+    }
+  },
+  {
+    "name": "hemp seeds",
+    "gr": {
+      "protein": "0.193",
+      "calories": "3.39",
+      "carbs": "0.0867"
+    }
+  },
+  {
+    "name": "quinoa",
+    "cookedFactor": 3.325,
+    "gr": {
+      "protein": "0.1458",
+      "calories": "3.75",
+      "carbs": "0.6458"
+    },
+    "cup": {
+      "protein": "28",
+      "calories": "720",
+      "carbs": "124"
+    }
+  },
+  {
+    "name": "sunflower",
+    "gr": {
+      "protein": "0.2237",
+      "calories": "1.18",
+      "carbs": "0.0526"
+    },
+    "tbsp": {
+      "protein": "1.55",
+      "calories": "44",
+      "carbs": "1.22"
+    },
+    "cup": {
+      "protein": "29.1",
+      "calories": "818",
+      "carbs": "28"
+    }
+  }
+]

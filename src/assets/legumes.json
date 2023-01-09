@@ -1,0 +1,91 @@
+[
+  {
+    "name": "black beans",
+    "cookedFactor": 2.438,
+    "gr": {
+      "protein": "0.216",
+      "calories": "3.41",
+      "carbs": "0.624"
+    },
+    "tbsp": {
+      "protein": "2.61",
+      "calories": "41.3",
+      "carbs": "7.55"
+    },
+    "cup": {
+      "protein": "662",
+      "calories": "41.9",
+      "carbs": "121"
+    }
+  },
+  {
+    "name": "black lentils",
+    "cookedFactor": 3.111,
+    "gr": {
+      "protein": "0.26",
+      "calories": "3.6",
+      "carbs": "0.6"
+    },
+    "cup": {
+      "protein": "52",
+      "calories": "720",
+      "carbs": "120"
+    }
+  },
+  {
+    "name": "chickpeas",
+    "cookedFactor": 2.193,
+    "gr": {
+      "protein": "0.193",
+      "calories": "3.39",
+      "carbs": "0.6"
+    },
+    "cup": {
+      "protein": "41",
+      "calories": "756",
+      "carbs": "126"
+    }
+  },
+  {
+    "name": "red beans",
+    "cookedFactor": 2.95,
+    "gr": {
+      "protein": "0.225",
+      "calories": "3.37",
+      "carbs": "0.613"
+    },
+    "cup": {
+      "protein": "41.4",
+      "calories": "620",
+      "carbs": "113"
+    }
+  },
+  {
+    "name": "rice",
+    "cookedFactor": 2.87,
+    "gr": {
+      "protein": "0.0751",
+      "calories": "3.74",
+      "carbs": "0.809"
+    },
+    "cup": {
+      "protein": "692",
+      "calories": "13.9",
+      "carbs": "150"
+    }
+  },
+  {
+    "name": "white beans",
+    "cookedFactor": 2.412,
+    "gr": {
+      "protein": "0.234",
+      "calories": "3.12",
+      "carbs": "0.371"
+    },
+    "cup": {
+      "protein": "33.719",
+      "calories": "530.34",
+      "carbs": "96.48"
+    }
+  }
+]

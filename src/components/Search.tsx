@@ -12,7 +12,6 @@ function Search({ children, products, onProductSelection }: SearchProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>('');
   const ref: Ref<HTMLDivElement> = useRef(null);
-
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     setFilter(event.target.value);
     filter && setIsDrawerOpen(true);
@@ -68,6 +67,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
           <ul className="product-list">
             {filteredOptions().map((name, index) => (
               <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
+                <span className="first-letter">{name.charAt(0)}</span>
                 {name}
               </li>
             ))}

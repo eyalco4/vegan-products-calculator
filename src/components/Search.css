@@ -58,6 +58,11 @@ li {
   height: 16px;
 }
 
+.first-letter {
+  margin-right: 4px;
+  text-transform: lowercase;
+}
+
 li:nth-child(n+2):hover {
   background-color: #e5e5e5;
 }

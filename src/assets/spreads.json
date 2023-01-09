@@ -1,0 +1,20 @@
+[
+  {
+    "name": "peanut butter",
+    "gr": {
+      "protein": "0.222",
+      "calories": "5.98",
+      "carbs": "0.223"
+    },
+    "tbsp": {
+      "protein": "3.55",
+      "calories": "95.5",
+      "carbs": "3.57"
+    },
+    "cup": {
+      "protein": "1540",
+      "calories": "57.3",
+      "carbs": "57.5"
+    }
+  }
+]

@@ -47,8 +47,19 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
   };
 
   const onSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    const {
+      target: { value },
+    } = e;
+    switch (value) {
+      case 'gr':
+        setQuantity('100');
+        break;
+      default:
+        setQuantity('1');
+        break;
+    }
     //@ts-ignore
-    setUnits(e.target.value);
+    setUnits(value);
   };
   const onfocus = () => {
     setEditMode(true);
