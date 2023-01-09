@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-span {
+.toggle-circle {
   display: inline-block;
   width: 16px;
   height: 16px;

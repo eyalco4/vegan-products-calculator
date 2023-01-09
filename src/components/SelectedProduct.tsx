@@ -8,7 +8,7 @@ interface Props {
     productNameToUpdate: string,
     totalProtein: number,
     totalCarbs: number,
-    onTotalsUpdate: number
+    totalCalories: number
   ) => void;
 }
 

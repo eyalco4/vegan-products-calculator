@@ -11,10 +11,10 @@ function Toggler({ disabled = true, isOn, setIsOn }: Props) {
     <Fragment>
       <div className={`toggle-wrapper ${disabled ? 'disabled' : isOn ? 'on' : 'off'}`}>
         <div id="off-btn" onClick={() => (disabled ? null : setIsOn(false))}>
-          <span className={isOn ? 'hidden' : 'visible'} />
+          <span className={`toggle-circle ${isOn ? 'hidden' : 'visible'}`} />
         </div>
         <div id="on-btn" onClick={() => (disabled ? null : setIsOn(true))}>
-          <span className={isOn ? 'visible' : 'hidden'} />
+          <span className={`toggle-circle ${isOn ? 'visible' : 'hidden'}`} />
         </div>
       </div>
     </Fragment>

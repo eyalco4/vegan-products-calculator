@@ -16,7 +16,7 @@ table {
 }
 
 th {
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
   color: #8c9097;
   width: 144px;
@@ -38,12 +38,14 @@ tbody {
 }
 
 .total-key {
+  display: inline-block;
   text-align: left;
   font-weight: bold;
   width: 50%;
 }
 
 .total-value {
+  display: inline-block;
   text-align: left;
   width: 50%;
 }

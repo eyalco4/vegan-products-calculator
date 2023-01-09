@@ -81,145 +81,212 @@
     }
   },
   {
+    "name": "chia",
+    "type": "seeds",
+    "gr": {
+      "protein": "0.165",
+      "calories": "4.86",
+      "carbs": "0.421"
+    }
+  },
+  {
+    "name": "chickpeas",
+    "type": "legumes",
+    "cookedFactor": 2.193,
+    "gr": {
+      "protein": "31.79",
+      "calories": "589.91",
+      "carbs": "98.4"
+    },
+    "cup": {
+      "protein": "0.193",
+      "calories": "3.39",
+      "carbs": "0.6"
+    }
+  },
+  {
+    "name": "flax",
+    "type": "seeds",
+    "gr": {
+      "protein": "0.183",
+      "calories": "5.34",
+      "carbs": "0.289"
+    }
+  },
+  {
     "name": "hemp seeds",
     "type": "seeds",
     "gr": {
-      "protein": "0.316",
-      "calories": "5.53",
+      "protein": "0.193",
+      "calories": "3.39",
       "carbs": "0.0867"
     }
   },
   {
-    "name": "quinoa",
+    "name": "oat",
+    "type": "grain",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.121",
+      "calories": "19.15",
+      "carbs": "0.619"
     },
     "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.667",
+      "calories": "307",
+      "carbs": "3.419"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "10.7",
+      "calories": "307",
+      "carbs": "54.8"
+    }
+  },
+  {
+    "name": "peanuts",
+    "type": "nuts",
+    "gr": {
+      "protein": "0.258",
+      "calories": "5.67",
+      "carbs": "0.161"
+    },
+    "cup": {
+      "protein": "37.7",
+      "calories": "828",
+      "carbs": "23.5"
+    }
+  },
+  {
+    "name": "pasta",
+    "type": "wheat",
+    "cookedFactor": 2.8,
+    "gr": {
+      "protein": "0.125",
+      "calories": "3.75",
+      "carbs": "0.786"
+    },
+    "cup": {
+      "protein": "7",
+      "calories": "210",
+      "carbs": "44"
+    }
+  },
+  {
+    "name": "peanut butter",
+    "type": "spreads",
+    "gr": {
+      "protein": "0.222",
+      "calories": "5.98",
+      "carbs": "0.223"
+    },
+    "tbsp": {
+      "protein": "95.5",
+      "calories": "3.55",
+      "carbs": "3.57"
+    },
+    "cup": {
+      "protein": "1540",
+      "calories": "57.3",
+      "carbs": "57.7"
+    }
+  },
+  {
+    "name": "quinoa",
+    "type": "seeds",
+    "cookedFactor": 3.325,
+    "gr": {
+      "protein": "0.1458",
+      "calories": "3.75",
+      "carbs": "0.6458"
+    },
+    "cup": {
+      "protein": "28",
+      "calories": "720",
+      "carbs": "124"
     }
   },
   {
     "name": "red beans",
+    "type": "legumes",
+    "cookedFactor": 2.95,
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.225",
+      "calories": "3.37",
+      "carbs": "0.613"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "41.4",
+      "calories": "620",
+      "carbs": "113"
+    }
+  },
+  {
+    "name": "rice",
+    "type": "legumes",
+    "cookedFactor": 2.87,
+    "gr": {
+      "protein": "0.0751",
+      "calories": "3.74",
+      "carbs": "0.809"
+    },
+    "cup": {
+      "protein": "692",
+      "calories": "13.9",
+      "carbs": "150"
     }
   },
   {
     "name": "seitan",
+    "type": "wheat",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.2237",
+      "calories": "1.18",
+      "carbs": "0.0526"
+    }
+  },
+  {
+    "name": "sunflower",
+    "type": "seeds",
+    "gr": {
+      "protein": "0.2237",
+      "calories": "1.18",
+      "carbs": "0.0526"
     },
     "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "1.55",
+      "calories": "44",
+      "carbs": "1.22"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "29.1",
+      "calories": "818",
+      "carbs": "28"
     }
   },
   {
     "name": "tofu",
+    "type": "soy product",
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
-    }
-  },
-  {
-    "name": "white lentils",
-    "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.208",
+      "calories": "5.84",
+      "carbs": "0.2"
     }
   },
   {
     "name": "white beans",
+    "type": "legumes",
+    "cookedFactor": 2.412,
     "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "0.234",
+      "calories": "3.12",
+      "carbs": "0.371"
     },
     "cup": {
-      "protein": "1",
-      "carbs": "1"
+      "protein": "33.719",
+      "calories": "530.34",
+      "carbs": "96.48"
     }
   },
   {
-    "name": "yellow lentils",
-    "gr": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "tbsp": {
-      "protein": "1",
-      "carbs": "1"
-    },
-    "cup": {
-      "protein": "1",
-      "carbs": "1"
-    }
+    "name": "yellow lentils"
   }
 ]

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import SelectedProducts from 'src/components/SelectedProducts';
 import { ISelectedProduct, IProduct } from 'src/common/types';
 
@@ -18,14 +19,14 @@ function App() {
         //@ts-ignore
       });
       setProducts(selectedProducts);
-      // console.info('selectedProducts = ', selectedProducts);
-      // console.info('products = ', products);
     });
   }, []);
 
   function onProductSelection(index: number) {
     const product = products[index];
-    setProducts([...products, { ...product, selected: true }]);
+    const newProducts = [...products];
+    newProducts[index] = { ...product, selected: true };
+    setProducts(newProducts);
   }
 
   function onTotalsUpdate(
@@ -50,6 +51,7 @@ function App() {
       <Header />
       <Search products={products} onProductSelection={onProductSelection} />
       <SelectedProducts selectedProducts={selectedProducts} onTotalsUpdate={onTotalsUpdate} />
+      <Footer />
     </div>
   );
 }

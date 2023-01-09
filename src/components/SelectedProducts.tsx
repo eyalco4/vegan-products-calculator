@@ -36,7 +36,7 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Product</th>
             <th>Cooked</th>
             <th>Units</th>
             <th>Quantity</th>
