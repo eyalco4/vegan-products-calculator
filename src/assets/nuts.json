@@ -1,0 +1,49 @@
+[
+  {
+    "name": "almonds",
+    "gr": {
+      "protein": "0.212",
+      "calories": "5.71",
+      "carbs": "0.216"
+    },
+    "cup": {
+      "protein": "30.3",
+      "calories": "579",
+      "carbs": "30.9"
+    }
+  },
+  {
+    "name": "brazil nuts",
+    "gr": {
+      "protein": "0.1432",
+      "calories": "6.59",
+      "carbs": "0.1174"
+    },
+    "cup": {
+      "protein": "19",
+      "calories": "876",
+      "carbs": "15.6"
+    }
+  },
+  {
+    "name": "cashew",
+    "gr": {
+      "protein": "0.182",
+      "calories": "5.53",
+      "carbs": "0.302"
+    }
+  },
+  {
+    "name": "peanuts",
+    "gr": {
+      "protein": "0.258",
+      "calories": "5.67",
+      "carbs": "0.161"
+    },
+    "cup": {
+      "protein": "37.7",
+      "calories": "828",
+      "carbs": "23.5"
+    }
+  }
+]

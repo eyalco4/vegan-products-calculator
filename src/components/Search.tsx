@@ -1,35 +1,22 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  Ref,
-  MouseEvent,
-  ChangeEvent,
-  FocusEvent,
-} from 'react';
+import React, { useState, useEffect, useRef, Ref, MouseEvent, ChangeEvent, Fragment } from 'react';
 import './Search.css';
-import SearchIcon from './icons/Search';
-import { ISelectedProduct } from 'src/common/types';
+import SearchIcon from 'src/components/icons/Search';
+import { ICategoryListItem, IFilteredSearchItem, names } from 'src/common/types';
 interface SearchProps {
   children?: React.ReactNode;
-  products: Array<ISelectedProduct>;
-  onProductSelection: (index: number) => void;
+  products: ICategoryListItem[];
+  onProductSelection: (categoryIndex: number, productIndex: number) => void;
 }
 
 function Search({ children, products, onProductSelection }: SearchProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>('');
   const ref: Ref<HTMLDivElement> = useRef(null);
-
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     setFilter(event.target.value);
     filter && setIsDrawerOpen(true);
   }
 
-  function onFocus(e: FocusEvent) {
-    e.preventDefault();
-    setIsDrawerOpen(true);
-  }
   function closeDrawer() {
     setIsDrawerOpen(false);
   }
@@ -40,10 +27,14 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     }
   };
 
-  const onProductClick = (e: MouseEvent<HTMLElement>, index: number) => {
+  const onProductClick = (
+    e: MouseEvent<HTMLElement>,
+    categoryIndex: number,
+    productIndex: number
+  ) => {
     e.preventDefault();
     setIsDrawerOpen(false);
-    onProductSelection(index);
+    onProductSelection(categoryIndex, productIndex);
   };
 
   useEffect(() => {
@@ -52,16 +43,38 @@ function Search({ children, products, onProductSelection }: SearchProps) {
       document.removeEventListener('click', handleClickOutside, true);
     };
   }, []);
-  function filteredOptions() {
+  function filteredOptions(): IFilteredSearchItem[] {
     const filterLowerCase = filter.toLowerCase();
-    const names = products.map(({ product: { name } }) => name);
-    return names.filter((name) => name.includes(filterLowerCase));
+    const filteredOptions = products.reduce(
+      (fileredProducts: IFilteredSearchItem[], entry: ICategoryListItem, categoryIndex: number) => {
+        const { category, products } = entry;
+        const names = products.map(({ product }, productIndex: number) => {
+          return { name: product.name, categoryIndex, productIndex };
+        });
+        let filteredNames = new Array<names>();
+        if (names.length > 0) {
+          filteredNames = names.filter((item: names) => {
+            const { name = '' } = item;
+            return name.includes(filterLowerCase);
+          });
+        }
+        if (filteredNames.length > 0) {
+          return [...fileredProducts, { category, names: filteredNames }];
+        }
+        return fileredProducts;
+      },
+      []
+    );
+    return filteredOptions;
   }
 
   return (
     <div className="top">
       <div className="search-wrapper top" ref={ref}>
-        <div className="search-box" onFocus={onFocus}>
+        <div
+          className="search-box"
+          onClick={() => (isDrawerOpen ? closeDrawer() : setIsDrawerOpen(true))}
+        >
           <label htmlFor="search">{children}</label>
           <input
             placeholder="Choose a product"
@@ -75,13 +88,22 @@ function Search({ children, products, onProductSelection }: SearchProps) {
         </div>
         {isDrawerOpen && (
           <ul className="product-list">
-            <button className="close-list" onClick={closeDrawer}>
-              X
-            </button>
-            {filteredOptions().map((name, index) => (
-              <li key={index} className="product-option" onClick={(e) => onProductClick(e, index)}>
-                <span className="product-name">{name}</span>
-              </li>
+            {filteredOptions().map(({ category, names }) => (
+              <Fragment key={category}>
+                <div className="category">{category}</div>
+                {names.map((item: names) => {
+                  const { name, categoryIndex, productIndex } = item;
+                  return (
+                    <li
+                      key={`${categoryIndex}-${productIndex}`}
+                      className="product-option"
+                      onClick={(e) => onProductClick(e, categoryIndex, productIndex)}
+                    >
+                      {name}
+                    </li>
+                  );
+                })}
+              </Fragment>
             ))}
           </ul>
         )}

@@ -1,0 +1,17 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgba(118, 157, 118, 0.96);
+  color: white;
+  min-height: 10vh;
+  width: 100vw;
+  font-size: calc(6px + 1vmin);
+}
+
+.footer > span {
+  text-align: left;
+  margin-left: 10vw;
+}

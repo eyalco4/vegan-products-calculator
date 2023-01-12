@@ -1,0 +1,36 @@
+.toggle-wrapper {
+  width: 48px;
+  height: 28px;
+  border: 1px solid white;
+  border-radius: 32px;
+  cursor: pointer;
+  margin: auto;
+  padding: 0 8px;
+  background-color: #0077C5F9;
+}
+
+.disabled {
+  background-color: #393a3d;
+  opacity: .4;
+}
+
+#off-btn, #on-btn {
+  width: 50%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.toggle-circle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.hidden {
+  visibility: hidden;
+}

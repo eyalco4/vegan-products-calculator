@@ -1,0 +1,20 @@
+[
+  {
+    "name": "oat",
+    "gr": {
+      "protein": "0.121",
+      "calories": "19.15",
+      "carbs": "0.619"
+    },
+    "tbsp": {
+      "protein": "0.667",
+      "calories": "307",
+      "carbs": "3.419"
+    },
+    "cup": {
+      "protein": "10.7",
+      "calories": "307",
+      "carbs": "54.8"
+    }
+  }
+]
