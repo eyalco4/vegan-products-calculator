@@ -4,29 +4,54 @@ import 'src/App.css';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import SelectedProducts from 'src/components/SelectedProducts';
-import { ISelectedProduct, IProduct } from 'src/common/types';
+import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
 
 function App() {
-  const [products, setProducts] = useState<ISelectedProduct[]>([]);
-  const selectedProducts = products.filter((product: ISelectedProduct) => product.selected);
+  const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
 
-  useEffect(() => {
-    import('src/products.json').then((productsModule) => {
-      //@ts-ignore
-      const fetchedProducts: Array<IProduct> = productsModule.default;
-      const selectedProducts = fetchedProducts.map((product: IProduct) => {
-        return { product, selected: false, totalProtein: 0, totalCarbs: 0, totalCalories: 0 };
-        //@ts-ignore
+  //@ts-ignore
+  const getSelectedProducts = (): ISelectedProduct[] => {
+    //@ts-ignore
+    const result = [];
+    productsByCategory.map((categoryListItem: ICategoryListItem) => {
+      const { products } = categoryListItem;
+      products.map((product: ISelectedProduct) => {
+        if (product.selected) {
+          result.push(product);
+        }
       });
-      setProducts(selectedProducts);
     });
+
+    //@ts-ignore
+    return result;
+  };
+  useEffect(() => {
+    ['grains', 'legumes', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
+      (category) => {
+        import(`src/assets/${category}.json`).then((productsModule) => {
+          //@ts-ignore
+          const fetchedProducts: Array<IProduct> = productsModule.default;
+          const products = fetchedProducts.map((product: IProduct) => {
+            return { product, selected: false, totalProtein: 0, totalCarbs: 0, totalCalories: 0 };
+            //@ts-ignore
+          });
+          const newAllProducts = productsByCategory;
+          newAllProducts.push({ category, products });
+          setProductsByCategory(newAllProducts);
+        });
+      }
+    );
+    const newAllProducts = productsByCategory;
+    newAllProducts.sort((item1, item2) => item2.category.localeCompare(item1.category));
+    setProductsByCategory(newAllProducts);
   }, []);
 
-  function onProductSelection(index: number) {
-    const product = products[index];
-    const newProducts = [...products];
-    newProducts[index] = { ...product, selected: true };
-    setProducts(newProducts);
+  function onProductSelection(categoryIndex: number, productIndex: number) {
+    const { products } = productsByCategory[categoryIndex];
+    const product = products[productIndex];
+    const updatedList = [...productsByCategory];
+    updatedList[categoryIndex].products[productIndex] = { ...product, selected: true };
+    setProductsByCategory(updatedList);
   }
 
   function onTotalsUpdate(
@@ -35,22 +60,29 @@ function App() {
     totalCarbs: number,
     totalCalories: number
   ) {
-    const updatedProducts: ISelectedProduct[] = products.map((selectedProduct) => {
-      const {
-        product: { name },
-      } = selectedProduct;
-      return name === productNameToUpdate
-        ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
-        : selectedProduct;
+    //@ts-ignore
+    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
+      const { category, products } = item;
+      return {
+        category,
+        products: products.map((selectedProduct) => {
+          const {
+            product: { name },
+          } = selectedProduct;
+          return name === productNameToUpdate
+            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
+            : selectedProduct;
+        }),
+      };
     });
-    setProducts(updatedProducts);
+    setProductsByCategory(updatedProducts);
   }
 
   return (
     <div className="app ">
       <Header />
-      <Search products={products} onProductSelection={onProductSelection} />
-      <SelectedProducts selectedProducts={selectedProducts} onTotalsUpdate={onTotalsUpdate} />
+      <Search products={productsByCategory} onProductSelection={onProductSelection} />
+      <SelectedProducts selectedProducts={getSelectedProducts()} onTotalsUpdate={onTotalsUpdate} />
       <Footer />
     </div>
   );

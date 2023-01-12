@@ -52,17 +52,21 @@ ul {
   border-radius: 4px;
 }
 
-li {
+.category {
   padding: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #006400F9;
+}
+
+.product-option {
+  padding: 8px 12px;
   display: block;
   height: 16px;
+  text-transform: capitalize;
+  font-size: 14px;
 }
 
-.first-letter {
-  margin-right: 4px;
-  text-transform: lowercase;
-}
-
-li:nth-child(n+2):hover {
+li:hover, li:active {
   background-color: #e5e5e5;
 }

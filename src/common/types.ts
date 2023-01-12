@@ -23,3 +23,17 @@ export interface ISelectedProduct {
   totalCarbs: number;
   totalCalories: number;
 }
+export interface ICategoryListItem {
+  category: string;
+  products: ISelectedProduct[];
+}
+export interface names {
+  name: string;
+  categoryIndex: number;
+  productIndex: number;
+}
+
+export interface IFilteredSearchItem {
+  category: string;
+  names: names[];
+}

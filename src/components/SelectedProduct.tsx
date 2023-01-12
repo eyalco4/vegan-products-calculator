@@ -39,7 +39,6 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
   }, [quantity, units, isTogglerOn]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.info(typeof e.target.value);
     const enforcedValue: string =
       Number(e.target.value) > 1000 ? '1000' : Number(e.target.value) < 0 ? '0' : e.target.value;
     setQuantity(enforcedValue);
