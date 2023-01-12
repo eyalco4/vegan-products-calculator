@@ -46,14 +46,12 @@ function Search({ children, products, onProductSelection }: SearchProps) {
   function filteredOptions(): IFilteredSearchItem[] {
     const filterLowerCase = filter.toLowerCase();
     const filteredOptions = products.reduce(
-      //@ts-ignore
-      (fileredProducts: IProductsListItem[], entry: ICategoryListItem, categoryIndex: number) => {
+      (fileredProducts: IFilteredSearchItem[], entry: ICategoryListItem, categoryIndex: number) => {
         const { category, products } = entry;
         const names = products.map(({ product }, productIndex: number) => {
           return { name: product.name, categoryIndex, productIndex };
         });
-        //@ts-ignore
-        let filteredNames = [];
+        let filteredNames = new Array<names>();
         if (names.length > 0) {
           filteredNames = names.filter((item: names) => {
             const { name = '' } = item;
@@ -61,14 +59,12 @@ function Search({ children, products, onProductSelection }: SearchProps) {
           });
         }
         if (filteredNames.length > 0) {
-          //@ts-ignore
           return [...fileredProducts, { category, names: filteredNames }];
         }
         return fileredProducts;
       },
       []
     );
-    //@ts-ignore
     return filteredOptions;
   }
 

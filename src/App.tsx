@@ -9,10 +9,8 @@ import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types'
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
 
-  //@ts-ignore
-  const getSelectedProducts = (): ISelectedProduct[] => {
-    //@ts-ignore
-    const result = [];
+  const getSelectedProducts = (): ISelectedProduct[] | [] => {
+    const result = new Array<ISelectedProduct>();
     productsByCategory.map((categoryListItem: ICategoryListItem) => {
       const { products } = categoryListItem;
       products.map((product: ISelectedProduct) => {
@@ -21,19 +19,15 @@ function App() {
         }
       });
     });
-
-    //@ts-ignore
     return result;
   };
   useEffect(() => {
     ['grains', 'legumes', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
       (category) => {
         import(`src/assets/${category}.json`).then((productsModule) => {
-          //@ts-ignore
           const fetchedProducts: Array<IProduct> = productsModule.default;
           const products = fetchedProducts.map((product: IProduct) => {
             return { product, selected: false, totalProtein: 0, totalCarbs: 0, totalCalories: 0 };
-            //@ts-ignore
           });
           const newAllProducts = productsByCategory;
           newAllProducts.push({ category, products });
@@ -60,7 +54,6 @@ function App() {
     totalCarbs: number,
     totalCalories: number
   ) {
-    //@ts-ignore
     const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
       const { category, products } = item;
       return {
