@@ -9,7 +9,7 @@
 }
 
 table {
-  margin: 0 auto 24px;
+  margin: 0 auto 48px;
   width: 576px;
   text-align: left;
   text-transform: capitalize;
@@ -30,53 +30,10 @@ tbody {
   margin-top: 6vh;
 }
 
-.totals {
-  width: 576px;
-  height: 36px;
-  margin: auto;
-  text-align: left;
-}
-
-.total-key {
-  display: inline-block;
-  text-align: left;
-  font-weight: bold;
-  width: 50%;
-}
-
-.total-value {
-  display: inline-block;
-  text-align: left;
-  width: 50%;
-}
-
-@keyframes opacityChange {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.totals-value {
-/*  transition: all 2s ease;
-  transform: translateY(0);*/
-  transition-property: opacity, left, top, height;
-  transition-duration: 3s, 5s, 3s, 5s;
-  width: 100px;
-  /*animation-name: opacityChange;*/
-  /*animation-duration: 5s;*/
-}
-
 @media screen and (max-width: 768px) {
-  table, .totals {
+  table {
     font-size: 12px;
     width: 96vw;
-  }
-
-  .totals {
-    height: 24px;
   }
 
   th, td {

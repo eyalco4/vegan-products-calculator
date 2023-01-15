@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import 'src/components/SelectedProducts.css';
 import SelectedProduct from 'src/components/SelectedProduct';
+import Totals from 'src/components/Totals';
 import { ISelectedProduct } from 'src/common/types';
 interface Props {
   selectedProducts: Array<ISelectedProduct>;
@@ -57,18 +58,11 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
           })}
         </tbody>
       </table>
-      <div className="totals">
-        <span className="total-key">Total Protein</span>
-        <span className="total-value">{getFormattedValue('totalProtein')}</span>
-      </div>
-      <div className="totals">
-        <span className="total-key">Total Carbs</span>
-        <span className="total-value">{getFormattedValue('totalCarbs')}</span>
-      </div>
-      <div className="totals">
-        <span className="total-key">Total Calories</span>
-        <span className="total-value">{getFormattedValue('totalCalories')}</span>
-      </div>
+      <Totals
+        totalProtein={getFormattedValue('totalProtein')}
+        totalCarbs={getFormattedValue('totalCarbs')}
+        totalCalories={getFormattedValue('totalCalories')}
+      />
     </div>
   );
 }

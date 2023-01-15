@@ -76,7 +76,7 @@ function App() {
       <Header />
       <Search products={productsByCategory} onProductSelection={onProductSelection} />
       <SelectedProducts selectedProducts={getSelectedProducts()} onTotalsUpdate={onTotalsUpdate} />
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 }

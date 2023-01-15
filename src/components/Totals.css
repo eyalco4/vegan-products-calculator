@@ -1,0 +1,47 @@
+.totals-wrapper {
+  width: 576px;
+  margin: auto;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto;
+  text-align: center;
+  border: 7px solid;
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+}
+
+.protein {
+  border-color: #4fd74f;
+}
+
+.carbs {
+  border-color: cornflowerblue;
+}
+
+.calories {
+  border-color: deeppink;
+}
+
+.total-key {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .totals-wrapper {
+    font-size: 12px;
+    width: 96vw;
+  }
+
+  .totals {
+    width: 96px;
+    height: 96px;
+  }
+}
