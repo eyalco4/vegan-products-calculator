@@ -76,12 +76,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
 
   return (
     <tr className="selected-product">
-      <td>
-        {/*<Suspense fallback={<span>Loading...</span>}>*/}
-        {/*  <LazyLoadedIcon />*/}
-        {/*</Suspense>{' '}*/}
-        {name}
-      </td>
+      <td>{name}</td>
       <td className="cooked">
         <Toggler disabled={isToggerDisabled} setIsOn={setIsOn} isOn={isTogglerOn} />
       </td>
