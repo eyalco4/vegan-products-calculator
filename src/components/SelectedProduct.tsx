@@ -14,9 +14,9 @@ interface Props {
 
 function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
   const { product } = selectedProduct;
-  const { name, cookedFactor = 1, gr, kg, tsp, tbsp, cup } = product;
+  const { name, cookedFactor = 1, gr, ml, kg, tsp, tbsp, cup } = product;
   const [quantity, setQuantity] = useState<string>('100');
-  const [units, setUnits] = useState<units>('gr');
+  const [units, setUnits] = useState<units>(gr ? 'gr' : 'ml');
   const [isTogglerOn, setIsOn] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -51,6 +51,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
     } = e;
     switch (value) {
       case 'gr':
+      case 'ml':
         setQuantity('100');
         break;
       default:
@@ -69,7 +70,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
   const getFormattedQuantity = (): number => {
     const formattedQuantity: number = isNaN(Number(quantity)) ? 0 : Number(quantity);
     //@ts-ignore
-    return units === 'gr' ? formattedQuantity : formattedQuantity.toFixed(2);
+    return ['gr', 'ml'].includes(units) ? formattedQuantity : formattedQuantity.toFixed(2);
   };
 
   const isToggerDisabled: boolean = cookedFactor && cookedFactor > 1 ? false : true;
@@ -83,6 +84,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
       <td id="units">
         <select name="units-select" onChange={onSelect} value={units}>
           {gr && <option value="gr">gr</option>}
+          {ml && <option value="ml">ml</option>}
           {kg && <option value="kg">kg</option>}
           {tsp && <option value="tsp">tsp</option>}
           {tbsp && <option value="tbsp">tbsp</option>}
@@ -112,8 +114,6 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           </div>
         </td>
       )}
-      {/*<td className="protein">{totalProtein}</td>*/}
-      {/*<td className="carbs">{totalCarbs}</td>*/}
     </tr>
   );
 }

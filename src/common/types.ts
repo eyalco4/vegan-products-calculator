@@ -4,12 +4,13 @@ type measure = {
   calories: number;
 };
 
-export type units = 'gr' | 'kg' | 'tsp' | 'tbsp' | 'cup';
+export type units = 'gr' | 'ml' | 'kg' | 'tsp' | 'tbsp' | 'cup';
 export interface IProduct {
   name: string;
   type: string;
   cookedFactor?: number;
   gr?: measure;
+  ml?: measure;
   kg?: measure;
   tsp?: measure;
   tbsp?: measure;
