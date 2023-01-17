@@ -1,7 +1,9 @@
 .bottom {
-  position:relative;
+  /*position:relative;*/
   z-index: 1;
-  margin-top: -8vh;
+  height: 100%;
+  background-color: #f7f9fa;
+  padding-top: 24px;
 }
 
 .selected-product {
@@ -18,7 +20,7 @@ table {
 th {
   text-transform: capitalize;
   letter-spacing: 1px;
-  color: #8c9097;
+  color: #282c34;
   width: 144px;
 }
 
@@ -37,12 +39,19 @@ tbody {
 
 @media screen and (max-width: 768px) {
   table {
-    font-size: 12px;
-    width: 96vw;
+    font-size: 14px;
+    width: 90vw;
   }
 
+  th {
+    font-size: 16px;
+  }
   th, td {
-    width: 24vw;
+    width: 25vw;
+  }
+
+  td:nth-child(n+2), th:nth-child(n+2) {
+    width: 21vw;
   }
 }
 

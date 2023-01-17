@@ -6,7 +6,7 @@ interface Props {
   totalCalories: string;
 }
 
-function SelectedProducts({ totalProtein, totalCarbs, totalCalories }: Props) {
+function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
   return (
     <div className="fixed-bottom">
       <div className="totals-wrapper">
@@ -27,4 +27,4 @@ function SelectedProducts({ totalProtein, totalCarbs, totalCalories }: Props) {
   );
 }
 
-export default SelectedProducts;
+export default Totals;

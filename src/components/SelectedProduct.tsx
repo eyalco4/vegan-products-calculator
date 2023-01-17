@@ -69,7 +69,7 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
   const getFormattedQuantity = (): number => {
     const formattedQuantity: number = isNaN(Number(quantity)) ? 0 : Number(quantity);
     //@ts-ignore
-    return formattedQuantity.toFixed(2);
+    return units === 'gr' ? formattedQuantity : formattedQuantity.toFixed(2);
   };
 
   const isToggerDisabled: boolean = cookedFactor && cookedFactor > 1 ? false : true;

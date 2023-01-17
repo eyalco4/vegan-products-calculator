@@ -29,41 +29,42 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
     return formatNumber(totalValue);
   };
 
-  if (selectedProducts.length === 0) {
-    return <Fragment />;
-  }
   return (
-    <div className="bottom">
-      <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Cooked</th>
-            <th>Units</th>
-            <th>Quantity</th>
-            {/*<th>Protein</th>*/}
-            {/*<th>Carbs</th>*/}
-          </tr>
-        </thead>
-        <tbody>
-          {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
-            // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
-            return (
-              <SelectedProduct
-                selectedProduct={selectedProduct}
-                key={index}
-                onTotalsUpdate={onTotalsUpdate}
-              />
-            );
-          })}
-        </tbody>
-      </table>
+    <Fragment>
+      {selectedProducts.length > 0 && (
+        <div className="bottom">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Cooked</th>
+                <th>Units</th>
+                <th>Quantity</th>
+                {/*<th>Protein</th>*/}
+                {/*<th>Carbs</th>*/}
+              </tr>
+            </thead>
+            <tbody>
+              {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
+                // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
+                return (
+                  <SelectedProduct
+                    selectedProduct={selectedProduct}
+                    key={index}
+                    onTotalsUpdate={onTotalsUpdate}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
       <Totals
         totalProtein={getFormattedValue('totalProtein')}
         totalCarbs={getFormattedValue('totalCarbs')}
         totalCalories={getFormattedValue('totalCalories')}
       />
-    </div>
+    </Fragment>
   );
 }
 

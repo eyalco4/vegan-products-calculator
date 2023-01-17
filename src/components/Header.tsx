@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="header">
       <Leaf />
-      Vegan Products Calculator
+      Vggies Intake values
     </header>
   );
 }

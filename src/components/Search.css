@@ -1,13 +1,15 @@
+
 .top {
   position:relative;
   z-index: 2;
-  margin-top: 4vh;
+  padding-top: 4vh;
+  background-color: white;
 }
 
 .search-wrapper {
   margin: auto;
   width: 280px;
-  height: 22vh;
+  height: 180px;
 }
 
 .search-box {
@@ -15,7 +17,7 @@
   height: 42px;
   text-align: left;
   background-color: #ffffff;
-  border: 1px solid #d4d7dc;
+  border: 2px solid darkseagreen;
   border-radius: 24px;
 }
 
@@ -45,10 +47,10 @@ ul {
   overflow-y: auto;
   list-style: none;
   background-color: #ffffff;
-  padding: 8px 0;
+  padding: 12px 2px;
   text-align: left;
   cursor: pointer;
-  border: 1px solid #d4d7dc;
+  border: 2px solid darkseagreen;
   border-radius: 12px;
 }
 
@@ -56,7 +58,7 @@ ul {
   padding: 8px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #006400F9;
+  color: #007000;
 }
 
 .product-option {
@@ -69,4 +71,10 @@ ul {
 
 li:hover, li:active {
   background-color: #e5e5e5;
+}
+@media screen and (max-width: 768px) {
+
+  .search-wrapper {
+    height: 100px;
+  }
 }
