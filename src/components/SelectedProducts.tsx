@@ -31,8 +31,8 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
 
   return (
     <Fragment>
-      {selectedProducts.length > 0 && (
-        <div className="bottom">
+      <div className="bottom">
+        {selectedProducts.length > 0 && (
           <table>
             <thead>
               <tr>
@@ -57,8 +57,9 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
               })}
             </tbody>
           </table>
-        </div>
-      )}
+        )}
+      </div>
+
       <Totals
         totalProtein={getFormattedValue('totalProtein')}
         totalCarbs={getFormattedValue('totalCarbs')}

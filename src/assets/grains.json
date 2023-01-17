@@ -1,5 +1,38 @@
 [
   {
+    "name": "buckwheat",
+    "cookedFactor": 3.94,
+    "gr": {
+      "protein": "3.23",
+      "calories": "0.132",
+      "carbs": "0.715"
+    },
+    "cup": {
+      "protein": "22.4",
+      "calories": "583",
+      "carbs": "122"
+    }
+  },
+  {
+    "name": "bulgur",
+    "cookedFactor": 4,
+    "gr": {
+      "protein": "0.122",
+      "calories": "3.42",
+      "carbs": "0.759"
+    },
+    "tbsp": {
+      "protein": "1.075",
+      "calories": "29.93",
+      "carbs": "6.625"
+    },
+    "cup": {
+      "protein": "17.2",
+      "calories": "479",
+      "carbs": "106"
+    }
+  },
+  {
     "name": "oat",
     "gr": {
       "protein": "0.121",
@@ -15,6 +48,20 @@
       "protein": "10.7",
       "calories": "307",
       "carbs": "54.8"
+    }
+  },
+  {
+    "name": "quinoa",
+    "cookedFactor": 3.325,
+    "gr": {
+      "protein": "0.1458",
+      "calories": "3.75",
+      "carbs": "0.6458"
+    },
+    "cup": {
+      "protein": "28",
+      "calories": "720",
+      "carbs": "124"
     }
   }
 ]
