@@ -1,7 +1,9 @@
 .bottom {
-  position:relative;
+  /*position:relative;*/
   z-index: 1;
-  margin-top: -4vh;
+  height: 100%;
+  background-color: #F8FAF7F9;
+  padding-top: 24px;
 }
 
 .selected-product {
@@ -9,7 +11,7 @@
 }
 
 table {
-  margin: 0 auto 24px;
+  margin: 0 auto 48px;
   width: 576px;
   text-align: left;
   text-transform: capitalize;
@@ -18,7 +20,7 @@ table {
 th {
   text-transform: capitalize;
   letter-spacing: 1px;
-  color: #8c9097;
+  color: #282c34;
   width: 144px;
 }
 
@@ -26,61 +28,30 @@ td {
   width: 144px;
 }
 
+td > svg {
+  margin: 0 10px 0 0;
+  float: left;
+}
+
 tbody {
   margin-top: 6vh;
 }
 
-.totals {
-  width: 576px;
-  height: 36px;
-  margin: auto;
-  text-align: left;
-}
-
-.total-key {
-  display: inline-block;
-  text-align: left;
-  font-weight: bold;
-  width: 50%;
-}
-
-.total-value {
-  display: inline-block;
-  text-align: left;
-  width: 50%;
-}
-
-@keyframes opacityChange {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.totals-value {
-/*  transition: all 2s ease;
-  transform: translateY(0);*/
-  transition-property: opacity, left, top, height;
-  transition-duration: 3s, 5s, 3s, 5s;
-  width: 100px;
-  /*animation-name: opacityChange;*/
-  /*animation-duration: 5s;*/
-}
-
 @media screen and (max-width: 768px) {
-  table, .totals {
-    font-size: 12px;
-    width: 96vw;
+  table {
+    font-size: 14px;
+    width: 90vw;
   }
 
-  .totals {
-    height: 24px;
+  th {
+    font-size: 16px;
   }
-
   th, td {
-    width: 24vw;
+    width: 25vw;
+  }
+
+  td:nth-child(n+2), th:nth-child(n+2) {
+    width: 21vw;
   }
 }
 

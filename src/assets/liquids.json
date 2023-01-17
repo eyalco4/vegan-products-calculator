@@ -1,0 +1,38 @@
+[
+  {
+    "name": "coconut liquid",
+    "ml": {
+      "protein": "0.016",
+      "calories": "1.85",
+      "carbs": "0.02"
+    },
+    "tbsp": {
+      "protein": "0.25",
+      "calories": "28.9",
+      "carbs": "0.3125"
+    },
+    "cup": {
+      "protein": "4",
+      "calories": "462.5",
+      "carbs": "5"
+    }
+  },
+  {
+    "name": "soy sauce",
+    "ml": {
+      "protein": "0.09",
+      "calories": "0.84",
+      "carbs": "0.098"
+    },
+    "tbsp": {
+      "protein": "1.406",
+      "calories": "13.125",
+      "carbs": "1.531"
+    },
+    "cup": {
+      "protein": "22.5",
+      "calories": "210",
+      "carbs": "24.5"
+    }
+  }
+]

@@ -1,15 +1,10 @@
 import React from 'react';
 
-interface Props {
-  size?: number;
-}
-function Leaf({ size = 24 }: Props) {
+function Leaf() {
   return (
     <svg
       fill="darkseagreen"
       fontWeight="bolder"
-      height="calc(10px + 2vmin)"
-      width="calc(10px + 2vmin)"
       version="1.1"
       id="Layer_1"
       viewBox="0 0 463 463"

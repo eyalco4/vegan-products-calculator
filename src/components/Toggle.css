@@ -6,11 +6,11 @@
   cursor: pointer;
   margin: auto;
   padding: 0 8px;
-  background-color: #0077C5F9;
+  background-color: rgba(0, 197, 121, 0.98);
 }
 
 .disabled {
-  background-color: #393a3d;
+  background-color: rgba(57, 58, 61, 0.29);
   opacity: .4;
 }
 

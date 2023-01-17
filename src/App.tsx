@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
 import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
 import SelectedProducts from 'src/components/SelectedProducts';
 import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
 
@@ -22,7 +21,7 @@ function App() {
     return result;
   };
   useEffect(() => {
-    ['grains', 'legumes', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
+    ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
       (category) => {
         import(`src/assets/${category}.json`).then((productsModule) => {
           const fetchedProducts: Array<IProduct> = productsModule.default;
@@ -76,7 +75,7 @@ function App() {
       <Header />
       <Search products={productsByCategory} onProductSelection={onProductSelection} />
       <SelectedProducts selectedProducts={getSelectedProducts()} onTotalsUpdate={onTotalsUpdate} />
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 }
