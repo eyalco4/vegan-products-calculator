@@ -24,20 +24,6 @@
     }
   },
   {
-    "name": "quinoa",
-    "cookedFactor": 3.325,
-    "gr": {
-      "protein": "0.1458",
-      "calories": "3.75",
-      "carbs": "0.6458"
-    },
-    "cup": {
-      "protein": "28",
-      "calories": "720",
-      "carbs": "124"
-    }
-  },
-  {
     "name": "sunflower",
     "gr": {
       "protein": "0.2237",
