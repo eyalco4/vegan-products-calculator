@@ -6,5 +6,45 @@
       "calories": "0.34",
       "carbs": "0.0664"
     }
+  },
+  {
+    "name": "cauliflower",
+    "gr": {
+      "protein": "0.0192",
+      "calories": "0.25",
+      "carbs": "0.0497"
+    }
+  },
+  {
+    "name": "onion",
+    "gr": {
+      "protein": "0.011",
+      "calories": "0.4",
+      "carbs": "0.0934"
+    }
+  },
+  {
+    "name": "potatoes",
+    "gr": {
+      "protein": "0.0168",
+      "calories": "0.69",
+      "carbs": "0.157"
+    }
+  },
+  {
+    "name": "pumpkin",
+    "gr": {
+      "protein": "0.01",
+      "calories": "0.26",
+      "carbs": "0.065"
+    }
+  },
+  {
+    "name": "sweet potatoes",
+    "gr": {
+      "protein": "0.0157",
+      "calories": "0.86",
+      "carbs": "0.201"
+    }
   }
 ]

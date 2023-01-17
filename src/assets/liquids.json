@@ -34,5 +34,23 @@
       "calories": "210",
       "carbs": "24.5"
     }
+  },
+  {
+    "name": "soy milk",
+    "ml": {
+      "protein": "0.036",
+      "calories": "0.39",
+      "carbs": "0.016"
+    },
+    "tbsp": {
+      "protein": "0.5625",
+      "calories": "97.5",
+      "carbs": "0.25"
+    },
+    "cup": {
+      "protein": "9",
+      "calories": "6.09",
+      "carbs": "4"
+    }
   }
 ]
