@@ -10,10 +10,11 @@ interface Props {
     totalCarbs: number,
     totalCalories: number
   ) => void;
+  onProductRemoval: (categoryIndex: number, productIndex: number) => void;
 }
 
-function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
-  const { product } = selectedProduct;
+function SelectedProducts({ selectedProduct, onTotalsUpdate, onProductRemoval }: Props) {
+  const { product, productIndex, categoryIndex } = selectedProduct;
   const { name, cookedFactor = 1, gr, ml, kg, tsp, tbsp, cup } = product;
   const [quantity, setQuantity] = useState<string>('100');
   const [units, setUnits] = useState<units>(gr ? 'gr' : 'ml');
@@ -114,6 +115,11 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate }: Props) {
           </div>
         </td>
       )}
+      <td>
+        <span className="clear" onClick={() => onProductRemoval(categoryIndex, productIndex)}>
+          clear
+        </span>
+      </td>
     </tr>
   );
 }

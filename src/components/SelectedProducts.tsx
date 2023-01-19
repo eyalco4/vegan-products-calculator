@@ -11,9 +11,10 @@ interface Props {
     totalCarbs: number,
     totalCalories: number
   ) => void;
+  onProductRemoval: (categoryIndex: number, productIndex: number) => void;
 }
 
-function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
+function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
   const getFormattedValue = (value: 'totalCarbs' | 'totalProtein' | 'totalCalories') => {
     const formatNumber = (num: number) => {
       const roundedNum = num.toFixed(2);
@@ -52,6 +53,7 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate }: Props) {
                     selectedProduct={selectedProduct}
                     key={index}
                     onTotalsUpdate={onTotalsUpdate}
+                    onProductRemoval={onProductRemoval}
                   />
                 );
               })}

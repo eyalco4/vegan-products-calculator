@@ -23,6 +23,8 @@ export interface ISelectedProduct {
   totalProtein: number;
   totalCarbs: number;
   totalCalories: number;
+  categoryIndex: number;
+  productIndex: number;
 }
 export interface ICategoryListItem {
   category: string;

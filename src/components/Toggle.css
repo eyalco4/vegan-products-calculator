@@ -6,7 +6,14 @@
   cursor: pointer;
   margin: auto;
   padding: 0 8px;
-  background-color: rgba(0, 197, 121, 0.98);
+}
+
+.on {
+  background-color: #00C579F9;
+}
+
+.off {
+  background-color: #00C57966;
 }
 
 .disabled {

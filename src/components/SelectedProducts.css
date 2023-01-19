@@ -1,5 +1,6 @@
 .bottom {
-  z-index: 1;
+  z-index: 0;
+  height: 60vh;
   background-color: #F8FAF7F9;
   padding-top: 24px;
   overflow: auto;
@@ -11,7 +12,7 @@
 
 table {
   margin: 0 auto 24px;
-  width: 576px;
+  width: 624px;
   text-align: left;
   text-transform: capitalize;
 }
@@ -24,7 +25,11 @@ th {
 }
 
 td {
-  width: 144px;
+  width: 135px;
+}
+
+td:nth-child(5) {
+  width: 84px;
 }
 
 td > svg {
@@ -36,22 +41,58 @@ tbody {
   margin-top: 6vh;
 }
 
+.clear{
+  background-color: rgba(213, 52, 30, 0.89);
+  color: white;
+  font-weight: bold;
+  height: 32px;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.clear:hover,
+.clear:active {
+  background-color: rgba(201, 116, 116, 0.25);
+
+}
+
 @media screen and (max-width: 768px) {
   table {
     font-size: 14px;
-    width: 90vw;
+    width: 96vw;
     margin-bottom: 12px;
   }
 
   th {
     font-size: 16px;
   }
-  th, td {
+
+  td:nth-child(1), th:nth-child(1) {
+    padding-left: 1vw;
     width: 25vw;
   }
+  td:nth-child(2), th:nth-child(2) {
+    width: 19vw;
+  }
+  td:nth-child(3), th:nth-child(3) {
+    width: 19vw;
+  }
+  td:nth-child(4), th:nth-child(4) {
+    width: 19vw;
+  }
+  td:nth-child(5), th:nth-child(5) {
+    width: 12vw;
+  }
 
-  td:nth-child(n+2), th:nth-child(n+2) {
-    width: 21vw;
+  .clear {
+    font-size: 12px;
+    width: 48px;
+    height: 24px;
   }
 }
 
