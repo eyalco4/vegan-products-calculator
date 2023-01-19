@@ -21,7 +21,7 @@
   opacity: .4;
 }
 
-#off-btn, #on-btn {
+.off-w, .on-w {
   width: 50%;
   height: 100%;
   display: inline-flex;

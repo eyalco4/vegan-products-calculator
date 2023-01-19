@@ -9,11 +9,14 @@ interface Props {
 function Toggler({ disabled = true, isOn, setIsOn }: Props) {
   return (
     <Fragment>
-      <div className={`toggle-wrapper ${disabled ? 'disabled' : isOn ? 'on' : 'off'}`}>
-        <div id="off-btn" onClick={() => (disabled ? null : setIsOn(false))}>
+      <div
+        className={`toggle-wrapper ${disabled ? 'disabled' : isOn ? 'on' : 'off'}`}
+        onClick={() => (disabled ? null : setIsOn(!isOn))}
+      >
+        <div className="off-w">
           <span className={`toggle-circle ${isOn ? 'hidden' : 'visible'}`} />
         </div>
-        <div id="on-btn" onClick={() => (disabled ? null : setIsOn(true))}>
+        <div className="on-w">
           <span className={`toggle-circle ${isOn ? 'visible' : 'hidden'}`} />
         </div>
       </div>
