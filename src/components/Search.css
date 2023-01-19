@@ -1,15 +1,14 @@
-
 .top {
   position:relative;
   z-index: 2;
-  padding-top: 4vh;
+  padding-top: 40px;
   background-color: #EFF5EDF9;
 }
 
 .search-wrapper {
   margin: auto;
   width: 280px;
-  height: 180px;
+  height: 120px;
 }
 
 .search-box {
@@ -73,8 +72,11 @@ li:hover, li:active {
   background-color: #e5e5e5;
 }
 @media screen and (max-width: 768px) {
+  .top {
+    padding-top: 20px;
+  }
 
   .search-wrapper {
-    height: 100px;
+    height: 80px;
   }
 }

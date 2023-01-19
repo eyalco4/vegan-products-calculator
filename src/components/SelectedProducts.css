@@ -1,9 +1,8 @@
 .bottom {
-  /*position:relative;*/
   z-index: 1;
-  min-height: 60%;
   background-color: #F8FAF7F9;
   padding-top: 24px;
+  overflow: auto;
 }
 
 .selected-product {
@@ -11,7 +10,7 @@
 }
 
 table {
-  margin: 0 auto 48px;
+  margin: 0 auto 24px;
   width: 576px;
   text-align: left;
   text-transform: capitalize;
@@ -41,6 +40,7 @@ tbody {
   table {
     font-size: 14px;
     width: 90vw;
+    margin-bottom: 12px;
   }
 
   th {
