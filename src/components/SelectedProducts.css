@@ -1,9 +1,10 @@
 .bottom {
   z-index: 0;
-  height: 60vh;
+  max-height: 60vh;
   background-color: #F8FAF7F9;
-  padding-top: 24px;
+  padding-top: 20px;
   overflow: auto;
+  padding-bottom: 178px;
 }
 
 .selected-product {
@@ -62,6 +63,10 @@ tbody {
 }
 
 @media screen and (max-width: 768px) {
+
+  .bottom {
+    padding-bottom: 136px;
+  }
   table {
     font-size: 14px;
     width: 96vw;

@@ -73,10 +73,10 @@ li:hover, li:active {
 }
 @media screen and (max-width: 768px) {
   .top {
-    padding-top: 20px;
+    padding-top: 16px;
   }
 
   .search-wrapper {
-    height: 80px;
+    height: 74px;
   }
 }

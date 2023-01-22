@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BouncingLoader from 'src/components/BouncingLoader';
 import 'src/components/Totals.css';
 interface Props {
   totalProtein: string;
@@ -14,33 +15,25 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
       setShowLoadingEffect(false);
     }, 2000);
   }, [totalCalories]);
+
+  const getContent = (propertyName: string, propertyValue: string) => {
+    return (
+      <div className={`totals ${propertyName}`}>
+        <div className="total-key">Total {propertyName.toUpperCase()}</div>
+        {showLoadingEffect ? (
+          <BouncingLoader />
+        ) : (
+          <div className="total-value">{propertyValue}</div>
+        )}
+      </div>
+    );
+  };
   return (
     <div className="fixed-bottom">
       <div className="totals-wrapper">
-        <div className="totals protein">
-          <div className="total-key">Total Protein</div>
-          {showLoadingEffect ? (
-            <div className="dot-elastic"></div>
-          ) : (
-            <div className="total-value">{totalProtein}</div>
-          )}
-        </div>
-        <div className="totals carbs">
-          <div className="total-key">Total Carbs</div>
-          {showLoadingEffect ? (
-            <div className="dot-elastic"></div>
-          ) : (
-            <div className="total-value">{totalCarbs}</div>
-          )}{' '}
-        </div>
-        <div className="totals calories">
-          <div className="total-key">Total Calories</div>
-          {showLoadingEffect ? (
-            <div className="dot-elastic"></div>
-          ) : (
-            <div className="total-value">{totalCalories}</div>
-          )}{' '}
-        </div>
+        {getContent('protein', totalProtein)}
+        {getContent('carbs', totalCarbs)}
+        {getContent('calories', totalCalories)}
       </div>
     </div>
   );
