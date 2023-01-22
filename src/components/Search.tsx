@@ -5,7 +5,7 @@ import { ICategoryListItem, IFilteredSearchItem, names } from 'src/common/types'
 interface SearchProps {
   children?: React.ReactNode;
   products: ICategoryListItem[];
-  onProductSelection: (categoryIndex: number, productIndex: number) => void;
+  onProductSelection: (categoryIndex: number, productIndex: number, selected: boolean) => void;
 }
 
 function Search({ children, products, onProductSelection }: SearchProps) {
@@ -34,7 +34,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
   ) => {
     e.preventDefault();
     setIsDrawerOpen(false);
-    onProductSelection(categoryIndex, productIndex);
+    onProductSelection(categoryIndex, productIndex, true);
   };
 
   useEffect(() => {

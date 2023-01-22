@@ -10,11 +10,11 @@ function App() {
 
   const getSelectedProducts = (): ISelectedProduct[] | [] => {
     const result = new Array<ISelectedProduct>();
-    productsByCategory.map((categoryListItem: ICategoryListItem) => {
+    productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {
       const { products } = categoryListItem;
-      products.map((product: ISelectedProduct) => {
+      products.map((product: ISelectedProduct, productIndex: number) => {
         if (product.selected) {
-          result.push(product);
+          result.push({ ...product, categoryIndex, productIndex });
         }
       });
     });
@@ -22,11 +22,19 @@ function App() {
   };
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
-      (category) => {
+      (category, categoryIndex) => {
         import(`src/assets/${category}.json`).then((productsModule) => {
           const fetchedProducts: Array<IProduct> = productsModule.default;
-          const products = fetchedProducts.map((product: IProduct) => {
-            return { product, selected: false, totalProtein: 0, totalCarbs: 0, totalCalories: 0 };
+          const products = fetchedProducts.map((product: IProduct, productIndex) => {
+            return {
+              product,
+              selected: false,
+              totalProtein: 0,
+              totalCarbs: 0,
+              totalCalories: 0,
+              categoryIndex,
+              productIndex,
+            };
           });
           const newAllProducts = productsByCategory;
           newAllProducts.push({ category, products });
@@ -39,12 +47,16 @@ function App() {
     setProductsByCategory(newAllProducts);
   }, []);
 
-  function onProductSelection(categoryIndex: number, productIndex: number) {
+  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
     const { products } = productsByCategory[categoryIndex];
     const product = products[productIndex];
     const updatedList = [...productsByCategory];
-    updatedList[categoryIndex].products[productIndex] = { ...product, selected: true };
+    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
     setProductsByCategory(updatedList);
+  }
+
+  function onProductRemoval(categoryIndex: number, productIndex: number) {
+    onProductSelection(categoryIndex, productIndex, false);
   }
 
   function onTotalsUpdate(
@@ -74,7 +86,11 @@ function App() {
     <div className="app ">
       <Header />
       <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProducts selectedProducts={getSelectedProducts()} onTotalsUpdate={onTotalsUpdate} />
+      <SelectedProducts
+        selectedProducts={getSelectedProducts()}
+        onTotalsUpdate={onTotalsUpdate}
+        onProductRemoval={onProductRemoval}
+      />
       {/*<Footer />*/}
     </div>
   );
