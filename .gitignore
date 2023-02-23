@@ -25,3 +25,6 @@ yarn-error.log*
 # IDE
 .idea
 .vercel
+
+# Storybook
+.storybook-build/
