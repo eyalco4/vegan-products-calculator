@@ -81,7 +81,6 @@
 .divid {
   height: 20px;
   padding: 16px 0;
-  /*font-weight: bold;*/
   letter-spacing: 2px;
   height: 24px;
 }
@@ -89,6 +88,8 @@
 .divid > select {
   all: unset;
   text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
   margin-left: 6px;
   border-bottom: 1px solid white;
 }
