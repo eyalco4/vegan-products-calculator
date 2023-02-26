@@ -16,12 +16,12 @@ table {
   width: 624px;
   text-align: left;
   text-transform: capitalize;
+  color: #616b80;
 }
 
 th {
   text-transform: capitalize;
   letter-spacing: 1px;
-  color: #282c34;
   width: 144px;
 }
 
@@ -42,26 +42,6 @@ tbody {
   margin-top: 6vh;
 }
 
-.clear{
-  background-color: rgba(213, 52, 30, 0.89);
-  color: white;
-  font-weight: bold;
-  height: 32px;
-  width: 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  border-radius: 24px;
-  cursor: pointer;
-}
-
-.clear:hover,
-.clear:active {
-  background-color: rgba(201, 116, 116, 0.25);
-
-}
-
 @media screen and (max-width: 768px) {
 
   .bottom {
@@ -69,17 +49,16 @@ tbody {
   }
   table {
     font-size: 14px;
-    width: 96vw;
+    width: 90vw;
     margin-bottom: 12px;
   }
 
   th {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   td:nth-child(1), th:nth-child(1) {
-    padding-left: 1vw;
-    width: 25vw;
+    width: 29vw;
   }
   td:nth-child(2), th:nth-child(2) {
     width: 19vw;
@@ -91,7 +70,7 @@ tbody {
     width: 19vw;
   }
   td:nth-child(5), th:nth-child(5) {
-    width: 12vw;
+    width: 4vw;
   }
 
   .clear {

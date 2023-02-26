@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'src/components/Search';
 import 'src/App.css';
-import Header from 'src/components/Header';
 import SelectedProducts from 'src/components/SelectedProducts';
 import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
 
@@ -84,7 +83,6 @@ function App() {
 
   return (
     <div className="app ">
-      <Header />
       <Search products={productsByCategory} onProductSelection={onProductSelection} />
       <SelectedProducts
         selectedProducts={getSelectedProducts()}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import './SelectedProduct.css';
 import { ISelectedProduct, units } from 'src/common/types';
 import Toggler from 'src/components/Toggle';
+import Delete from 'src/components/icons/Delete';
 interface Props {
   selectedProduct: ISelectedProduct;
   onTotalsUpdate: (
@@ -117,8 +118,9 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate, onProductRemoval }:
       )}
       <td>
         <span className="clear" onClick={() => onProductRemoval(categoryIndex, productIndex)}>
-          clear
+          <Delete />
         </span>
+        <span></span>
       </td>
     </tr>
   );

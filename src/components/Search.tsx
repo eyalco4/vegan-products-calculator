@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Ref, MouseEvent, ChangeEvent, Fragment } from 'react';
 import './Search.css';
 import SearchIcon from 'src/components/icons/Search';
+import Delete from 'src/components/icons/Delete';
 import { ICategoryListItem, IFilteredSearchItem, names } from 'src/common/types';
 interface SearchProps {
   children?: React.ReactNode;
@@ -32,6 +33,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     categoryIndex: number,
     productIndex: number
   ) => {
+    console.info(categoryIndex, productIndex);
     e.preventDefault();
     setIsDrawerOpen(false);
     onProductSelection(categoryIndex, productIndex, true);
@@ -77,7 +79,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
         >
           <label htmlFor="search">{children}</label>
           <input
-            placeholder="Choose a product"
+            placeholder="Tap to search"
             id="search"
             type="text"
             value={filter}
@@ -85,6 +87,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
             autoComplete="off"
           />
           <SearchIcon />
+          <hr />
         </div>
         {isDrawerOpen && (
           <ul className="product-list">
