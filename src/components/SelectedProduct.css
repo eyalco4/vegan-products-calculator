@@ -28,3 +28,11 @@ select {
   background-color: transparent;
   cursor: pointer;
 }
+
+.cooked {
+  padding: 0 4px;
+}
+
+.clear{
+  cursor: pointer;
+}
