@@ -3,7 +3,7 @@ tr {
   height: 32px;
 }
 
-select {
+#units > select {
   cursor: pointer;
   padding: 8px 10px;
   border: 1px solid #D4D7DCFF;

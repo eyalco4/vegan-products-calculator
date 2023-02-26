@@ -33,7 +33,6 @@ function Search({ children, products, onProductSelection }: SearchProps) {
     categoryIndex: number,
     productIndex: number
   ) => {
-    console.info(categoryIndex, productIndex);
     e.preventDefault();
     setIsDrawerOpen(false);
     onProductSelection(categoryIndex, productIndex, true);

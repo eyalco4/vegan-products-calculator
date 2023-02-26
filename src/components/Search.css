@@ -23,6 +23,7 @@ hr {
 ::placeholder {
   font-size: 16px;
   color: #616b80;
+  letter-spacing: 2px;
 }
 
 input {
