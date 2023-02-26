@@ -88,6 +88,7 @@
 
 .divid > select {
   all: unset;
+  text-align: center;
   margin-left: 6px;
   border-bottom: 1px solid white;
 }
