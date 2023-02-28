@@ -3,20 +3,18 @@ tr {
   height: 32px;
 }
 
-select {
-  cursor: pointer;
-  padding: 8px 10px;
-  border: 1px solid #D4D7DCFF;
-  border-radius: 4px;
-  width: inherit;
+#units > select {
+  all: unset;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   text-align: -moz-center;
   text-align: -webkit-center;
-  background-color: white;
-}
-
-.edit {
-  background-color: #0066FF0A;
+  text-transform: lowercase;
+  cursor: pointer;
+  border-bottom: 1px solid #616b80;
+  padding-bottom: 2px;
 }
 
 .quantity > input {

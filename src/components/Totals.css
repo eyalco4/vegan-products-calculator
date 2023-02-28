@@ -6,6 +6,7 @@
   background-color: #616b80;
   color: white;
 }
+
 .totals-wrapper {
   width: 576px;
   margin: auto;
@@ -56,10 +57,11 @@
   }
 
   .totals {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border: 8px solid;
     font-size: 12px;
+    letter-spacing: 2px;
   }
 
   .protein {
@@ -73,4 +75,24 @@
   .calories {
     border-color: deeppink;
   }
+}
+
+
+.divid {
+  height: 20px;
+  padding: 16px 0;
+  letter-spacing: 2px;
+  height: 24px;
+}
+
+.divid > select {
+  all: unset;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
+  margin-left: 6px;
+  border-bottom: 1px solid white;
 }

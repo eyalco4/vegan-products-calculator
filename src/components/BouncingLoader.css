@@ -23,7 +23,7 @@
   top: 0;
 }
 .dot-elastic::before {
-  left: 15px;
+  left: 18px;
   width: 10px;
   height: 10px;
   border-radius: 5px;
@@ -32,7 +32,7 @@
   animation: dot-elastic-before 1s infinite linear;
 }
 .dot-elastic::after {
-  left: 30px;
+  left: 36px;
   width: 10px;
   height: 10px;
   border-radius: 5px;

@@ -16,6 +16,24 @@
     }
   },
   {
+    "name": "eggplant",
+    "cookedFactor": 0.694,
+    "gr": {
+      "protein": "0.0098",
+      "calories": "0.25",
+      "carbs": "0.0588"
+    }
+  },
+  {
+    "name": "garlic",
+    "cookedFactor": 0.694,
+    "gr": {
+      "protein": "0.0636",
+      "calories": "1.49",
+      "carbs": "0.331"
+    }
+  },
+  {
     "name": "onion",
     "gr": {
       "protein": "0.011",
@@ -45,6 +63,22 @@
       "protein": "0.0157",
       "calories": "0.86",
       "carbs": "0.201"
+    }
+  },
+  {
+    "name": "tomatoes",
+    "gr": {
+      "protein": "0.0088",
+      "calories": "0.18",
+      "carbs": "0.039"
+    }
+  },
+  {
+    "name": "zucchini",
+    "gr": {
+      "protein": "0.0121",
+      "calories": "0.17",
+      "carbs": "0.0311"
     }
   }
 ]
