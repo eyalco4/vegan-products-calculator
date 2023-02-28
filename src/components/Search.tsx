@@ -71,7 +71,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
 
   return (
     <div className="top">
-      <div className="search-wrapper top" ref={ref}>
+      <div className="search-wrapper" ref={ref}>
         <div
           className="search-box"
           onClick={() => (isDrawerOpen ? closeDrawer() : setIsDrawerOpen(true))}
