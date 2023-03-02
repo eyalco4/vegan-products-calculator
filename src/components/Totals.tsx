@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import BouncingLoader from 'src/components/BouncingLoader';
 import 'src/components/Totals.css';
+import { isiOS, isSafari } from 'src/utils';
 interface Props {
   totalProtein: string;
   totalCarbs: string;
@@ -47,7 +48,12 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
     <div className="fixed-bottom">
       <div className="divid">
         Number of meals
-        <select name="meals-scale" onChange={onSelect} value={meals}>
+        <select
+          name="meals-scale"
+          onChange={onSelect}
+          value={meals}
+          className={isiOS() || isSafari() ? 'select-ios' : ''}
+        >
           {renderOptions()}
         </select>
       </div>
