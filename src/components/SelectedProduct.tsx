@@ -3,6 +3,8 @@ import './SelectedProduct.css';
 import { ISelectedProduct, units } from 'src/common/types';
 import Toggler from 'src/components/Toggle';
 import Delete from 'src/components/icons/Delete';
+import { isiOS, isSafari } from 'src/utils';
+
 interface Props {
   selectedProduct: ISelectedProduct;
   onTotalsUpdate: (
@@ -84,7 +86,12 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate, onProductRemoval }:
         <Toggler disabled={isToggerDisabled} setIsOn={setIsOn} isOn={isTogglerOn} />
       </td>
       <td id="units">
-        <select name="units-select" onChange={onSelect} value={units}>
+        <select
+          name="units-select"
+          onChange={onSelect}
+          value={units}
+          className={isiOS() || isSafari() ? 'select-ios' : ''}
+        >
           {gr && <option value="gr">gr</option>}
           {ml && <option value="ml">ml</option>}
           {kg && <option value="kg">kg</option>}

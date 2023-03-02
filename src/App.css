@@ -9,3 +9,11 @@
   font-family: Arial;
   overflow: hidden
 }
+
+.select-ios {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: -moz-center !important;
+  text-align: -webkit-center !important;
+}

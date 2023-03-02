@@ -3,7 +3,7 @@
   max-height: 60vh;
   background-color: #F8FAF7F9;
   overflow: auto;
-  padding: 114px 0 178px 0;
+  padding: 164px 0 178px 0;
 }
 
 .selected-product {
@@ -45,7 +45,6 @@ tbody {
 
   .bottom {
     padding: 124px 0 194px 0;
-
   }
   table {
     font-size: 14px;

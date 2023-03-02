@@ -1,15 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import { wrapper } from 'src/stories/decorators';
 import SelectedProducts from 'src/components/SelectedProducts';
-const styles = {
-  transform: 'scale(1)',
-  height: '50vh',
-};
+
 export default {
   title: 'components/SelectedProducts',
   component: SelectedProducts,
-  decorators: [(storyFn) => <div style={styles}>{storyFn()}</div>],
+  decorators: wrapper,
 
   argTypes: {
     onTotalsUpdate: { control: 'function' },
