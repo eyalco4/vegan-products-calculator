@@ -34,7 +34,7 @@ input {
   border: none;
   height: 100%;
   background-color: inherit;
-  width: 90%;
+  width: 85%;
 }
 
 input:hover,
@@ -47,6 +47,7 @@ input:active {
 svg {
   float: right;
   margin: 14px 8px;
+  display: inline;
 }
 
 ul {
