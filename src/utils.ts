@@ -13,3 +13,11 @@ export const isiOS = () => {
 export const isSafari = () => {
   return isClient && /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
 };
+
+export const formatNumber = (num: number) => {
+  const roundedNum = num.toFixed(2);
+  //@ts-ignore
+  return roundedNum < 1000
+    ? roundedNum.toString()
+    : roundedNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

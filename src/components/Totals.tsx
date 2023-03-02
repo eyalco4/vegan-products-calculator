@@ -1,16 +1,16 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import BouncingLoader from 'src/components/BouncingLoader';
 import 'src/components/Totals.css';
-import { isiOS, isSafari } from 'src/utils';
+import { isiOS, isSafari, formatNumber } from 'src/utils';
 interface Props {
-  totalProtein: string;
-  totalCarbs: string;
-  totalCalories: string;
+  totalProtein: number;
+  totalCarbs: number;
+  totalCalories: number;
 }
 
 function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
   const [showLoadingEffect, setShowLoadingEffect] = useState(true);
-  const [meals, setMeals] = useState('1');
+  const [meals, setMeals] = useState(1);
   useEffect(() => {
     setShowLoadingEffect(true);
     setTimeout(() => {
@@ -21,17 +21,18 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
     const {
       target: { value },
     } = e;
-    setMeals(value);
+    setMeals(Number(value));
   };
-  const getContent = (propertyName: string, propertyValue: string) => {
-    const calculatedValue = (Number(propertyValue) / Number(meals)).toFixed(2);
+  const getContent = (propertyName: string, propertyValue: number) => {
+    const calculatedValue = (propertyValue / meals).toFixed(2);
+    const formatedValue = formatNumber(Number(calculatedValue));
     return (
       <div className={`totals ${propertyName}`}>
         <div className="total-key">Total {propertyName.toUpperCase()}</div>
         {showLoadingEffect ? (
           <BouncingLoader />
         ) : (
-          <div className="total-value">{calculatedValue}</div>
+          <div className="total-value">{formatedValue}</div>
         )}
       </div>
     );

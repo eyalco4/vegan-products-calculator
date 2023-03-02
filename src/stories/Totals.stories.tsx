@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof Totals> = (args) => <Totals {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  totalProtein: '140',
-  totalCarbs: '860',
-  totalCalories: '2300',
+  totalProtein: 140,
+  totalCarbs: 860,
+  totalCalories: 2300,
 };

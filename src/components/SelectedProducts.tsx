@@ -16,18 +16,11 @@ interface Props {
 
 function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
   const getFormattedValue = (value: 'totalCarbs' | 'totalProtein' | 'totalCalories') => {
-    const formatNumber = (num: number) => {
-      const roundedNum = num.toFixed(2);
-      //@ts-ignore
-      return roundedNum < 1000
-        ? roundedNum.toString()
-        : roundedNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    };
     const totalValue = selectedProducts.reduce(
       (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct[value],
       0
     );
-    return formatNumber(totalValue);
+    return totalValue;
   };
 
   return (
@@ -46,12 +39,12 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }
               </tr>
             </thead>
             <tbody>
-              {selectedProducts.map((selectedProduct: ISelectedProduct, index: number) => {
+              {selectedProducts.map((selectedProduct: ISelectedProduct) => {
                 // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
                 return (
                   <SelectedProduct
                     selectedProduct={selectedProduct}
-                    key={index}
+                    key={selectedProduct.product.name}
                     onTotalsUpdate={onTotalsUpdate}
                     onProductRemoval={onProductRemoval}
                   />
@@ -61,7 +54,6 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }
           </table>
         )}
       </div>
-
       <Totals
         totalProtein={getFormattedValue('totalProtein')}
         totalCarbs={getFormattedValue('totalCarbs')}

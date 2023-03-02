@@ -88,7 +88,7 @@ function Search({ children, products, onProductSelection }: SearchProps) {
           <SearchIcon />
           <hr />
         </div>
-        {isDrawerOpen && (
+        {isDrawerOpen && filteredOptions().length > 0 && (
           <ul className="product-list">
             {filteredOptions().map(({ category, names }) => (
               <Fragment key={category}>
