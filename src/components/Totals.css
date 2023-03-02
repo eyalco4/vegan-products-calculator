@@ -47,6 +47,20 @@
   padding: 0 8px;
 }
 
+.divid {
+  height: 20px;
+  padding: 12px 0;
+  letter-spacing: 2px;
+  height: 24px;
+}
+
+.divid > select {
+  all: unset;
+  text-align: center;
+  margin-left: 6px;
+  border-bottom: 1px solid white;
+}
+
 @media screen and (max-width: 768px) {
 
   .fixed-bottom {
@@ -78,16 +92,3 @@
 }
 
 
-.divid {
-  height: 20px;
-  padding: 16px 0;
-  letter-spacing: 2px;
-  height: 24px;
-}
-
-.divid > select {
-  all: unset;
-  text-align: center;
-  margin-left: 6px;
-  border-bottom: 1px solid white;
-}

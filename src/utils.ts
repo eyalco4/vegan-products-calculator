@@ -17,7 +17,7 @@ export const isSafari = () => {
 export const formatNumber = (num: number) => {
   const roundedNum = num.toFixed(2);
   //@ts-ignore
-  return roundedNum < 1000
+  return num < 1000
     ? roundedNum.toString()
     : roundedNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

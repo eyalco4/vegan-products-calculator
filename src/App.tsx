@@ -89,7 +89,6 @@ function App() {
         onTotalsUpdate={onTotalsUpdate}
         onProductRemoval={onProductRemoval}
       />
-      {/*<Footer />*/}
     </div>
   );
 }
