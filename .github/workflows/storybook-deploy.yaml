@@ -1,0 +1,14 @@
+name: Build and Publish storybook to GitHub Pages
+
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  storybook:
+  name: deploys stroybook
+  runs-on: ubuntu-latest
+    steps:
+    - id: build-publish
+    - run: npm run deploy-storybook
+
