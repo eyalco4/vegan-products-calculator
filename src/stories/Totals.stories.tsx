@@ -2,15 +2,12 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Totals from 'src/components/Totals';
+import { wrapper } from 'src/stories/decorators';
 
-const styles = {
-  transform: 'scale(1)',
-  height: '50vh',
-};
 export default {
   title: 'components/Totals',
   component: Totals,
-  decorators: [(storyFn) => <div style={styles}>{storyFn()}</div>],
+  decorators: wrapper,
   argTypes: {
     totalProtein: { control: 'text' },
     totalCarbs: { control: 'text' },
