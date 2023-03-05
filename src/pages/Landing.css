@@ -1,0 +1,43 @@
+.Landing-wrapper {
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.buttons-wrapper {
+    height: 200px;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .buttons-wrapper {
+        height: 200px;
+    }
+}
+
+.header > svg {
+    margin: 0 auto;
+    height: 48px;
+    width: 48px;
+}
+
+.icons-wrapper {
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.icon-text {
+    width: 100px;
+    height: 60px;
+    padding: 20px 10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.motto > svg {
+    height: 60px;
+    width: 60px;
+    display: block;
+    margin: auto;
+}

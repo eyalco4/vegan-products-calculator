@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Search from 'src/components/Search';
+import React, { useState, useEffect, Fragment } from 'react';
 import 'src/App.css';
-import SelectedProducts from 'src/components/SelectedProducts';
+import Landing from 'src/pages/Landing';
+import Create from 'src/pages/Create';
 import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(true);
 
-  const getSelectedProducts = (): ISelectedProduct[] | [] => {
-    const result = new Array<ISelectedProduct>();
-    productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {
-      const { products } = categoryListItem;
-      products.map((product: ISelectedProduct, productIndex: number) => {
-        if (product.selected) {
-          result.push({ ...product, categoryIndex, productIndex });
-        }
-      });
-    });
-    return result;
-  };
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
       (category, categoryIndex) => {
@@ -83,12 +72,16 @@ function App() {
 
   return (
     <div className="app ">
-      <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProducts
-        selectedProducts={getSelectedProducts()}
-        onTotalsUpdate={onTotalsUpdate}
-        onProductRemoval={onProductRemoval}
-      />
+      {isSignedIn ? (
+        <Landing />
+      ) : (
+        <Create
+          productsByCategory={productsByCategory}
+          onProductSelection={onProductSelection}
+          onProductRemoval={onProductRemoval}
+          onTotalsUpdate={onTotalsUpdate}
+        />
+      )}
     </div>
   );
 }
