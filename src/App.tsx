@@ -7,6 +7,7 @@ import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types'
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [page, setPage] = useState<string>('landing');
 
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
@@ -70,20 +71,27 @@ function App() {
     setProductsByCategory(updatedProducts);
   }
 
-  return (
-    <div className="app ">
-      {isSignedIn ? (
-        <Create
-          productsByCategory={productsByCategory}
-          onProductSelection={onProductSelection}
-          onProductRemoval={onProductRemoval}
-          onTotalsUpdate={onTotalsUpdate}
-        />
-      ) : (
-        <Landing setIsSignedIn={setIsSignedIn} />
-      )}
-    </div>
-  );
+  function getPage() {
+    switch (page) {
+      case 'create':
+        return (
+          <Create
+            setPage={setPage}
+            productsByCategory={productsByCategory}
+            onProductSelection={onProductSelection}
+            onProductRemoval={onProductRemoval}
+            onTotalsUpdate={onTotalsUpdate}
+          />
+        );
+        break;
+      case 'landing':
+      default:
+        return <Landing setIsSignedIn={setIsSignedIn} isSignedIn={isSignedIn} setPage={setPage} />;
+        break;
+    }
+  }
+
+  return <div className="app ">{getPage()}</div>;
 }
 
 export default App;

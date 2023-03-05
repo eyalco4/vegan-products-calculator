@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Dispatch, Fragment, SetStateAction } from 'react';
 import 'src/pages/Create.css';
 import Search from 'src/components/Search';
 import SelectedProducts from 'src/components/SelectedProducts';
 import { ICategoryListItem, ISelectedProduct } from '../common/types';
 
 interface Props {
+  setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
   onProductSelection: (categoryIndex: number, productIndex: number, selected: boolean) => void;
   onTotalsUpdate: (
