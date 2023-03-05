@@ -7,21 +7,43 @@ import { ICategoryListItem, ISelectedProduct } from '../common/types';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
-  onProductSelection: (categoryIndex: number, productIndex: number, selected: boolean) => void;
-  onTotalsUpdate: (
+  setProductsByCategory: (updatedProducts: ICategoryListItem[]) => void;
+}
+
+function Create({ productsByCategory, setProductsByCategory }: Props) {
+  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
+    const { products } = productsByCategory[categoryIndex];
+    const product = products[productIndex];
+    const updatedList = [...productsByCategory];
+    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
+    setProductsByCategory(updatedList);
+  }
+
+  function onProductRemoval(categoryIndex: number, productIndex: number) {
+    onProductSelection(categoryIndex, productIndex, false);
+  }
+  function onTotalsUpdate(
     productNameToUpdate: string,
     totalProtein: number,
     totalCarbs: number,
     totalCalories: number
-  ) => void;
-  onProductRemoval: (categoryIndex: number, productIndex: number) => void;
-}
-function Create({
-  productsByCategory,
-  onProductSelection,
-  onTotalsUpdate,
-  onProductRemoval,
-}: Props) {
+  ) {
+    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
+      const { category, products } = item;
+      return {
+        category,
+        products: products.map((selectedProduct) => {
+          const {
+            product: { name },
+          } = selectedProduct;
+          return name === productNameToUpdate
+            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
+            : selectedProduct;
+        }),
+      };
+    });
+    setProductsByCategory(updatedProducts);
+  }
   const getSelectedProducts = (): ISelectedProduct[] | [] => {
     const result = new Array<ISelectedProduct>();
     productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {

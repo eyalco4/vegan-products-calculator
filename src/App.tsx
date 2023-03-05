@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'src/App.css';
 import Landing from 'src/pages/Landing';
 import Create from 'src/pages/Create';
-import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
+import { IProduct, ICategoryListItem } from 'src/common/types';
+import Login from 'src/pages/Login';
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
@@ -36,57 +37,23 @@ function App() {
     setProductsByCategory(newAllProducts);
   }, []);
 
-  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
-    const { products } = productsByCategory[categoryIndex];
-    const product = products[productIndex];
-    const updatedList = [...productsByCategory];
-    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
-    setProductsByCategory(updatedList);
-  }
-
-  function onProductRemoval(categoryIndex: number, productIndex: number) {
-    onProductSelection(categoryIndex, productIndex, false);
-  }
-
-  function onTotalsUpdate(
-    productNameToUpdate: string,
-    totalProtein: number,
-    totalCarbs: number,
-    totalCalories: number
-  ) {
-    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
-      const { category, products } = item;
-      return {
-        category,
-        products: products.map((selectedProduct) => {
-          const {
-            product: { name },
-          } = selectedProduct;
-          return name === productNameToUpdate
-            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
-            : selectedProduct;
-        }),
-      };
-    });
-    setProductsByCategory(updatedProducts);
-  }
-
   function getPage() {
     switch (page) {
+      case 'login':
+        return <Login setPage={setPage} setIsSignedIn={setIsSignedIn} />;
+        break;
       case 'create':
         return (
           <Create
             setPage={setPage}
             productsByCategory={productsByCategory}
-            onProductSelection={onProductSelection}
-            onProductRemoval={onProductRemoval}
-            onTotalsUpdate={onTotalsUpdate}
+            setProductsByCategory={setProductsByCategory}
           />
         );
         break;
       case 'landing':
       default:
-        return <Landing setIsSignedIn={setIsSignedIn} isSignedIn={isSignedIn} setPage={setPage} />;
+        return <Landing isSignedIn={isSignedIn} setPage={setPage} />;
         break;
     }
   }

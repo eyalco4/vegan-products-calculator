@@ -1,47 +1,16 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import 'src/pages/Landing.css';
 import Button from 'src/components/Button';
 import Leaf from 'src/components/icons/Leaf';
 import NumberOne from 'src/components/icons/NumberOne';
 import KeepTrack from 'src/components/icons/KeepTrack';
+import StayFit from 'src/components/icons/StayFit';
 
 interface Props {
   isSignedIn: boolean;
   setPage: Dispatch<SetStateAction<string>>;
-  setIsSignedIn: (isSignedIn: boolean) => void;
 }
-function Landing({ setIsSignedIn, isSignedIn, setPage }: Props) {
-  function handleGoogleLogin(response: any) {
-    console.info(response.credential);
-    setIsSignedIn(true);
-    setPage('create');
-  }
-
-  useEffect(() => {
-    window.onload = function () {
-      // @ts-ignore
-      if (typeof google !== undefined) {
-        // @ts-ignore
-        google.accounts.id.initialize({
-          client_id: '191353798101-ltkev9lo0kr3uqo4iuipq7b4p9croagc.apps.googleusercontent.com',
-          callback: handleGoogleLogin,
-        });
-
-        // @ts-ignore
-        typeof google !== undefined &&
-          // @ts-ignore
-          google.accounts.id.renderButton(document.getElementById('sign-in-with-google'), {
-            theme: 'filled_black',
-            size: 'large',
-            width: '340px',
-            locale: 'en_us',
-          });
-      }
-
-      // @ts-ignore
-      // google.accounts.id.prompt();
-    };
-  }, []);
+function Landing({ isSignedIn, setPage }: Props) {
   return (
     <div className="Landing-wrapper flex-col">
       <div className="header flex-col">
@@ -57,8 +26,8 @@ function Landing({ setIsSignedIn, isSignedIn, setPage }: Props) {
             <KeepTrack />
           </div>{' '}
           <div className="motto flex-col">
-            <div className="icon-text">Stay Strong</div>
-            <NumberOne />
+            <div className="icon-text">Stay Fit</div>
+            <StayFit />
           </div>
         </div>
       </div>
@@ -66,14 +35,13 @@ function Landing({ setIsSignedIn, isSignedIn, setPage }: Props) {
         {isSignedIn ? (
           <Button text="View saved recipes" callback={() => console.info('hey', 2)} />
         ) : (
-          <Button text="Sign in to view saved recipes" callback={() => console.info('hey', 2)} />
+          <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />
         )}
         <span className="or flex-row">
           <hr />
           OR
           <hr />
         </span>
-        {/*<div id="sign-in-with-google"></div>*/}
         <Button text="Create new recpie" callback={() => setPage('create')} />
       </div>
     </div>
