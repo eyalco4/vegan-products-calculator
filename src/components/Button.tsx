@@ -1,6 +1,5 @@
 import React from 'react';
-import 'src/components/Buttom.css';
-import theme from '@storybook/addon-interactions/dist/ts3.9/theme';
+import 'src/components/Button.css';
 interface Props {
   callback: () => void;
   text: string;

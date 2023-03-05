@@ -5,7 +5,7 @@
 }
 
 .buttons-wrapper {
-    height: 200px;
+    height: 240px;
     justify-content: space-evenly;
 }
 
@@ -23,7 +23,7 @@
 
 .icons-wrapper {
     margin: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .icon-text {
@@ -40,4 +40,30 @@
     width: 60px;
     display: block;
     margin: auto;
+}
+
+
+#sign-in-with-google {
+    margin: auto;
+}
+
+.or {
+    margin: auto;
+    width: 576px;
+    justify-content: space-around;
+}
+
+.or > hr {
+    width: 240px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .or{
+        width: 340px;
+    }
+
+    .or > hr {
+        width: 120px;
+    }
 }

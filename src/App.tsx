@@ -6,7 +6,7 @@ import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types'
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(true);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
@@ -73,14 +73,14 @@ function App() {
   return (
     <div className="app ">
       {isSignedIn ? (
-        <Landing />
-      ) : (
         <Create
           productsByCategory={productsByCategory}
           onProductSelection={onProductSelection}
           onProductRemoval={onProductRemoval}
           onTotalsUpdate={onTotalsUpdate}
         />
+      ) : (
+        <Landing setIsSignedIn={setIsSignedIn} />
       )}
     </div>
   );
