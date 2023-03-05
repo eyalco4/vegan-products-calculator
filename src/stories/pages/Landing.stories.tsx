@@ -13,7 +13,7 @@ export default {
 const Template: ComponentStory<typeof Landing> = () => (
   // @ts-ignore
   <App>
-    <Landing isSignedIn={false} setPage={() => {}} />
+    <Landing user={undefined} setPage={() => {}} />
   </App>
 );
 

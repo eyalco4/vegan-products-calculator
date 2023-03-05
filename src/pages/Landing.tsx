@@ -7,10 +7,10 @@ import KeepTrack from 'src/components/icons/KeepTrack';
 import StayFit from 'src/components/icons/StayFit';
 
 interface Props {
-  isSignedIn: boolean;
+  user: undefined | object;
   setPage: Dispatch<SetStateAction<string>>;
 }
-function Landing({ isSignedIn, setPage }: Props) {
+function Landing({ user, setPage }: Props) {
   return (
     <div className="Landing-wrapper flex-col">
       <div className="header flex-col">
@@ -32,7 +32,7 @@ function Landing({ isSignedIn, setPage }: Props) {
         </div>
       </div>
       <div className="buttons-wrapper flex-col">
-        {isSignedIn ? (
+        {user ? (
           <Button text="View saved recipes" callback={() => console.info('hey', 2)} />
         ) : (
           <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />

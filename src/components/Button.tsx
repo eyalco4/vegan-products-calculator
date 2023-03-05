@@ -5,14 +5,15 @@ interface Props {
   text: string;
   margin?: string;
   theme?: string;
+  width?: string;
 }
 
 /*const saveToThisDevice = (selectedProducts: Array<ISelectedProduct>) => {
   localStorage.setItem('recipe', JSON.stringify(selectedProducts));
 };*/
-function Button({ callback, text, margin = 'auto', theme = 'default' }: Props) {
+function Button({ callback, text, margin = 'auto', width, theme = 'default' }: Props) {
   return (
-    <button onClick={callback} className={`button ${margin} ${theme}`}>
+    <button onClick={callback} className={`button ${margin} ${theme} ${width}`}>
       {text}
     </button>
   );

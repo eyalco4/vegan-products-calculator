@@ -1,14 +1,21 @@
 import React, { Dispatch, Fragment, SetStateAction, useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import 'src/pages/Login.css';
+import Button from 'src/components/Button';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
-  setIsSignedIn: (isSignedIn: boolean) => void;
+  setUser: (user: any) => void;
 }
 
-function Create({ setPage, setIsSignedIn }: Props) {
-  function handleGoogleLogin(response: any) {
-    console.info(response.credential);
-    setIsSignedIn(true);
+type LoginResponse = {
+  credential: string;
+};
+
+function Login({ setPage, setUser }: Props) {
+  function handleGoogleLogin(response: LoginResponse) {
+    const user = jwt_decode(response.credential);
+    console.info(user);
+    setUser(user);
     setPage('Landing');
   }
   useEffect(() => {
@@ -38,9 +45,10 @@ function Create({ setPage, setIsSignedIn }: Props) {
     <Fragment>
       <div className="login-wrapper flex-col">
         <div id="sign-in-with-google"></div>
+        <Button text="Back" callback={() => setPage('Landing')} />
       </div>
     </Fragment>
   );
 }
 
-export default Create;
+export default Login;

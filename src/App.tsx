@@ -7,7 +7,7 @@ import Login from 'src/pages/Login';
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [user, setUser] = useState(undefined);
   const [page, setPage] = useState<string>('landing');
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
   function getPage() {
     switch (page) {
       case 'login':
-        return <Login setPage={setPage} setIsSignedIn={setIsSignedIn} />;
+        return <Login setPage={setPage} setUser={setUser} />;
         break;
       case 'create':
         return (
@@ -53,7 +53,7 @@ function App() {
         break;
       case 'landing':
       default:
-        return <Landing isSignedIn={isSignedIn} setPage={setPage} />;
+        return <Landing user={user} setPage={setPage} />;
         break;
     }
   }
