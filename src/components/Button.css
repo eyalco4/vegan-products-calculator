@@ -8,6 +8,7 @@
   font-weight: bold;
   cursor: pointer;
   border: none;
+  text-transform: capitalize;
 }
 
 .default {
