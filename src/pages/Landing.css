@@ -10,6 +10,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .Landing-wrapper {
+        max-height: 700px;
+    }
+
     .buttons-wrapper {
         height: 200px;
     }

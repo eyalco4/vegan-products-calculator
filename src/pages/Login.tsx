@@ -16,7 +16,7 @@ function Login({ setPage, setUser }: Props) {
     const user = jwt_decode(response.credential);
     console.info(user);
     setUser(user);
-    setPage('Landing');
+    setPage('recipes');
   }
   useEffect(() => {
     // @ts-ignore

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import 'src/App.css';
 import Landing from 'src/pages/Landing';
 import Create from 'src/pages/Create';
-import { IProduct, ICategoryListItem } from 'src/common/types';
+import { IProduct, ICategoryListItem, IUser } from 'src/common/types';
 import Login from 'src/pages/Login';
+import Recipes from './pages/Recipes';
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState<IUser | undefined>(undefined);
   const [page, setPage] = useState<string>('landing');
 
   useEffect(() => {
@@ -39,9 +40,6 @@ function App() {
 
   function getPage() {
     switch (page) {
-      case 'login':
-        return <Login setPage={setPage} setUser={setUser} />;
-        break;
       case 'create':
         return (
           <Create
@@ -50,6 +48,13 @@ function App() {
             setProductsByCategory={setProductsByCategory}
           />
         );
+        break;
+      case 'login':
+        return <Login setPage={setPage} setUser={setUser} />;
+        break;
+      case 'recipes':
+        //@ts-ignore
+        return <Recipes setPage={setPage} setUser={setUser} user={user} />;
         break;
       case 'landing':
       default:

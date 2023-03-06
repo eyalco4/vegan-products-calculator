@@ -33,7 +33,7 @@ function Landing({ user, setPage }: Props) {
       </div>
       <div className="buttons-wrapper flex-col">
         {user ? (
-          <Button text="View saved recipes" callback={() => console.info('hey', 2)} />
+          <Button text="View saved recipes" callback={() => setPage('recipes')} />
         ) : (
           <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />
         )}
@@ -42,7 +42,7 @@ function Landing({ user, setPage }: Props) {
           OR
           <hr />
         </span>
-        <Button text="Create new recpie" callback={() => setPage('create')} />
+        <Button text="Create New Recpie" callback={() => setPage('create')} />
       </div>
     </div>
   );

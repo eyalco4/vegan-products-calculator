@@ -40,3 +40,7 @@ export interface IFilteredSearchItem {
   category: string;
   names: names[];
 }
+
+export interface IUser {
+  given_name: string;
+}

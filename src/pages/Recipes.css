@@ -1,0 +1,20 @@
+.recipes-w {
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.buttons-wrapper {
+    height: 240px;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .recipes-w  {
+        max-height: 700px;
+    }
+
+    .buttons-wrapper {
+        height: 200px;
+    }
+}
