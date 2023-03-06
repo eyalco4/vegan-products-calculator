@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import 'src/components/Toggle.css';
 
 interface Props {

@@ -1,4 +1,4 @@
-import React, { Dispatch, Fragment, SetStateAction, useEffect } from 'react';
+import React, { Dispatch, Fragment, SetStateAction } from 'react';
 import 'src/pages/Recipes.css';
 import { IUser } from 'src/common/types';
 import Button from 'src/components/Button';
