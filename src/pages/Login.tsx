@@ -2,9 +2,10 @@ import React, { Dispatch, Fragment, SetStateAction, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import 'src/pages/Login.css';
 import Button from 'src/components/Button';
+import { IUser } from 'src/common/types';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
-  setUser: (user: any) => void;
+  setUser: (user: IUser) => void;
 }
 
 type LoginResponse = {
@@ -13,7 +14,7 @@ type LoginResponse = {
 
 function Login({ setPage, setUser }: Props) {
   function handleGoogleLogin(response: LoginResponse) {
-    const user = jwt_decode(response.credential);
+    const user: IUser = jwt_decode(response.credential);
     console.info(user);
     setUser(user);
     setPage('recipes');

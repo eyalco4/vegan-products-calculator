@@ -1,20 +1,16 @@
-.Landing-wrapper {
-    height: 100%;
-    width: 100%;
-    justify-content: space-around;
+.header {
+    margin-top: 60px;
 }
 
-.buttons-wrapper {
+.buttons-w {
     height: 240px;
+    margin-bottom: 10px;
     justify-content: space-evenly;
+    justify-self: flex-end;
 }
 
 @media screen and (max-width: 768px) {
-    .Landing-wrapper {
-        max-height: 700px;
-    }
-
-    .buttons-wrapper {
+    .buttons-w {
         height: 200px;
     }
 }

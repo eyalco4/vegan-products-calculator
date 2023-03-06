@@ -5,6 +5,7 @@ import Leaf from 'src/components/icons/Leaf';
 import NumberOne from 'src/components/icons/NumberOne';
 import KeepTrack from 'src/components/icons/KeepTrack';
 import StayFit from 'src/components/icons/StayFit';
+import PageWrapper from '../components/PageWrapper';
 
 interface Props {
   user: undefined | object;
@@ -12,10 +13,12 @@ interface Props {
 }
 function Landing({ user, setPage }: Props) {
   return (
-    <div className="Landing-wrapper flex-col">
-      <div className="header flex-col">
-        <Leaf />
-        <h1>Vegan Producs</h1>
+    <PageWrapper>
+      <>
+        <div className="header flex-col">
+          <Leaf />
+          <h1>Vegan Producs</h1>
+        </div>
         <div className="icons-wrapper flex-row">
           <div className="motto flex-col">
             <div className="icon-text">Your health comes first</div>
@@ -30,21 +33,21 @@ function Landing({ user, setPage }: Props) {
             <StayFit />
           </div>
         </div>
-      </div>
-      <div className="buttons-wrapper flex-col">
-        {user ? (
-          <Button text="View saved recipes" callback={() => setPage('recipes')} />
-        ) : (
-          <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />
-        )}
-        <span className="or flex-row">
-          <hr />
-          OR
-          <hr />
-        </span>
-        <Button text="Create New Recpie" callback={() => setPage('create')} />
-      </div>
-    </div>
+        <div className="buttons-w flex-col">
+          {user ? (
+            <Button text="View saved recipes" callback={() => setPage('recipes')} />
+          ) : (
+            <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />
+          )}
+          <span className="or flex-row">
+            <hr />
+            OR
+            <hr />
+          </span>
+          <Button text="Create New Recpie" callback={() => setPage('create')} />
+        </div>
+      </>
+    </PageWrapper>
   );
 }
 

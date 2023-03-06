@@ -21,6 +21,7 @@
 .flex-col {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .flex-row {
   display: flex;
