@@ -21,3 +21,19 @@ export const formatNumber = (num: number) => {
     ? roundedNum.toString()
     : roundedNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
+
+const getFormattedQuantity = (quantity: number, units: string): number => {
+  const formattedQuantity: number = isNaN(Number(quantity)) ? 0 : Number(quantity);
+  //@ts-ignore
+  return ['gr', 'ml'].includes(units) ? formattedQuantity : formattedQuantity.toFixed(2);
+};
+
+export const calculateValue = (
+  field: number,
+  quantity: number,
+  units: string,
+  cookedFactor = 1
+): number => {
+  const multiplyByQuantity = getFormattedQuantity(quantity, units) * field;
+  return Number((multiplyByQuantity / cookedFactor).toFixed(2));
+};

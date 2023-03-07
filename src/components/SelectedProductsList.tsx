@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import 'src/components/SelectedProducts.css';
+import 'src/components/SelectedProductsList.css';
 import SelectedProduct from 'src/components/SelectedProduct';
 import Totals from 'src/components/Totals';
-import { ISelectedProduct } from 'src/common/types';
+import { ISelectedProduct_temp } from 'src/common/types';
 interface Props {
-  selectedProducts: Array<ISelectedProduct>;
+  selectedProducts: Array<ISelectedProduct_temp>;
   onTotalsUpdate: (
     productNameToUpdate: string,
     totalProtein: number,
@@ -14,10 +14,10 @@ interface Props {
   onProductRemoval: (categoryIndex: number, productIndex: number) => void;
 }
 
-function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
-  const getFormattedValue = (value: 'totalCarbs' | 'totalProtein' | 'totalCalories') => {
-    const totalValue = selectedProducts.reduce(
-      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct[value],
+function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
+  const getFormattedValue = (value: 'carbs' | 'protein' | 'calories') => {
+    const totalValue: number = selectedProducts.reduce(
+      (counter, selectedProduct: ISelectedProduct_temp) => counter + selectedProduct.totals[value],
       0
     );
     return totalValue;
@@ -34,12 +34,10 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }
                 <th>Cooked</th>
                 <th>Units</th>
                 <th>Quantity</th>
-                {/*<th>Protein</th>*/}
-                {/*<th>Carbs</th>*/}
               </tr>
             </thead>
             <tbody>
-              {selectedProducts.map((selectedProduct: ISelectedProduct) => {
+              {selectedProducts.map((selectedProduct: ISelectedProduct_temp) => {
                 // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
                 return (
                   <SelectedProduct
@@ -55,12 +53,12 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }
         )}
       </div>
       <Totals
-        totalProtein={getFormattedValue('totalProtein')}
-        totalCarbs={getFormattedValue('totalCarbs')}
-        totalCalories={getFormattedValue('totalCalories')}
+        totalProtein={getFormattedValue('protein')}
+        totalCarbs={getFormattedValue('carbs')}
+        totalCalories={getFormattedValue('calories')}
       />
     </Fragment>
   );
 }
 
-export default SelectedProducts;
+export default SelectedProductsList;

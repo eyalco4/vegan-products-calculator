@@ -3,8 +3,8 @@
     "name": "buckwheat",
     "cookedFactor": 3.94,
     "gr": {
-      "protein": "3.23",
-      "calories": "0.132",
+      "protein": "0.132",
+      "calories": "3.43",
       "carbs": "0.715"
     },
     "cup": {

@@ -1,8 +1,9 @@
-import React, { Dispatch, Fragment, SetStateAction } from 'react';
+import React, { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import 'src/pages/Create.css';
 import Search from 'src/components/Search';
-import SelectedProducts from 'src/components/SelectedProducts';
-import { ICategoryListItem, ISelectedProduct } from '../common/types';
+import SelectedProductsList from 'src/components/SelectedProductsList';
+import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
+import { calculateValue } from 'src/utils';
 
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
@@ -11,16 +12,55 @@ interface Props {
 }
 
 function Create({ productsByCategory, setProductsByCategory }: Props) {
-  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
+  const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
+
+  function getSelectedProduct(categoryIndex: number, productIndex: number) {
     const { products } = productsByCategory[categoryIndex];
-    const product = products[productIndex];
-    const updatedList = [...productsByCategory];
-    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
-    setProductsByCategory(updatedList);
+    const { product } = products[productIndex];
+    return product;
+  }
+  function onProductSelection(categoryIndex: number, productIndex: number) {
+    const product: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const { name, gr } = product;
+    const isAlreadySelected: boolean =
+      selectedProducts.filter(
+        (selectedProductTemp: ISelectedProduct_temp) => selectedProductTemp.product.name === name
+      ).length > 0;
+    if (isAlreadySelected) {
+      return;
+    }
+    const units: IUnits = gr ? 'gr' : 'ml';
+    // @ts-ignore
+    const protein = calculateValue(product[units]?.protein, 100, units, 1);
+    // @ts-ignore
+    const carbs = calculateValue(product[units]?.carbs, 100, units, 1);
+    // @ts-ignore
+    const calories = calculateValue(product[units]?.calories, 100, units, 1);
+    const selectedProduct = {
+      product,
+      productIndex,
+      categoryIndex,
+      selectedValues: {
+        quantity: 100,
+        measure: units,
+        cooked: false,
+      },
+
+      totals: {
+        protein,
+        carbs,
+        calories,
+      },
+    };
+    setSelectedProducts([...selectedProducts, selectedProduct]);
   }
 
   function onProductRemoval(categoryIndex: number, productIndex: number) {
-    onProductSelection(categoryIndex, productIndex, false);
+    const productToRemove: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const selectedProductsUpdated = selectedProducts.filter(
+      ({ product }) => product.name !== productToRemove.name
+    );
+    setSelectedProducts(selectedProductsUpdated);
   }
   function onTotalsUpdate(
     productNameToUpdate: string,
@@ -44,23 +84,11 @@ function Create({ productsByCategory, setProductsByCategory }: Props) {
     });
     setProductsByCategory(updatedProducts);
   }
-  const getSelectedProducts = (): ISelectedProduct[] | [] => {
-    const result = new Array<ISelectedProduct>();
-    productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {
-      const { products } = categoryListItem;
-      products.map((product: ISelectedProduct, productIndex: number) => {
-        if (product.selected) {
-          result.push({ ...product, categoryIndex, productIndex });
-        }
-      });
-    });
-    return result;
-  };
   return (
     <Fragment>
       <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProducts
-        selectedProducts={getSelectedProducts()}
+      <SelectedProductsList
+        selectedProducts={selectedProducts}
         onTotalsUpdate={onTotalsUpdate}
         onProductRemoval={onProductRemoval}
       />

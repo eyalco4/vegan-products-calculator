@@ -4,7 +4,7 @@ type measure = {
   calories: number;
 };
 
-export type units = 'gr' | 'ml' | 'kg' | 'tsp' | 'tbsp' | 'cup';
+export type IUnits = 'gr' | 'ml' | 'kg' | 'tsp' | 'tbsp' | 'cup';
 export interface IProduct {
   name: string;
   type: string;
@@ -43,4 +43,21 @@ export interface IFilteredSearchItem {
 
 export interface IUser {
   given_name: string;
+}
+
+export interface ISelectedProduct_temp {
+  product: IProduct;
+  categoryIndex: number;
+  productIndex: number;
+  selectedValues: {
+    quantity: number;
+    measure: IUnits;
+    cooked: boolean;
+  };
+
+  totals: {
+    protein: number;
+    carbs: number;
+    calories: number;
+  };
 }
