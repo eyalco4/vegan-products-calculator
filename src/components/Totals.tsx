@@ -46,7 +46,7 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
     return options;
   };
   return (
-    <div className="fixed-bottom">
+    <div className="totals-w">
       <div className="divid">
         Number of meals
         <select

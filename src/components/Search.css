@@ -1,11 +1,6 @@
 .top {
-  position:fixed;
-  top: 0;
-  padding-top: 42px;
-  width: 100vw;
+  position: relative;
   z-index: 2;
-  background-color: #f8faf7f9;
-  /*padding-top: 40px;*/
 }
 
 .search-wrapper {
@@ -83,12 +78,8 @@ li:hover, li:active {
   background-color: #e5e5e5;
 }
 @media screen and (max-width: 768px) {
-  .top {
-    padding-top: 12px;
-  }
 
   .search-wrapper {
-    padding-top: 24px;
     height: 74px;
     width: 90vw;
   }

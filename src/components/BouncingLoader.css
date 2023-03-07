@@ -3,8 +3,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: white;
-  color: white;
+  background-color: #616b80;
+  color: #616b80;
   animation: dot-elastic 1s infinite linear;
   left: 40px;
 }
@@ -27,8 +27,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: white;
-  color: white;
+  background-color: #616b80;
+  color: #616b80;
   animation: dot-elastic-before 1s infinite linear;
 }
 .dot-elastic::after {
@@ -36,8 +36,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: white;
-  color: white;
+  background-color: #616b80;
+  color: #616b80;
   animation: dot-elastic-after 1s infinite linear;
 }
 

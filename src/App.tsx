@@ -41,13 +41,7 @@ function App() {
   function getPage() {
     switch (page) {
       case 'create':
-        return (
-          <Create
-            setPage={setPage}
-            productsByCategory={productsByCategory}
-            setProductsByCategory={setProductsByCategory}
-          />
-        );
+        return <Create setPage={setPage} productsByCategory={productsByCategory} />;
         break;
       case 'login':
         return <Login setPage={setPage} setUser={setUser} />;

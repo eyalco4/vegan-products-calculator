@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import 'src/components/SelectedProductsList.css';
 import SelectedProduct from 'src/components/SelectedProduct';
-import Totals from 'src/components/Totals';
 import { ISelectedProduct_temp } from 'src/common/types';
 interface Props {
   selectedProducts: Array<ISelectedProduct_temp>;
@@ -16,14 +15,6 @@ interface Props {
 }
 
 function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
-  const getFormattedValue = (value: 'carbs' | 'protein' | 'calories') => {
-    const totalValue: number = selectedProducts.reduce(
-      (counter, selectedProduct: ISelectedProduct_temp) => counter + selectedProduct.totals[value],
-      0
-    );
-    return totalValue;
-  };
-
   return (
     <Fragment>
       <div className="bottom">
@@ -53,11 +44,6 @@ function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemov
           </table>
         )}
       </div>
-      <Totals
-        totalProtein={getFormattedValue('protein')}
-        totalCarbs={getFormattedValue('carbs')}
-        totalCalories={getFormattedValue('calories')}
-      />
     </Fragment>
   );
 }

@@ -1,0 +1,10 @@
+.bottom-w {
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-w {
+    margin-top: 10px;
+    height: 110px;
+}

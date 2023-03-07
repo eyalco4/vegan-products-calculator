@@ -1,13 +1,8 @@
 .bottom {
+  position: relative;
   z-index: 0;
-  max-height: 60vh;
-  background-color: #F8FAF7F9;
   overflow: auto;
-  padding: 164px 0 178px 0;
-}
-
-.selected-product {
-  margin: 8px;
+  max-height: 400px;
 }
 
 table {
@@ -42,10 +37,6 @@ tbody {
 }
 
 @media screen and (max-width: 768px) {
-
-  .bottom {
-    padding: 124px 0 194px 0;
-  }
   table {
     font-size: 14px;
     width: 90vw;

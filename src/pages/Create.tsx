@@ -1,17 +1,19 @@
-import React, { Dispatch, Fragment, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import 'src/pages/Create.css';
+import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
+import PageWrapper from 'src/components/PageWrapper';
+import { calculateValue } from 'src/utils';
 import Search from 'src/components/Search';
 import SelectedProductsList from 'src/components/SelectedProductsList';
-import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
-import { calculateValue } from 'src/utils';
+import Totals from 'src/components/Totals';
+import Button from 'src/components/Button';
 
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
-  setProductsByCategory: (updatedProducts: ICategoryListItem[]) => void;
 }
 
-function Create({ productsByCategory, setProductsByCategory }: Props) {
+function Create({ productsByCategory, setPage }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
 
   function getSelectedProduct(categoryIndex: number, productIndex: number) {
@@ -19,6 +21,15 @@ function Create({ productsByCategory, setProductsByCategory }: Props) {
     const { product } = products[productIndex];
     return product;
   }
+  const getFormattedValue = (value: 'carbs' | 'protein' | 'calories') => {
+    //@ts-ignore
+    const totalValue: number = selectedProducts.reduce(
+      (counter: number, selectedProduct: ISelectedProduct_temp) =>
+        counter + selectedProduct.totals[value],
+      0
+    );
+    return totalValue;
+  };
   function onProductSelection(categoryIndex: number, productIndex: number) {
     const product: IProduct = getSelectedProduct(categoryIndex, productIndex);
     const { name, gr } = product;
@@ -89,14 +100,29 @@ function Create({ productsByCategory, setProductsByCategory }: Props) {
     setSelectedProducts(selectedProductsUpdated);
   }
   return (
-    <Fragment>
-      <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProductsList
-        selectedProducts={selectedProducts}
-        onTotalsUpdate={onTotalsUpdate}
-        onProductRemoval={onProductRemoval}
-      />
-    </Fragment>
+    <PageWrapper>
+      <>
+        <div className="selected-w">
+          <Search products={productsByCategory} onProductSelection={onProductSelection} />
+          <SelectedProductsList
+            selectedProducts={selectedProducts}
+            onTotalsUpdate={onTotalsUpdate}
+            onProductRemoval={onProductRemoval}
+          />
+        </div>
+        <div className="bottom-w">
+          <Totals
+            totalProtein={getFormattedValue('protein')}
+            totalCarbs={getFormattedValue('carbs')}
+            totalCalories={getFormattedValue('calories')}
+          />
+          <div className="flex-col btn-w">
+            <Button text="Save to this device" callback={() => setPage('Landing')} />
+            <Button text="Back" callback={() => setPage('Landing')} />
+          </div>
+        </div>
+      </>
+    </PageWrapper>
   );
 }
 
