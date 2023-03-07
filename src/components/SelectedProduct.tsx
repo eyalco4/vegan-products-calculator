@@ -8,7 +8,8 @@ import { calculateValue, isiOS, isSafari } from 'src/utils';
 interface Props {
   selectedProduct: ISelectedProduct_temp;
   onTotalsUpdate: (
-    productNameToUpdate: string,
+    categoryIndex: number,
+    productIndex: number,
     totalProtein: number,
     totalCarbs: number,
     totalCalories: number
@@ -17,7 +18,7 @@ interface Props {
 }
 
 function SelectedProduct({ selectedProduct, onTotalsUpdate, onProductRemoval }: Props) {
-  const { product, productIndex, categoryIndex } = selectedProduct;
+  const { product, categoryIndex, productIndex } = selectedProduct;
   const { name, cookedFactor = 1, gr, ml, kg, tsp, tbsp, cup } = product;
   const [quantity, setQuantity] = useState<string>('100');
   const [units, setUnits] = useState<IUnits>(gr ? 'gr' : 'ml');
@@ -28,10 +29,11 @@ function SelectedProduct({ selectedProduct, onTotalsUpdate, onProductRemoval }: 
     const protein = product[units]?.protein || 0;
     const carbs = product[units]?.carbs || 0;
     const calories = product[units]?.calories || 0;
-    const newTotalProtein = calculateValue(protein, Number(quantity), units, cookedFactor);
-    const newTotalCarbs = calculateValue(carbs, Number(quantity), units, cookedFactor);
-    const newTotalCalories = calculateValue(calories, Number(quantity), units, cookedFactor);
-    onTotalsUpdate(name, newTotalProtein, newTotalCarbs, newTotalCalories);
+    const factor = isTogglerOn ? cookedFactor : 1;
+    const newTotalProtein = calculateValue(protein, Number(quantity), units, factor);
+    const newTotalCarbs = calculateValue(carbs, Number(quantity), units, factor);
+    const newTotalCalories = calculateValue(calories, Number(quantity), units, factor);
+    onTotalsUpdate(categoryIndex, productIndex, newTotalProtein, newTotalCarbs, newTotalCalories);
   }, [quantity, units, isTogglerOn]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

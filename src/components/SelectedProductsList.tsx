@@ -6,7 +6,8 @@ import { ISelectedProduct_temp } from 'src/common/types';
 interface Props {
   selectedProducts: Array<ISelectedProduct_temp>;
   onTotalsUpdate: (
-    productNameToUpdate: string,
+    categoryIndex: number,
+    productIndex: number,
     totalProtein: number,
     totalCarbs: number,
     totalCalories: number

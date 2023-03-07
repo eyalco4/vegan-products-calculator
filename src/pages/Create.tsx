@@ -63,26 +63,30 @@ function Create({ productsByCategory, setProductsByCategory }: Props) {
     setSelectedProducts(selectedProductsUpdated);
   }
   function onTotalsUpdate(
-    productNameToUpdate: string,
-    totalProtein: number,
-    totalCarbs: number,
-    totalCalories: number
+    categoryIndex: number,
+    productIndex: number,
+    protein: number,
+    carbs: number,
+    calories: number
   ) {
-    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
-      const { category, products } = item;
-      return {
-        category,
-        products: products.map((selectedProduct) => {
-          const {
-            product: { name },
-          } = selectedProduct;
-          return name === productNameToUpdate
-            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
-            : selectedProduct;
-        }),
-      };
-    });
-    setProductsByCategory(updatedProducts);
+    const productToUpdate: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const selectedProductsUpdated = selectedProducts.map(
+      (selectedProduct: ISelectedProduct_temp) => {
+        const { product } = selectedProduct;
+        if (product.name === productToUpdate.name) {
+          return {
+            ...selectedProduct,
+            totals: {
+              protein,
+              carbs,
+              calories,
+            },
+          };
+        }
+        return selectedProduct;
+      }
+    );
+    setSelectedProducts(selectedProductsUpdated);
   }
   return (
     <Fragment>
