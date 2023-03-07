@@ -1,18 +1,7 @@
-.header {
-    margin-top: 60px;
-}
-
 .buttons-w {
-    height: 240px;
-    margin-bottom: 10px;
-    justify-content: space-evenly;
+    height: 180px;
+    justify-content: space-between;
     justify-self: flex-end;
-}
-
-@media screen and (max-width: 768px) {
-    .buttons-w {
-        height: 200px;
-    }
 }
 
 .header > svg {

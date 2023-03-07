@@ -1,8 +1,7 @@
 .button {
-  /*margin: 36px 0 16px 0;*/
   width: 576px;
   height: 60px;
-  margin: auto;
+  margin: 0 auto;
   font-size: 16px;
   border-radius: 10px;
   font-weight: bold;
@@ -34,7 +33,6 @@
 @media screen and (max-width: 768px) {
 
   .button {
-    /*margin: 18px 0 12px 0;*/
     width: 90vw;
   }
 }
