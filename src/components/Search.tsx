@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, Ref, MouseEvent, ChangeEvent, Fragment } from 'react';
 import './Search.css';
 import SearchIcon from 'src/components/icons/Search';
-import Delete from 'src/components/icons/Delete';
 import { ICategoryListItem, IFilteredSearchItem, names } from 'src/common/types';
 interface SearchProps {
   children?: React.ReactNode;

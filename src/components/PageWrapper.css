@@ -1,0 +1,12 @@
+.page-w {
+  height: 100%;
+  max-width: 576px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .page-w {
+    /*padding: 20px 0;*/
+  }
+}

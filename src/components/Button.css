@@ -1,0 +1,38 @@
+.button {
+  width: 576px;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  text-transform: capitalize;
+}
+
+.default {
+  background-color: black;
+  color: white;
+}
+
+.default:hover,
+.secondary:active {
+  background-color: #616b80;
+}
+
+.secondary {
+  background-color: white;
+  color: black;
+}
+
+.secondary:hover,
+.secondary:active {
+  background-color: #ffffffab;
+}
+
+@media screen and (max-width: 768px) {
+
+  .button {
+    width: 90vw;
+  }
+}

@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Search from 'src/components/Search';
 import 'src/App.css';
-import SelectedProducts from 'src/components/SelectedProducts';
-import { ISelectedProduct, IProduct, ICategoryListItem } from 'src/common/types';
+import Landing from 'src/pages/Landing';
+import Create from 'src/pages/Create';
+import { IProduct, ICategoryListItem, IUser } from 'src/common/types';
+import Login from 'src/pages/Login';
+import Recipes from './pages/Recipes';
 
 function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
+  const [user, setUser] = useState<IUser | undefined>(undefined);
+  const [page, setPage] = useState<string>('landing');
 
-  const getSelectedProducts = (): ISelectedProduct[] | [] => {
-    const result = new Array<ISelectedProduct>();
-    productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {
-      const { products } = categoryListItem;
-      products.map((product: ISelectedProduct, productIndex: number) => {
-        if (product.selected) {
-          result.push({ ...product, categoryIndex, productIndex });
-        }
-      });
-    });
-    return result;
-  };
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
       (category, categoryIndex) => {
@@ -46,51 +38,32 @@ function App() {
     setProductsByCategory(newAllProducts);
   }, []);
 
-  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
-    const { products } = productsByCategory[categoryIndex];
-    const product = products[productIndex];
-    const updatedList = [...productsByCategory];
-    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
-    setProductsByCategory(updatedList);
+  function getPage() {
+    switch (page) {
+      case 'create':
+        return (
+          <Create
+            setPage={setPage}
+            productsByCategory={productsByCategory}
+            setProductsByCategory={setProductsByCategory}
+          />
+        );
+        break;
+      case 'login':
+        return <Login setPage={setPage} setUser={setUser} />;
+        break;
+      case 'recipes':
+        //@ts-ignore
+        return <Recipes setPage={setPage} setUser={setUser} user={user} />;
+        break;
+      case 'landing':
+      default:
+        return <Landing user={user} setPage={setPage} />;
+        break;
+    }
   }
 
-  function onProductRemoval(categoryIndex: number, productIndex: number) {
-    onProductSelection(categoryIndex, productIndex, false);
-  }
-
-  function onTotalsUpdate(
-    productNameToUpdate: string,
-    totalProtein: number,
-    totalCarbs: number,
-    totalCalories: number
-  ) {
-    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
-      const { category, products } = item;
-      return {
-        category,
-        products: products.map((selectedProduct) => {
-          const {
-            product: { name },
-          } = selectedProduct;
-          return name === productNameToUpdate
-            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
-            : selectedProduct;
-        }),
-      };
-    });
-    setProductsByCategory(updatedProducts);
-  }
-
-  return (
-    <div className="app ">
-      <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProducts
-        selectedProducts={getSelectedProducts()}
-        onTotalsUpdate={onTotalsUpdate}
-        onProductRemoval={onProductRemoval}
-      />
-    </div>
-  );
+  return <div className="app ">{getPage()}</div>;
 }
 
 export default App;

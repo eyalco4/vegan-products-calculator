@@ -1,0 +1,8 @@
+.login-wrapper {
+    margin: auto;
+    justify-content: space-between;
+    background-color: #e2e4e2;
+    height: 200px;
+    padding: 80px 10px;
+    border-radius: 10px;
+}

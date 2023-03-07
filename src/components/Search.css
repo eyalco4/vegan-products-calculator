@@ -20,7 +20,7 @@
   text-align: left;
 }
 
-hr {
+.search-box > hr {
   border-top: 2px solid #616b80;
 }
 
