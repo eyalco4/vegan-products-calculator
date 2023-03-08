@@ -1,4 +1,5 @@
 .bottom-w {
+    position: relative;
     display: block;
     position: relative;
     z-index: 1;

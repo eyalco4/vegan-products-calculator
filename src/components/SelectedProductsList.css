@@ -1,8 +1,8 @@
-.bottom {
+.list-w {
   position: relative;
   z-index: 0;
   overflow: auto;
-  max-height: 400px;
+  max-height: 48vh;
 }
 
 table {

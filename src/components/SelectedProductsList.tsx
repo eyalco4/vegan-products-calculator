@@ -17,7 +17,7 @@ interface Props {
 function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
   return (
     <Fragment>
-      <div className="bottom">
+      <div className="list-w">
         {selectedProducts.length > 0 && (
           <table>
             <thead>

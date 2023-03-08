@@ -27,8 +27,8 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
     const calculatedValue = (propertyValue / meals).toFixed(2);
     const formatedValue = formatNumber(Number(calculatedValue));
     return (
-      <div className={`totals ${propertyName}`}>
-        <div className="total-key">Total {propertyName.toUpperCase()}</div>
+      <div className="totals">
+        <div className={`total-key ${propertyName}`}>Total {propertyName.toUpperCase()}</div>
         {showLoadingEffect ? (
           <BouncingLoader />
         ) : (
