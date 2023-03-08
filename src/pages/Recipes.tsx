@@ -4,7 +4,7 @@ import { IStoredRecpie, IUser } from 'src/common/types';
 import PageWrapper from 'src/components/PageWrapper';
 import Button from 'src/components/Button';
 import Delete from 'src/components/icons/Delete';
-import { getStoredValues } from 'src/common/storage';
+import { getStoredValues, deleteStoredRecpie } from 'src/common/storage';
 import { formatNumber } from 'src/common/utils';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
@@ -42,7 +42,7 @@ function Recipes({ user, setPage }: Props) {
                 </div>
                 <span
                   className="delete-recpie pointer"
-                  onClick={() => clearStoredValue(stroredRecpie)}
+                  onClick={() => deleteStoredRecpie(stroredRecpie)}
                 >
                   <Delete />
                 </span>

@@ -19,3 +19,12 @@ export const saveToDevice = (recpieToStore: IStoredRecpie) => {
   }
   localStorage.setItem('vegan-recipes', stringifyValueToStore);
 };
+
+export const deleteStoredRecpie = (recpieToDelete: IStoredRecpie) => {
+  const currentStorage = getStoredValues();
+  const updatedStorage = currentStorage?.filter(
+    (item: IStoredRecpie) => item.name !== recpieToDelete.name
+  );
+  console.info(updatedStorage);
+  localStorage.setItem('vegan-recipes', JSON.stringify(updatedStorage));
+};
