@@ -3,7 +3,7 @@ import 'src/components/SelectedProduct.css';
 import { ISelectedProduct_temp, IUnits } from 'src/common/types';
 import Toggler from 'src/components/Toggle';
 import Delete from 'src/components/icons/Delete';
-import { calculateValue, isiOS, isSafari } from 'src/utils';
+import { calculateValue, isiOS, isSafari } from 'src/common/utils';
 
 interface Props {
   selectedProduct: ISelectedProduct_temp;

@@ -5,25 +5,24 @@
   max-height: 48vh;
 }
 
-table {
+#selected-table {
   margin: 0 auto 24px;
-  width: 624px;
   text-align: left;
   text-transform: capitalize;
   color: #616b80;
 }
 
-th {
+#selected-table > th {
   text-transform: capitalize;
   letter-spacing: 1px;
   width: 144px;
 }
 
-td {
+#selected-table > td {
   width: 135px;
 }
 
-td:nth-child(5) {
+#selected-table > td:nth-child(5) {
   width: 84px;
 }
 
@@ -32,18 +31,18 @@ td > svg {
   float: left;
 }
 
-tbody {
+#selected-table > tbody {
   margin-top: 6vh;
 }
 
 @media screen and (max-width: 768px) {
-  table {
+  #selected-table {
     font-size: 14px;
     width: 90vw;
     margin-bottom: 12px;
   }
 
-  th {
+  #selected-table > th {
     font-size: 14px;
   }
 

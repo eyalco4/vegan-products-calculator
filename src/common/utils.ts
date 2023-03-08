@@ -1,3 +1,5 @@
+import { ISelectedProduct_temp } from './types';
+
 const isClient = typeof window !== 'undefined';
 export const isiOS = () => {
   return (
@@ -36,4 +38,17 @@ export const calculateValue = (
 ): number => {
   const multiplyByQuantity = getFormattedQuantity(quantity, units) * field;
   return Number((multiplyByQuantity / cookedFactor).toFixed(2));
+};
+
+export const getFormattedValue = (
+  selectedProducts: ISelectedProduct_temp[],
+  value: 'carbs' | 'protein' | 'calories'
+) => {
+  //@ts-ignore
+  const totalValue: number = selectedProducts.reduce(
+    (counter: number, selectedProduct: ISelectedProduct_temp) =>
+      counter + selectedProduct.totals[value],
+    0
+  );
+  return totalValue;
 };

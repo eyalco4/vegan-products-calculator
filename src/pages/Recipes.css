@@ -1,0 +1,23 @@
+.recpies-w {
+    max-height: 75vh;
+    overflow: auto;
+}
+
+.recpie {
+    height: 100px;
+    padding-bottom: 10px;
+}
+
+.recpie-header {
+    text-transform: capitalize;
+    margin: 0;
+    display: inline;
+}
+
+.recpie-values {
+    height: 55px;
+}
+
+.recpie-page-btn-w {
+    padding-top: 15px;
+}

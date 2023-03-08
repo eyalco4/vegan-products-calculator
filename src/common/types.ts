@@ -61,3 +61,12 @@ export interface ISelectedProduct_temp {
     calories: number;
   };
 }
+
+export interface IStoredRecpie {
+  name: string;
+  selectedProducts: ISelectedProduct_temp[] | [];
+  meals: number;
+  totalProtein: number;
+  totalCarbs: number;
+  totalCalories: number;
+}

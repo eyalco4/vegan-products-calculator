@@ -1,16 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import BouncingLoader from 'src/components/BouncingLoader';
 import 'src/components/Totals.css';
-import { isiOS, isSafari, formatNumber } from 'src/utils';
+import { isiOS, isSafari, formatNumber } from 'src/common/utils';
 interface Props {
+  setMeals: Dispatch<SetStateAction<number>>;
+  meals: number;
   totalProtein: number;
   totalCarbs: number;
   totalCalories: number;
 }
 
-function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
+function Totals({ totalProtein, totalCarbs, totalCalories, setMeals, meals }: Props) {
   const [showLoadingEffect, setShowLoadingEffect] = useState(true);
-  const [meals, setMeals] = useState(1);
   useEffect(() => {
     setShowLoadingEffect(true);
     setTimeout(() => {

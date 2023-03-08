@@ -1,8 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import 'src/pages/Create.css';
 import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
+import { saveToDevice } from 'src/common/storage';
 import PageWrapper from 'src/components/PageWrapper';
-import { calculateValue } from 'src/utils';
+import { calculateValue, getFormattedValue } from 'src/common/utils';
 import Search from 'src/components/Search';
 import SelectedProductsList from 'src/components/SelectedProductsList';
 import Totals from 'src/components/Totals';
@@ -15,21 +16,16 @@ interface Props {
 
 function Create({ productsByCategory, setPage }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
+  const [meals, setMeals] = useState(1);
 
   function getSelectedProduct(categoryIndex: number, productIndex: number) {
     const { products } = productsByCategory[categoryIndex];
     const { product } = products[productIndex];
     return product;
   }
-  const getFormattedValue = (value: 'carbs' | 'protein' | 'calories') => {
-    //@ts-ignore
-    const totalValue: number = selectedProducts.reduce(
-      (counter: number, selectedProduct: ISelectedProduct_temp) =>
-        counter + selectedProduct.totals[value],
-      0
-    );
-    return totalValue;
-  };
+  const totalProtein = getFormattedValue(selectedProducts, 'protein');
+  const totalCarbs = getFormattedValue(selectedProducts, 'carbs');
+  const totalCalories = getFormattedValue(selectedProducts, 'calories');
   function onProductSelection(categoryIndex: number, productIndex: number) {
     const product: IProduct = getSelectedProduct(categoryIndex, productIndex);
     const { name, gr } = product;
@@ -99,6 +95,20 @@ function Create({ productsByCategory, setPage }: Props) {
     );
     setSelectedProducts(selectedProductsUpdated);
   }
+
+  const save = () => {
+    const recpieToStore = {
+      name: 'some name',
+      meals,
+      selectedProducts,
+      totalProtein,
+      totalCarbs,
+      totalCalories,
+    };
+    saveToDevice(recpieToStore);
+    setPage('recipes');
+  };
+
   return (
     <PageWrapper>
       <>
@@ -112,12 +122,14 @@ function Create({ productsByCategory, setPage }: Props) {
         </div>
         <div className="bottom-w">
           <Totals
-            totalProtein={getFormattedValue('protein')}
-            totalCarbs={getFormattedValue('carbs')}
-            totalCalories={getFormattedValue('calories')}
+            setMeals={setMeals}
+            meals={meals}
+            totalProtein={totalProtein}
+            totalCarbs={totalCarbs}
+            totalCalories={totalCalories}
           />
           <div className="flex-col btn-w">
-            <Button text="Save to this device" callback={() => setPage('Landing')} />
+            <Button text="Save to this device" callback={save} />
             <Button text="Back" callback={() => setPage('Landing')} />
           </div>
         </div>

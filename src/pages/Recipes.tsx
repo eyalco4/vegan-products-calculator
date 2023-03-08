@@ -1,8 +1,11 @@
-import React, { Dispatch, Fragment, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import 'src/pages/Recipes.css';
-import { IUser } from 'src/common/types';
-import Button from 'src/components/Button';
+import { IStoredRecpie, IUser } from 'src/common/types';
 import PageWrapper from 'src/components/PageWrapper';
+import Button from 'src/components/Button';
+import Delete from 'src/components/icons/Delete';
+import { getStoredValues } from 'src/common/storage';
+import { formatNumber } from 'src/common/utils';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   setUser: (user: IUser) => void;
@@ -10,14 +13,72 @@ interface Props {
 }
 
 function Recipes({ user, setPage }: Props) {
+  const storedRecpies = getStoredValues() || [];
+
+  const clearStoredValue = (stroredRecpie: IStoredRecpie) => {
+    console.info(stroredRecpie);
+  };
+  const getContent = () => {
+    if (storedRecpies.length === 0) {
+      return <div>You have no saved recipes</div>;
+    }
+    return (
+      <div className="recpies-w">
+        {storedRecpies.map((stroredRecpie: IStoredRecpie) => {
+          const { name, meals, totalProtein, totalCarbs, totalCalories } = stroredRecpie;
+          return (
+            <div className="recpie flex-col" key={name}>
+              <div className="flex-row">
+                <div className="flex-col justify-center">
+                  <h4 className="recpie-header">{name}</h4>
+                </div>
+                <div className="flex-col justify-center">
+                  <span
+                    className="edit-recpie pointer"
+                    onClick={() => clearStoredValue(stroredRecpie)}
+                  >
+                    Edit
+                  </span>
+                </div>
+                <span
+                  className="delete-recpie pointer"
+                  onClick={() => clearStoredValue(stroredRecpie)}
+                >
+                  <Delete />
+                </span>
+              </div>
+              <div className="flex-row recpie-values">
+                <div className="flex-col">
+                  <span>meals</span>
+                  <span>{meals}</span>
+                </div>
+                <div className="flex-col">
+                  <span>protein</span>
+                  <span>{formatNumber(Number(totalProtein))}</span>
+                </div>
+                <div className="flex-col">
+                  <span>carbs</span>
+                  <span>{formatNumber(Number(totalCarbs))}</span>
+                </div>
+                <div className="flex-col">
+                  <span>calories</span>
+                  <span>{formatNumber(Number(totalCalories))}</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
   return (
     <PageWrapper>
       <>
-        <div>
-          <h2>Welcome Back {user.given_name}</h2>
-          <div>You have no saved recipes</div>
+        <div className="recpies-top">
+          <h2>Welcome Back {user?.given_name}</h2>
+          {getContent()}
         </div>
-        <div className="buttons-wrapper flex-col">
+        <div className="recpie-page-btn-w flex-col">
           <Button text="Create new recipe" callback={() => setPage('create')} />
         </div>
       </>

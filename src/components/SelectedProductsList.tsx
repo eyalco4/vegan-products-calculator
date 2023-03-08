@@ -19,7 +19,7 @@ function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemov
     <Fragment>
       <div className="list-w">
         {selectedProducts.length > 0 && (
-          <table>
+          <table id="selected-table">
             <thead>
               <tr>
                 <th>Product</th>
@@ -30,7 +30,6 @@ function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemov
             </thead>
             <tbody>
               {selectedProducts.map((selectedProduct: ISelectedProduct_temp) => {
-                // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
                 return (
                   <SelectedProduct
                     selectedProduct={selectedProduct}
