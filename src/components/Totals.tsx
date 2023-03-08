@@ -42,7 +42,11 @@ function Totals({ totalProtein, totalCarbs, totalCalories, setMeals, meals }: Pr
   const renderOptions = () => {
     const options = [];
     for (let i = 1; i < 21; i++) {
-      options.push(<option value={i}>{i}</option>);
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
     }
     return options;
   };
