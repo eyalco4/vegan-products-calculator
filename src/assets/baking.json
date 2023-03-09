@@ -1,0 +1,41 @@
+[
+  {
+    "name": "wheat flour",
+    "gr": {
+      "calories": "3.61",
+      "protein": "0.12",
+      "carbs": "0.725"
+    },
+    "cup": {
+      "calories": "405",
+      "protein": "16.4",
+      "carbs": "99.3"
+    }
+  },
+  {
+    "name": "buckwheat flour",
+    "gr": {
+      "calories": "3.35",
+      "protein": "0.126",
+      "carbs": "0.706"
+    },
+    "cup": {
+      "calories": "402",
+      "protein": "15.1",
+      "carbs": "84.7"
+    }
+  },
+  {
+    "name": "almond flour",
+    "gr": {
+      "calories": "6",
+      "protein": "0.2",
+      "carbs": "0.2"
+    },
+    "cup": {
+      "calories": "360",
+      "protein": "12",
+      "carbs": "12"
+    }
+  }
+]
