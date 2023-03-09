@@ -17,7 +17,7 @@
 
 .dot-elastic::before,
 .dot-elastic::after {
-  content: "";
+  content: '';
   display: inline-block;
   position: absolute;
   top: 0;

@@ -1,11 +1,22 @@
 .bottom-w {
-    position: relative;
-    display: block;
-    position: relative;
-    z-index: 1;
+  position: relative;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-w {
-    margin-top: 10px;
-    height: 110px;
+  margin-top: 10px;
+  height: 110px;
+}
+
+.modal-input-wrapper {
+  height: 100px;
+  width: 100%;
+}
+
+#recipe-name-input {
+  border: none;
+  height: 100%;
+  width: 100%;
 }

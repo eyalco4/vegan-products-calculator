@@ -1,58 +1,56 @@
 .buttons-w {
-    height: 150px;
-    justify-content: space-between;
-    justify-self: flex-end;
+  height: 150px;
+  justify-content: space-between;
+  justify-self: flex-end;
 }
 
 .header > svg {
-    margin: 0 auto;
-    height: 48px;
-    width: 48px;
+  margin: 0 auto;
+  height: 48px;
+  width: 48px;
 }
 
 .icons-wrapper {
-    margin: 10px;
-    justify-content: space-around;
+  margin: 10px;
+  justify-content: space-around;
 }
 
 .icon-text {
-    width: 100px;
-    height: 60px;
-    padding: 20px 10px;
-    font-size: 15px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
+  width: 100px;
+  height: 60px;
+  padding: 20px 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
 }
 
 .motto > svg {
-    height: 60px;
-    width: 60px;
-    display: block;
-    margin: auto;
+  height: 60px;
+  width: 60px;
+  display: block;
+  margin: auto;
 }
 
-
 #sign-in-with-google {
-    margin: auto;
+  margin: auto;
 }
 
 .or {
-    margin: auto;
-    width: 576px;
-    justify-content: space-around;
+  margin: auto;
+  width: 576px;
+  justify-content: space-around;
 }
 
 .or > hr {
-    width: 240px;
+  width: 240px;
 }
 
 @media screen and (max-width: 768px) {
+  .or {
+    width: 340px;
+  }
 
-    .or{
-        width: 340px;
-    }
-
-    .or > hr {
-        width: 120px;
-    }
+  .or > hr {
+    width: 120px;
+  }
 }

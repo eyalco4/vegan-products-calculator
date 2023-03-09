@@ -18,13 +18,13 @@
   border-top: 2px solid #616b80;
 }
 
-::placeholder {
+#search ::placeholder {
   font-size: 16px;
   color: #616b80;
   letter-spacing: 2px;
 }
 
-input {
+#search {
   border: none;
   height: 100%;
   background-color: inherit;
@@ -73,11 +73,11 @@ ul {
   font-size: 14px;
 }
 
-li:hover, li:active {
+li:hover,
+li:active {
   background-color: #e5e5e5;
 }
 @media screen and (max-width: 768px) {
-
   .search-wrapper {
     height: 74px;
     width: 90vw;

@@ -1,4 +1,6 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 import 'src/pages/Create.css';
 import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
 import { saveToDevice } from 'src/common/storage';
@@ -17,7 +19,10 @@ interface Props {
 function Create({ productsByCategory, setPage }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
   const [meals, setMeals] = useState(1);
-
+  const [open, setOpen] = useState(false);
+  const [recpieName, setRecpieName] = useState<string>('');
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
   function getSelectedProduct(categoryIndex: number, productIndex: number) {
     const { products } = productsByCategory[categoryIndex];
     const { product } = products[productIndex];
@@ -96,9 +101,13 @@ function Create({ productsByCategory, setPage }: Props) {
     setSelectedProducts(selectedProductsUpdated);
   }
 
+  function onChange(event: ChangeEvent<HTMLInputElement>) {
+    setRecpieName(event.target.value);
+  }
+
   const save = () => {
     const recpieToStore = {
-      name: 'some name',
+      name: recpieName,
       meals,
       selectedProducts,
       totalProtein,
@@ -129,9 +138,22 @@ function Create({ productsByCategory, setPage }: Props) {
             totalCalories={totalCalories}
           />
           <div className="flex-col btn-w">
-            <Button text="Save to this device" callback={save} />
+            <Button text="Save to this device" callback={onOpenModal} />
             <Button text="Back" callback={() => setPage('Landing')} />
           </div>
+          <Modal open={open} onClose={onCloseModal} closeOnEsc={true} center>
+            <div className="modal-input-wrapper flex-col">
+              <input
+                type="text"
+                placeholder="Enter you recipe name"
+                id="recipe-name-input"
+                value={recpieName}
+                onChange={onChange}
+                autoComplete="off"
+              />
+              <Button size="small" text="Save" callback={save} />
+            </div>
+          </Modal>
         </div>
       </>
     </PageWrapper>

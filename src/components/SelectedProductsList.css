@@ -46,19 +46,24 @@ td > svg {
     font-size: 14px;
   }
 
-  td:nth-child(1), th:nth-child(1) {
+  td:nth-child(1),
+  th:nth-child(1) {
     width: 29vw;
   }
-  td:nth-child(2), th:nth-child(2) {
+  td:nth-child(2),
+  th:nth-child(2) {
     width: 19vw;
   }
-  td:nth-child(3), th:nth-child(3) {
+  td:nth-child(3),
+  th:nth-child(3) {
     width: 19vw;
   }
-  td:nth-child(4), th:nth-child(4) {
+  td:nth-child(4),
+  th:nth-child(4) {
     width: 19vw;
   }
-  td:nth-child(5), th:nth-child(5) {
+  td:nth-child(5),
+  th:nth-child(5) {
     width: 4vw;
   }
 
@@ -69,6 +74,7 @@ td > svg {
   }
 }
 
-td:nth-child(n+2), th:nth-child(n+2) {
+td:nth-child(n + 2),
+th:nth-child(n + 2) {
   text-align: center;
 }

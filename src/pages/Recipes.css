@@ -1,23 +1,35 @@
 .recpies-w {
-    max-height: 75vh;
-    overflow: auto;
+  max-height: 75vh;
+  overflow: auto;
 }
 
-.recpie {
-    height: 100px;
-    padding-bottom: 10px;
+.recipe-header-w {
+  font-weight: bold;
 }
 
-.recpie-header {
-    text-transform: capitalize;
-    margin: 0;
-    display: inline;
+.recipe {
+  height: 100px;
+  padding-bottom: 10px;
 }
 
-.recpie-values {
-    height: 55px;
+.recipe-name {
+  text-transform: capitalize;
+  margin: 0;
+  display: inline;
 }
 
-.recpie-page-btn-w {
-    padding-top: 15px;
+.value-header {
+  font-weight: bold;
+}
+
+.recipe-values {
+  height: 55px;
+}
+
+.recipe-values > div > span {
+  color: #616b80;
+}
+
+.recipe-page-btn-w {
+  padding-top: 15px;
 }

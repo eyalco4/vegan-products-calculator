@@ -44,7 +44,7 @@ function Landing({ user, setPage }: Props) {
             OR
             <hr />
           </span>
-          <Button text="Create New Recpie" callback={() => setPage('create')} />
+          <Button text="Create New recipe" callback={() => setPage('create')} />
         </div>
       </>
     </PageWrapper>
