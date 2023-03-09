@@ -51,7 +51,7 @@
   all: unset;
   text-align: center;
   margin-left: 6px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #616b80;
 }
 
 @media screen and (max-width: 768px) {

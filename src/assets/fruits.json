@@ -1,0 +1,26 @@
+[
+  {
+    "name": "banana",
+    "gr": {
+      "calories": "0.89",
+      "protein": "0.0109",
+      "carbs": "0.228"
+    }
+  },
+  {
+    "name": "apple",
+    "gr": {
+      "calories": "0.52",
+      "protein": "0.0026",
+      "carbs": "0.138"
+    }
+  },
+  {
+    "name": "strawberries",
+    "gr": {
+      "calories": "0.32",
+      "protein": "0.0067",
+      "carbs": "0.0768"
+    }
+  }
+]

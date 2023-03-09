@@ -46,7 +46,7 @@ svg {
 
 ul {
   width: inherit;
-  max-height: 256px;
+  max-height: 304px;
   overflow-y: auto;
   list-style: none;
   background-color: #ffffff;

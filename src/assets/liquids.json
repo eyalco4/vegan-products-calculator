@@ -18,6 +18,24 @@
     }
   },
   {
+    "name": "maple syrup",
+    "ml": {
+      "calories": "3.67",
+      "protein": "0",
+      "carbs": "0.9"
+    },
+    "tbsp": {
+      "protein": "57.343",
+      "calories": "0",
+      "carbs": "14.0625"
+    },
+    "cup": {
+      "protein": "917.488",
+      "calories": "462.5",
+      "carbs": "225"
+    }
+  },
+  {
     "name": "soy sauce",
     "ml": {
       "protein": "0.09",

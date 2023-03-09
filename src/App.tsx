@@ -15,23 +15,33 @@ function App() {
   );
 
   useEffect(() => {
-    ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
-      (category, categoryIndex) => {
-        import(`src/assets/${category}.json`).then((productsModule) => {
-          const fetchedProducts: Array<IProduct> = productsModule.default;
-          const products = fetchedProducts.map((product: IProduct, productIndex) => {
-            return {
-              product,
-              categoryIndex,
-              productIndex,
-            };
-          });
-          const newAllProducts = productsByCategory;
-          newAllProducts.push({ category, products });
-          setProductsByCategory(newAllProducts);
+    [
+      'baking',
+      'fruits',
+      'grains',
+      'legumes',
+      'liquids',
+      'nuts',
+      'seeds',
+      'soy',
+      'spreads',
+      'vegetables',
+      'wheat',
+    ].map((category, categoryIndex) => {
+      import(`src/assets/${category}.json`).then((productsModule) => {
+        const fetchedProducts: Array<IProduct> = productsModule.default;
+        const products = fetchedProducts.map((product: IProduct, productIndex) => {
+          return {
+            product,
+            categoryIndex,
+            productIndex,
+          };
         });
-      }
-    );
+        const newAllProducts = productsByCategory;
+        newAllProducts.push({ category, products });
+        setProductsByCategory(newAllProducts);
+      });
+    });
     const newAllProducts = productsByCategory;
     newAllProducts.sort((item1, item2) => item2.category.localeCompare(item1.category));
     setProductsByCategory(newAllProducts);
