@@ -1,6 +1,7 @@
 .recipes-w {
-  max-height: 75vh;
+  max-height: 64vh;
   overflow: auto;
+  color: #616b80;
 }
 
 .recipe-header-w {
@@ -10,10 +11,10 @@
   color: #608760;
 }
 .change {
-  width: 100px;
+  width: 124px;
 }
 .recipe {
-  height: 120px;
+  height: 110px;
   padding-bottom: 10px;
 }
 
@@ -32,7 +33,7 @@
 }
 
 .recipe-values > div > span {
-  color: #616b80;
+  color: #616b80ba;
 }
 
 .recipe-page-btn-w {

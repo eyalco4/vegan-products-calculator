@@ -109,16 +109,18 @@ function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: P
   }
 
   const save = () => {
-    const recpieToStore = {
-      name: recpieName,
-      meals,
-      selectedProducts,
-      totalProtein,
-      totalCarbs,
-      totalCalories,
-    };
-    saveToDevice(recpieToStore);
-    setPage('recipes');
+    if (recpieName.length > 0) {
+      const recpieToStore = {
+        name: recpieName,
+        meals,
+        selectedProducts,
+        totalProtein,
+        totalCarbs,
+        totalCalories,
+      };
+      saveToDevice(recpieToStore);
+      setPage('recipes');
+    }
   };
 
   return (
