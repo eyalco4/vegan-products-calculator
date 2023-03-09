@@ -22,7 +22,6 @@ function Recipes({ user, setPage, setInitialSelectedProducts }: Props) {
   }, []);
 
   const editRecpie = (stroredRecpie: IStoredRecpie) => {
-    console.info(stroredRecpie);
     const { selectedProducts } = stroredRecpie;
     setInitialSelectedProducts(selectedProducts);
     setPage('create');
@@ -48,7 +47,7 @@ function Recipes({ user, setPage, setInitialSelectedProducts }: Props) {
                 <div className="change flex-row">
                   <div className="flex-col justify-center">
                     <span className="edit-recipe pointer" onClick={() => editRecpie(stroredRecpie)}>
-                      Edit
+                      View / Edit
                     </span>
                   </div>
                   <span
@@ -90,9 +89,7 @@ function Recipes({ user, setPage, setInitialSelectedProducts }: Props) {
           <h2>Your Saved Recipes {user?.given_name} </h2>
           {getContent()}
         </div>
-        <div className="recipe-page-btn-w flex-col">
-          <Button text="Create new recipe" callback={() => setPage('create')} />
-        </div>
+        <Button text="Create new recipe" callback={() => setPage('create')} />
       </>
     </PageWrapper>
   );
