@@ -1,13 +1,21 @@
 .button {
-  width: 576px;
-  height: 60px;
-  margin: 0 auto;
-  font-size: 16px;
-  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   border: none;
   text-transform: capitalize;
+  border-radius: 10px;
+}
+
+.large {
+  width: 576px;
+  height: 48px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.small {
+  height: 40px;
+  width: 200px;
 }
 
 .default {
@@ -20,19 +28,12 @@
   background-color: #616b80;
 }
 
-.secondary {
-  background-color: white;
-  color: black;
-}
+.small {
 
-.secondary:hover,
-.secondary:active {
-  background-color: #ffffffab;
 }
 
 @media screen and (max-width: 768px) {
-
-  .button {
+  .large {
     width: 90vw;
   }
 }

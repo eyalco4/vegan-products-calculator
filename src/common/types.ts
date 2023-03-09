@@ -4,7 +4,7 @@ type measure = {
   calories: number;
 };
 
-export type units = 'gr' | 'ml' | 'kg' | 'tsp' | 'tbsp' | 'cup';
+export type IUnits = 'gr' | 'ml' | 'kg' | 'tsp' | 'tbsp' | 'cup';
 export interface IProduct {
   name: string;
   type: string;
@@ -17,18 +17,14 @@ export interface IProduct {
   cup?: measure;
 }
 
-export interface ISelectedProduct {
+export interface IndexedProduct {
   product: IProduct;
-  selected: boolean;
-  totalProtein: number;
-  totalCarbs: number;
-  totalCalories: number;
   categoryIndex: number;
   productIndex: number;
 }
 export interface ICategoryListItem {
   category: string;
-  products: ISelectedProduct[];
+  products: IndexedProduct[];
 }
 export interface names {
   name: string;
@@ -43,4 +39,30 @@ export interface IFilteredSearchItem {
 
 export interface IUser {
   given_name: string;
+}
+
+export interface ISelectedProduct {
+  product: IProduct;
+  categoryIndex: number;
+  productIndex: number;
+  selectedValues: {
+    quantity: number;
+    measure: IUnits;
+    cooked: boolean;
+  };
+
+  totals: {
+    protein: number;
+    carbs: number;
+    calories: number;
+  };
+}
+
+export interface IStoredRecpie {
+  name: string;
+  selectedProducts: ISelectedProduct[] | [];
+  meals: number;
+  totalProtein: number;
+  totalCarbs: number;
+  totalCalories: number;
 }

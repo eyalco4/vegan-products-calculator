@@ -37,14 +37,14 @@ function Landing({ user, setPage }: Props) {
           {user ? (
             <Button text="View saved recipes" callback={() => setPage('recipes')} />
           ) : (
-            <Button text="Sign in to view saved recipes" callback={() => setPage('login')} />
+            <Button text="View saved recipes" callback={() => setPage('recipes')} />
           )}
           <span className="or flex-row">
             <hr />
             OR
             <hr />
           </span>
-          <Button text="Create New Recpie" callback={() => setPage('create')} />
+          <Button text="Create New recipe" callback={() => setPage('create')} />
         </div>
       </>
     </PageWrapper>

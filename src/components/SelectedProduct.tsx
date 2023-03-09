@@ -1,14 +1,15 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import './SelectedProduct.css';
-import { ISelectedProduct, units } from 'src/common/types';
+import 'src/components/SelectedProduct.css';
+import { ISelectedProduct, IUnits } from 'src/common/types';
 import Toggler from 'src/components/Toggle';
 import Delete from 'src/components/icons/Delete';
-import { isiOS, isSafari } from 'src/utils';
+import { calculateValue, isiOS, isSafari } from 'src/common/utils';
 
 interface Props {
   selectedProduct: ISelectedProduct;
   onTotalsUpdate: (
-    productNameToUpdate: string,
+    categoryIndex: number,
+    productIndex: number,
     totalProtein: number,
     totalCarbs: number,
     totalCalories: number
@@ -16,30 +17,23 @@ interface Props {
   onProductRemoval: (categoryIndex: number, productIndex: number) => void;
 }
 
-function SelectedProducts({ selectedProduct, onTotalsUpdate, onProductRemoval }: Props) {
-  const { product, productIndex, categoryIndex } = selectedProduct;
+function SelectedProduct({ selectedProduct, onTotalsUpdate, onProductRemoval }: Props) {
+  const { product, categoryIndex, productIndex } = selectedProduct;
   const { name, cookedFactor = 1, gr, ml, kg, tsp, tbsp, cup } = product;
   const [quantity, setQuantity] = useState<string>('100');
-  const [units, setUnits] = useState<units>(gr ? 'gr' : 'ml');
+  const [units, setUnits] = useState<IUnits>(gr ? 'gr' : 'ml');
   const [isTogglerOn, setIsOn] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const calculateValue = (field: number): number => {
-      const multiplyByQuantity = getFormattedQuantity() * field;
-      if (isTogglerOn) {
-        return Number((multiplyByQuantity / cookedFactor).toFixed(2));
-      }
-      return Number(multiplyByQuantity.toFixed(2));
-    };
-
     const protein = product[units]?.protein || 0;
     const carbs = product[units]?.carbs || 0;
     const calories = product[units]?.calories || 0;
-    const newTotalProtein = calculateValue(protein);
-    const newTotalCarbs = calculateValue(carbs);
-    const newTotalCalories = calculateValue(calories);
-    onTotalsUpdate(name, newTotalProtein, newTotalCarbs, newTotalCalories);
+    const factor = isTogglerOn ? cookedFactor : 1;
+    const newTotalProtein = calculateValue(protein, Number(quantity), units, factor);
+    const newTotalCarbs = calculateValue(carbs, Number(quantity), units, factor);
+    const newTotalCalories = calculateValue(calories, Number(quantity), units, factor);
+    onTotalsUpdate(categoryIndex, productIndex, newTotalProtein, newTotalCarbs, newTotalCalories);
   }, [quantity, units, isTogglerOn]);
   const updateValues = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -133,4 +127,4 @@ function SelectedProducts({ selectedProduct, onTotalsUpdate, onProductRemoval }:
   );
 }
 
-export default SelectedProducts;
+export default SelectedProduct;

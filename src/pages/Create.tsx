@@ -1,70 +1,165 @@
-import React, { Dispatch, Fragment, SetStateAction } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 import 'src/pages/Create.css';
+import { ICategoryListItem, IProduct, ISelectedProduct, IUnits } from 'src/common/types';
+import { saveToDevice } from 'src/common/storage';
+import PageWrapper from 'src/components/PageWrapper';
+import { calculateValue, getFormattedValue } from 'src/common/utils';
 import Search from 'src/components/Search';
-import SelectedProducts from 'src/components/SelectedProducts';
-import { ICategoryListItem, ISelectedProduct } from '../common/types';
+import SelectedProductsList from 'src/components/SelectedProductsList';
+import Totals from 'src/components/Totals';
+import Button from 'src/components/Button';
 
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
-  setProductsByCategory: (updatedProducts: ICategoryListItem[]) => void;
+  initialSelectedProducts?: ISelectedProduct[] | [];
 }
 
-function Create({ productsByCategory, setProductsByCategory }: Props) {
-  function onProductSelection(categoryIndex: number, productIndex: number, selected: boolean) {
+function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: Props) {
+  const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct[] | []>([]);
+  const [meals, setMeals] = useState(1);
+  const [open, setOpen] = useState(false);
+  const [recpieName, setRecpieName] = useState<string>('');
+
+  useEffect(() => {
+    setSelectedProducts(initialSelectedProducts);
+  }, []);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+  function getSelectedProduct(categoryIndex: number, productIndex: number) {
     const { products } = productsByCategory[categoryIndex];
-    const product = products[productIndex];
-    const updatedList = [...productsByCategory];
-    updatedList[categoryIndex].products[productIndex] = { ...product, selected };
-    setProductsByCategory(updatedList);
+    const { product } = products[productIndex];
+    return product;
+  }
+  const totalProtein = getFormattedValue(selectedProducts, 'protein');
+  const totalCarbs = getFormattedValue(selectedProducts, 'carbs');
+  const totalCalories = getFormattedValue(selectedProducts, 'calories');
+  function onProductSelection(categoryIndex: number, productIndex: number) {
+    const product: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const { name, gr } = product;
+    const isAlreadySelected: boolean =
+      selectedProducts.filter(
+        (selectedProductTemp: ISelectedProduct) => selectedProductTemp.product.name === name
+      ).length > 0;
+    if (isAlreadySelected) {
+      return;
+    }
+    const units: IUnits = gr ? 'gr' : 'ml';
+    // @ts-ignore
+    const protein = calculateValue(product[units]?.protein, 100, units, 1);
+    // @ts-ignore
+    const carbs = calculateValue(product[units]?.carbs, 100, units, 1);
+    // @ts-ignore
+    const calories = calculateValue(product[units]?.calories, 100, units, 1);
+    const selectedProduct = {
+      product,
+      productIndex,
+      categoryIndex,
+      selectedValues: {
+        quantity: 100,
+        measure: units,
+        cooked: false,
+      },
+
+      totals: {
+        protein,
+        carbs,
+        calories,
+      },
+    };
+    setSelectedProducts([...selectedProducts, selectedProduct]);
   }
 
   function onProductRemoval(categoryIndex: number, productIndex: number) {
-    onProductSelection(categoryIndex, productIndex, false);
+    const productToRemove: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const selectedProductsUpdated = selectedProducts.filter(
+      ({ product }) => product.name !== productToRemove.name
+    );
+    setSelectedProducts(selectedProductsUpdated);
   }
   function onTotalsUpdate(
-    productNameToUpdate: string,
-    totalProtein: number,
-    totalCarbs: number,
-    totalCalories: number
+    categoryIndex: number,
+    productIndex: number,
+    protein: number,
+    carbs: number,
+    calories: number
   ) {
-    const updatedProducts: ICategoryListItem[] = productsByCategory.map((item) => {
-      const { category, products } = item;
-      return {
-        category,
-        products: products.map((selectedProduct) => {
-          const {
-            product: { name },
-          } = selectedProduct;
-          return name === productNameToUpdate
-            ? { ...selectedProduct, totalProtein, totalCarbs, totalCalories }
-            : selectedProduct;
-        }),
-      };
+    const productToUpdate: IProduct = getSelectedProduct(categoryIndex, productIndex);
+    const selectedProductsUpdated = selectedProducts.map((selectedProduct: ISelectedProduct) => {
+      const { product } = selectedProduct;
+      if (product.name === productToUpdate.name) {
+        return {
+          ...selectedProduct,
+          totals: {
+            protein,
+            carbs,
+            calories,
+          },
+        };
+      }
+      return selectedProduct;
     });
-    setProductsByCategory(updatedProducts);
+    setSelectedProducts(selectedProductsUpdated);
   }
-  const getSelectedProducts = (): ISelectedProduct[] | [] => {
-    const result = new Array<ISelectedProduct>();
-    productsByCategory.map((categoryListItem: ICategoryListItem, categoryIndex: number) => {
-      const { products } = categoryListItem;
-      products.map((product: ISelectedProduct, productIndex: number) => {
-        if (product.selected) {
-          result.push({ ...product, categoryIndex, productIndex });
-        }
-      });
-    });
-    return result;
+
+  function onChange(event: ChangeEvent<HTMLInputElement>) {
+    setRecpieName(event.target.value);
+  }
+
+  const save = () => {
+    const recpieToStore = {
+      name: recpieName,
+      meals,
+      selectedProducts,
+      totalProtein,
+      totalCarbs,
+      totalCalories,
+    };
+    saveToDevice(recpieToStore);
+    setPage('recipes');
   };
+
   return (
-    <Fragment>
-      <Search products={productsByCategory} onProductSelection={onProductSelection} />
-      <SelectedProducts
-        selectedProducts={getSelectedProducts()}
-        onTotalsUpdate={onTotalsUpdate}
-        onProductRemoval={onProductRemoval}
-      />
-    </Fragment>
+    <PageWrapper>
+      <>
+        <div className="selected-w">
+          <Search products={productsByCategory} onProductSelection={onProductSelection} />
+          <SelectedProductsList
+            selectedProducts={selectedProducts}
+            onTotalsUpdate={onTotalsUpdate}
+            onProductRemoval={onProductRemoval}
+          />
+        </div>
+        <div className="bottom-w">
+          <Totals
+            setMeals={setMeals}
+            meals={meals}
+            totalProtein={totalProtein}
+            totalCarbs={totalCarbs}
+            totalCalories={totalCalories}
+          />
+          <div className="flex-col btn-w">
+            <Button text="Save to this device" callback={onOpenModal} />
+            <Button text="Back" callback={() => setPage('Landing')} />
+          </div>
+          <Modal open={open} onClose={onCloseModal} closeOnEsc={true} center>
+            <div className="modal-input-wrapper flex-col">
+              <input
+                type="text"
+                placeholder="Enter you recipe name"
+                id="recipe-name-input"
+                value={recpieName}
+                onChange={onChange}
+                autoComplete="off"
+              />
+              <Button size="small" text="Save" callback={save} />
+            </div>
+          </Modal>
+        </div>
+      </>
+    </PageWrapper>
   );
 }
 

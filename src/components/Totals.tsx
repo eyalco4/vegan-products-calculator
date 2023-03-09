@@ -1,16 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import BouncingLoader from 'src/components/BouncingLoader';
 import 'src/components/Totals.css';
-import { isiOS, isSafari, formatNumber } from 'src/utils';
+import { isiOS, isSafari, formatNumber } from 'src/common/utils';
 interface Props {
+  setMeals: Dispatch<SetStateAction<number>>;
+  meals: number;
   totalProtein: number;
   totalCarbs: number;
   totalCalories: number;
 }
 
-function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
+function Totals({ totalProtein, totalCarbs, totalCalories, setMeals, meals }: Props) {
   const [showLoadingEffect, setShowLoadingEffect] = useState(true);
-  const [meals, setMeals] = useState(1);
   useEffect(() => {
     setShowLoadingEffect(true);
     setTimeout(() => {
@@ -27,8 +28,8 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
     const calculatedValue = (propertyValue / meals).toFixed(2);
     const formatedValue = formatNumber(Number(calculatedValue));
     return (
-      <div className={`totals ${propertyName}`}>
-        <div className="total-key">Total {propertyName.toUpperCase()}</div>
+      <div className="totals">
+        <div className={`total-key ${propertyName}`}>Total {propertyName.toUpperCase()}</div>
         {showLoadingEffect ? (
           <BouncingLoader />
         ) : (
@@ -41,12 +42,16 @@ function Totals({ totalProtein, totalCarbs, totalCalories }: Props) {
   const renderOptions = () => {
     const options = [];
     for (let i = 1; i < 21; i++) {
-      options.push(<option value={i}>{i}</option>);
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
     }
     return options;
   };
   return (
-    <div className="fixed-bottom">
+    <div className="totals-w">
       <div className="divid">
         Number of meals
         <select

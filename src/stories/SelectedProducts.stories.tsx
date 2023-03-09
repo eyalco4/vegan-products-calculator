@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { wrapper } from 'src/stories/decorators';
-import SelectedProducts from 'src/components/SelectedProducts';
+import SelectedProductsList from 'src/components/SelectedProductsList';
 
 export default {
-  title: 'components/SelectedProducts',
-  component: SelectedProducts,
+  title: 'components/SelectedProductsList',
+  component: SelectedProductsList,
   decorators: wrapper,
 
   argTypes: {
@@ -13,9 +13,11 @@ export default {
     onProductRemoval: { control: 'function' },
     selectedProducts: { control: 'none' },
   },
-} as ComponentMeta<typeof SelectedProducts>;
+} as ComponentMeta<typeof SelectedProductsList>;
 
-const Template: ComponentStory<typeof SelectedProducts> = (args) => <SelectedProducts {...args} />;
+const Template: ComponentStory<typeof SelectedProductsList> = (args) => (
+  <SelectedProductsList {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

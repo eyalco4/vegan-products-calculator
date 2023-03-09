@@ -1,0 +1,40 @@
+.recipes-w {
+  max-height: 75vh;
+  overflow: auto;
+}
+
+.recipe-header-w {
+  font-weight: bold;
+}
+.recipes-top > h2 {
+  color: #608760;
+}
+.change {
+  width: 100px;
+}
+.recipe {
+  height: 120px;
+  padding-bottom: 10px;
+}
+
+.recipe-name {
+  text-transform: capitalize;
+  margin: 0;
+  display: inline;
+}
+
+.value-header {
+  font-weight: bold;
+}
+
+.recipe-values {
+  height: 55px;
+}
+
+.recipe-values > div > span {
+  color: #616b80;
+}
+
+.recipe-page-btn-w {
+  padding-top: 15px;
+}

@@ -5,9 +5,9 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background-color: #F8FAF7F9;
+  background-color: #f8faf7f9;
   font-family: Arial;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .select-ios {
@@ -26,4 +26,13 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
 }

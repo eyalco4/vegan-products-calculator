@@ -1,18 +1,18 @@
 [
   {
-  "name": "pasta",
-  "cookedFactor": 2.8,
-  "gr": {
-    "protein": "0.125",
-    "calories": "3.75",
-    "carbs": "0.786"
+    "name": "pasta",
+    "cookedFactor": 2.8,
+    "gr": {
+      "protein": "0.125",
+      "calories": "3.75",
+      "carbs": "0.786"
+    },
+    "cup": {
+      "protein": "7",
+      "calories": "210",
+      "carbs": "44"
+    }
   },
-  "cup": {
-    "protein": "7",
-    "calories": "210",
-    "carbs": "44"
-  }
-},
   {
     "name": "seitan",
     "gr": {

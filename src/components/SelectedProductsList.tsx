@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import 'src/components/SelectedProducts.css';
+import 'src/components/SelectedProductsList.css';
 import SelectedProduct from 'src/components/SelectedProduct';
-import Totals from 'src/components/Totals';
 import { ISelectedProduct } from 'src/common/types';
 interface Props {
   selectedProducts: Array<ISelectedProduct>;
   onTotalsUpdate: (
-    productNameToUpdate: string,
+    categoryIndex: number,
+    productIndex: number,
     totalProtein: number,
     totalCarbs: number,
     totalCalories: number
@@ -14,33 +14,22 @@ interface Props {
   onProductRemoval: (categoryIndex: number, productIndex: number) => void;
 }
 
-function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
-  const getFormattedValue = (value: 'totalCarbs' | 'totalProtein' | 'totalCalories') => {
-    const totalValue = selectedProducts.reduce(
-      (counter, selectedProduct: ISelectedProduct) => counter + selectedProduct[value],
-      0
-    );
-    return totalValue;
-  };
-
+function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemoval }: Props) {
   return (
     <Fragment>
-      <div className="bottom">
+      <div className="list-w">
         {selectedProducts.length > 0 && (
-          <table>
+          <table id="selected-table">
             <thead>
               <tr>
                 <th>Product</th>
                 <th>Cooked</th>
                 <th>Units</th>
                 <th>Quantity</th>
-                {/*<th>Protein</th>*/}
-                {/*<th>Carbs</th>*/}
               </tr>
             </thead>
             <tbody>
               {selectedProducts.map((selectedProduct: ISelectedProduct) => {
-                // const LazyLoadedIcon: any = import(`src/components/icons/${name}.tsx`);
                 return (
                   <SelectedProduct
                     selectedProduct={selectedProduct}
@@ -54,13 +43,8 @@ function SelectedProducts({ selectedProducts, onTotalsUpdate, onProductRemoval }
           </table>
         )}
       </div>
-      <Totals
-        totalProtein={getFormattedValue('totalProtein')}
-        totalCarbs={getFormattedValue('totalCarbs')}
-        totalCalories={getFormattedValue('totalCalories')}
-      />
     </Fragment>
   );
 }
 
-export default SelectedProducts;
+export default SelectedProductsList;
