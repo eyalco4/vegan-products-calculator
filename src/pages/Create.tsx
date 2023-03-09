@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import 'src/pages/Create.css';
@@ -14,13 +14,18 @@ import Button from 'src/components/Button';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
+  initialSelectedProducts?: ISelectedProduct_temp[] | [];
 }
 
-function Create({ productsByCategory, setPage }: Props) {
+function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
   const [meals, setMeals] = useState(1);
   const [open, setOpen] = useState(false);
   const [recpieName, setRecpieName] = useState<string>('');
+
+  useEffect(() => {
+    setSelectedProducts(initialSelectedProducts);
+  }, []);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   function getSelectedProduct(categoryIndex: number, productIndex: number) {

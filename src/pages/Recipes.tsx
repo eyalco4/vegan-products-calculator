@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import 'src/pages/Recipes.css';
-import { IStoredRecpie, IUser } from 'src/common/types';
+import { ISelectedProduct_temp, IStoredRecpie, IUser } from 'src/common/types';
 import PageWrapper from 'src/components/PageWrapper';
 import Button from 'src/components/Button';
 import Delete from 'src/components/icons/Delete';
@@ -9,18 +9,23 @@ import { formatNumber } from 'src/common/utils';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   setUser: (user: IUser) => void;
-  user: IUser;
+
+  setInitialSelectedProducts: Dispatch<SetStateAction<ISelectedProduct_temp[] | []>>;
+  user?: IUser;
 }
 
-function Recipes({ user, setPage }: Props) {
+function Recipes({ user, setPage, setInitialSelectedProducts }: Props) {
   const [storedRecpies, setStoredRecpies] = useState<IStoredRecpie[] | []>([]);
   useEffect(() => {
     const storedData = getStoredValues() || [];
     setStoredRecpies(storedData);
   }, []);
 
-  const clearStoredValue = (stroredRecpie: IStoredRecpie) => {
+  const editRecpie = (stroredRecpie: IStoredRecpie) => {
     console.info(stroredRecpie);
+    const { selectedProducts } = stroredRecpie;
+    setInitialSelectedProducts(selectedProducts);
+    setPage('create');
   };
   const deleteStoredRecpieAndUpdateState = (stroredRecpie: IStoredRecpie) => {
     const updatedData: IStoredRecpie[] = deleteStoredRecpie(stroredRecpie);
@@ -31,7 +36,7 @@ function Recipes({ user, setPage }: Props) {
       return <div>You have no saved recipes</div>;
     }
     return (
-      <div className="recpies-w">
+      <div className="recipes-w">
         {storedRecpies.map((stroredRecpie: IStoredRecpie) => {
           const { name, meals, totalProtein, totalCarbs, totalCalories } = stroredRecpie;
           return (
@@ -40,20 +45,19 @@ function Recipes({ user, setPage }: Props) {
                 <div className="flex-col justify-center">
                   <h4 className="recipe-name">{name}</h4>
                 </div>
-                <div className="flex-col justify-center">
+                <div className="change flex-row">
+                  <div className="flex-col justify-center">
+                    <span className="edit-recipe pointer" onClick={() => editRecpie(stroredRecpie)}>
+                      Edit
+                    </span>
+                  </div>
                   <span
-                    className="edit-recipe pointer"
-                    onClick={() => clearStoredValue(stroredRecpie)}
+                    className="delete-recipe pointer"
+                    onClick={() => deleteStoredRecpieAndUpdateState(stroredRecpie)}
                   >
-                    Edit
+                    <Delete />
                   </span>
                 </div>
-                <span
-                  className="delete-recipe pointer"
-                  onClick={() => deleteStoredRecpieAndUpdateState(stroredRecpie)}
-                >
-                  <Delete />
-                </span>
               </div>
               <div className="flex-row recipe-values">
                 <div className="flex-col">
@@ -82,8 +86,8 @@ function Recipes({ user, setPage }: Props) {
   return (
     <PageWrapper>
       <>
-        <div className="recpies-top">
-          <h2>Your Saved Recipes {user?.given_name}</h2>
+        <div className="recipes-top">
+          <h2>Your Saved Recipes {user?.given_name} </h2>
           {getContent()}
         </div>
         <div className="recipe-page-btn-w flex-col">

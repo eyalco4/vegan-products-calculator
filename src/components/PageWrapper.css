@@ -1,7 +1,6 @@
 .page-w {
   height: 100%;
-  max-width: 576px;
-  margin: auto;
+  margin: 0 auto;
   padding: 40px 0;
 }
 
