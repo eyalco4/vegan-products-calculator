@@ -1,4 +1,4 @@
-import { ISelectedProduct_temp } from './types';
+import { ISelectedProduct } from './types';
 
 const isClient = typeof window !== 'undefined';
 export const isiOS = () => {
@@ -41,13 +41,12 @@ export const calculateValue = (
 };
 
 export const getFormattedValue = (
-  selectedProducts: ISelectedProduct_temp[],
+  selectedProducts: ISelectedProduct[],
   value: 'carbs' | 'protein' | 'calories'
 ) => {
   //@ts-ignore
   const totalValue: number = selectedProducts.reduce(
-    (counter: number, selectedProduct: ISelectedProduct_temp) =>
-      counter + selectedProduct.totals[value],
+    (counter: number, selectedProduct: ISelectedProduct) => counter + selectedProduct.totals[value],
     0
   );
   return totalValue;

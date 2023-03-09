@@ -2,7 +2,7 @@ import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } fro
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import 'src/pages/Create.css';
-import { ICategoryListItem, IProduct, ISelectedProduct_temp, IUnits } from 'src/common/types';
+import { ICategoryListItem, IProduct, ISelectedProduct, IUnits } from 'src/common/types';
 import { saveToDevice } from 'src/common/storage';
 import PageWrapper from 'src/components/PageWrapper';
 import { calculateValue, getFormattedValue } from 'src/common/utils';
@@ -14,11 +14,11 @@ import Button from 'src/components/Button';
 interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   productsByCategory: ICategoryListItem[];
-  initialSelectedProducts?: ISelectedProduct_temp[] | [];
+  initialSelectedProducts?: ISelectedProduct[] | [];
 }
 
 function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: Props) {
-  const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct_temp[] | []>([]);
+  const [selectedProducts, setSelectedProducts] = useState<ISelectedProduct[] | []>([]);
   const [meals, setMeals] = useState(1);
   const [open, setOpen] = useState(false);
   const [recpieName, setRecpieName] = useState<string>('');
@@ -41,7 +41,7 @@ function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: P
     const { name, gr } = product;
     const isAlreadySelected: boolean =
       selectedProducts.filter(
-        (selectedProductTemp: ISelectedProduct_temp) => selectedProductTemp.product.name === name
+        (selectedProductTemp: ISelectedProduct) => selectedProductTemp.product.name === name
       ).length > 0;
     if (isAlreadySelected) {
       return;
@@ -87,22 +87,20 @@ function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: P
     calories: number
   ) {
     const productToUpdate: IProduct = getSelectedProduct(categoryIndex, productIndex);
-    const selectedProductsUpdated = selectedProducts.map(
-      (selectedProduct: ISelectedProduct_temp) => {
-        const { product } = selectedProduct;
-        if (product.name === productToUpdate.name) {
-          return {
-            ...selectedProduct,
-            totals: {
-              protein,
-              carbs,
-              calories,
-            },
-          };
-        }
-        return selectedProduct;
+    const selectedProductsUpdated = selectedProducts.map((selectedProduct: ISelectedProduct) => {
+      const { product } = selectedProduct;
+      if (product.name === productToUpdate.name) {
+        return {
+          ...selectedProduct,
+          totals: {
+            protein,
+            carbs,
+            calories,
+          },
+        };
       }
-    );
+      return selectedProduct;
+    });
     setSelectedProducts(selectedProductsUpdated);
   }
 

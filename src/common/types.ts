@@ -17,18 +17,14 @@ export interface IProduct {
   cup?: measure;
 }
 
-export interface ISelectedProduct {
+export interface IndexedProduct {
   product: IProduct;
-  selected: boolean;
-  totalProtein: number;
-  totalCarbs: number;
-  totalCalories: number;
   categoryIndex: number;
   productIndex: number;
 }
 export interface ICategoryListItem {
   category: string;
-  products: ISelectedProduct[];
+  products: IndexedProduct[];
 }
 export interface names {
   name: string;
@@ -45,7 +41,7 @@ export interface IUser {
   given_name: string;
 }
 
-export interface ISelectedProduct_temp {
+export interface ISelectedProduct {
   product: IProduct;
   categoryIndex: number;
   productIndex: number;
@@ -64,7 +60,7 @@ export interface ISelectedProduct_temp {
 
 export interface IStoredRecpie {
   name: string;
-  selectedProducts: ISelectedProduct_temp[] | [];
+  selectedProducts: ISelectedProduct[] | [];
   meals: number;
   totalProtein: number;
   totalCarbs: number;

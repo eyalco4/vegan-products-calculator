@@ -1,12 +1,12 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import 'src/components/SelectedProduct.css';
-import { ISelectedProduct_temp, IUnits } from 'src/common/types';
+import { ISelectedProduct, IUnits } from 'src/common/types';
 import Toggler from 'src/components/Toggle';
 import Delete from 'src/components/icons/Delete';
 import { calculateValue, isiOS, isSafari } from 'src/common/utils';
 
 interface Props {
-  selectedProduct: ISelectedProduct_temp;
+  selectedProduct: ISelectedProduct;
   onTotalsUpdate: (
     categoryIndex: number,
     productIndex: number,

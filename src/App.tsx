@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'src/App.css';
 import Landing from 'src/pages/Landing';
 import Create from 'src/pages/Create';
-import { IProduct, ICategoryListItem, IUser, ISelectedProduct_temp } from 'src/common/types';
+import { IProduct, ICategoryListItem, IUser, ISelectedProduct } from 'src/common/types';
 import Login from 'src/pages/Login';
 import Recipes from './pages/Recipes';
 
@@ -10,9 +10,9 @@ function App() {
   const [productsByCategory, setProductsByCategory] = useState<ICategoryListItem[]>([]);
   const [user, setUser] = useState<IUser | undefined>(undefined);
   const [page, setPage] = useState<string>('landing');
-  const [initialSelectedProducts, setInitialSelectedProducts] = useState<
-    ISelectedProduct_temp[] | []
-  >([]);
+  const [initialSelectedProducts, setInitialSelectedProducts] = useState<ISelectedProduct[] | []>(
+    []
+  );
 
   useEffect(() => {
     ['grains', 'legumes', 'liquids', 'nuts', 'seeds', 'soy', 'spreads', 'vegetables', 'wheat'].map(
@@ -22,10 +22,6 @@ function App() {
           const products = fetchedProducts.map((product: IProduct, productIndex) => {
             return {
               product,
-              selected: false,
-              totalProtein: 0,
-              totalCarbs: 0,
-              totalCalories: 0,
               categoryIndex,
               productIndex,
             };

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import 'src/components/SelectedProductsList.css';
 import SelectedProduct from 'src/components/SelectedProduct';
-import { ISelectedProduct_temp } from 'src/common/types';
+import { ISelectedProduct } from 'src/common/types';
 interface Props {
-  selectedProducts: Array<ISelectedProduct_temp>;
+  selectedProducts: Array<ISelectedProduct>;
   onTotalsUpdate: (
     categoryIndex: number,
     productIndex: number,
@@ -29,7 +29,7 @@ function SelectedProductsList({ selectedProducts, onTotalsUpdate, onProductRemov
               </tr>
             </thead>
             <tbody>
-              {selectedProducts.map((selectedProduct: ISelectedProduct_temp) => {
+              {selectedProducts.map((selectedProduct: ISelectedProduct) => {
                 return (
                   <SelectedProduct
                     selectedProduct={selectedProduct}

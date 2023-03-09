@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import 'src/pages/Recipes.css';
-import { ISelectedProduct_temp, IStoredRecpie, IUser } from 'src/common/types';
+import { ISelectedProduct, IStoredRecpie, IUser } from 'src/common/types';
 import PageWrapper from 'src/components/PageWrapper';
 import Button from 'src/components/Button';
 import Delete from 'src/components/icons/Delete';
@@ -10,7 +10,7 @@ interface Props {
   setPage: Dispatch<SetStateAction<string>>;
   setUser: (user: IUser) => void;
 
-  setInitialSelectedProducts: Dispatch<SetStateAction<ISelectedProduct_temp[] | []>>;
+  setInitialSelectedProducts: Dispatch<SetStateAction<ISelectedProduct[] | []>>;
   user?: IUser;
 }
 
