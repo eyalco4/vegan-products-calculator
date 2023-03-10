@@ -8,6 +8,10 @@
 @media screen and (max-width: 768px) {
     .page-w {
       padding-top: 20px;
-      min-height: -webkit-fill-available;
+      min-height: 85vh;
+    }
+
+    .ios-w {
+        min-height: -webkit-fill-available;
     }
 }
