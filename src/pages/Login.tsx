@@ -46,7 +46,7 @@ function Login({ setPage, setUser }: Props) {
     <Fragment>
       <div className="login-wrapper flex-col">
         <div id="sign-in-with-google"></div>
-        <Button text="Back" callback={() => setPage('Landing')} />
+        <Button text="Home" callback={() => setPage('Landing')} />
       </div>
     </Fragment>
   );

@@ -18,7 +18,7 @@
   border-top: 2px solid #616b80;
 }
 
-#search ::placeholder {
+#search::placeholder {
   font-size: 16px;
   color: #616b80;
   letter-spacing: 2px;
