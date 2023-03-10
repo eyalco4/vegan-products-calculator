@@ -10,7 +10,9 @@ function PageWrapper({ children }: Props) {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`flex-col page-w ${isiOS() || isSafari() ? 'ios-w' : ''}`}>{children}</div>
+    <div className={`flex-col page-w ${isiOS() || isSafari() ? 'ios-w' : 'android-w'}`}>
+      {children}
+    </div>
   );
 }
 

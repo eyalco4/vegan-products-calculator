@@ -1,5 +1,5 @@
 .page-w {
-    height: 90vh;
+    min-height: 90vh;
     margin: 0 auto;
     padding-top: 40px;
     padding-bottom: 20px;
@@ -7,11 +7,7 @@
 
 @media screen and (max-width: 768px) {
     .page-w {
-      height: 90vh;
       padding-top: 20px;
-    }
-
-    .ios-w {
-        min-height: -webkit-fill-available;
+      min-height: -webkit-fill-available;
     }
 }
