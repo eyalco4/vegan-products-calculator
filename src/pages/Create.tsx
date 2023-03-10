@@ -144,7 +144,7 @@ function Create({ productsByCategory, setPage, initialSelectedProducts = [] }: P
           />
           <div className="flex-col btn-w">
             <Button text="Save to this device" callback={onOpenModal} />
-            <Button text="Back" callback={() => setPage('Landing')} />
+            <Button text="Home" callback={() => setPage('Landing')} />
           </div>
           <Modal open={open} onClose={onCloseModal} closeOnEsc={true} center>
             <div className="modal-input-wrapper flex-col">
